@@ -1,0 +1,72 @@
+BODY {
+    color: #404040;
+    background: #FFFFFF;
+    text-align: justify;
+    //font-family: 'Maven Pro', sans-serif;
+	font-family: sans-serif
+    font-size: 14pt;
+    font-weight: normal;
+    text-decoration: none;
+    line-height: 1.5em;
+    //width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a {
+    //color: #D03030;
+    text-decoration: none;
+}
+
+li {
+    margin: 0em;
+}
+
+.update {
+    float: left;
+    width: 400px;
+    margin-right: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: solid 1px;
+    border-color: #CCCCCC;
+    border-radius: 7px;
+}
+
+.head {
+    //color: #FFFFFF;
+    background: #D0E7F6;
+    font-family: 'Lato', sans-serif;
+    font-size: 20pt;
+    font-weight: bold;
+	text-align: center; 
+    padding: 1em 0.25em 1em 0.5em;
+    margin: 10pt 0pt 0pt 0pt;
+}
+
+.title {
+    font-size: 16pt;
+    line-height: 1.2em;
+}
+
+.menu {
+    color: white;
+    background: #888888;
+    text-align: right;
+    padding: 0.5em;
+    margin: 0pt;
+}
+
+a.menu {
+    color: #E0E0E0;
+}
+
+a.menu:hover {
+    color: #FFFFFF;
+}
+
+.arrow {
+    margin-bottom: 2.5em;
+}
+
+.foot { font-size: 11pt; }

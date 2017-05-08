@@ -1,0 +1,152 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
+	<title>LESSA - Yongchao Liu@Georgia Tech</title>
+</head><body bgcolor="#ffffff" text="#000000">
+
+<div style="margin-left: 10%; margin-right: 10%; line-height:150%;font-size:12pt">
+
+<h2>LESSA: a <u>L</u>ibrary of <u>E</u>fficient, <u>S</u>calable and <u>S</u>ervice-oriented <u>A</u>lgorithms</h2>
+<hr>
+
+<h3>1. Large-Scale Biological Sequence Analysis System</h3>
+<p>
+As part of my LESSA library, this project has been the core of my research on parallel and distributed algorithm design for bioinformatics, by employing a variety of tightly-coupled and loosely-coupled computing architectures, including heterogeneous computers with accelerators (e.g. Intel SSE, Intel AVX, Intel Xeon Phis, NVIDIA GPUs and AMD GPUs), cluster computing and cloud computing. My final objective is to establish an analysis system for large-scale biological sequences, in order to solve some critical and bottleneck problems in bioinformatics and computational biology, such as genome sequencing based on high-throughput sequencing technologies, meta-genomics, motif discovery, sequence alignment, and phylogenetic inference. Fig. 1 illustrates the diagram of an imaginaory biological data analysis system. As of today, my research mainly follows this roadmap and most of my papers and software algorithms contribute to this project.
+</p>
+<table align="center" border="0" cellpadding="16">
+<tr>
+<td align="center" valign="middle"><img src="bio_system.png" height="auto" width="auto">
+</tr>
+<tr>
+<td align="center" valign="middle">
+<b>Fig. 1</b> System diagram for large-scale biological sequence analysis
+</td>
+</tr>
+</table>
+
+<tr>
+<td align="left" valign="middle">
+<p><h4>Example work:</h4> (The full lists of my software and publications are available <a href="https://sites.google.com/site/yongchaosoftware">here</a>)</p>
+<ul>
+<li><u>Liu Y</u>, Maskell DL, Schmidt B: "<a href="http://www.biomedcentral.com/1756-0500/2/73" style="text-decoration:none">CUDASW++: optimizing Smith-Waterman sequence database searches for CUDA-enabled graphics processing units</a>". <b>BMC Research Notes</b>, 2009, 2:73 </li>
+
+<li><u>Liu Y</u>, Schmidt B, Maskell DL: "<a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=5200019" style="text-decoration:none">MSA-CUDA: multiple sequence alignment on graphics processing units with CUDA</a>". 20th IEEE International Conference on Application-specific Systems, Architectures and Processors <b>(ASAP 2009</b>), 2009, 121-128 (<font color="#ff0000"><b>Best Paper Award</b>)</font></li>
+
+<li><u>Liu Y</u>, Schmidt B, Maskell DL: "<a href="http://bioinformatics.oxfordjournals.org/content/26/16/1958.abstract" style="text-decoration:none">MSAProbs: multiple sequence alignment based on pair hidden Markov models and partition function posterior probabilities</a>". <b>Bioinformatics</b>, 2010, 26(16): 1958 -1964 </li>
+
+<li><u>Liu Y</u>, Schmidt B, Liu W, Maskell DL: "<a href="http://www.sciencedirect.com/science/article/pii/S0167865509002840" style="text-decoration:none">CUDA-MEME: accelerating motif discovery in biological sequences using CUDA-enabled graphics processing units</a>". <b>Pattern Recognition Letters</b>, 2010, 31(14): 2170 - 2177</li>
+
+<li><u>Liu Y</u>, Schmidt B, Douglas L. Maskell: "<a href="http://www.biomedcentral.com/1756-0500/3/93" style="text-decoration:none">CUDASW++2.0: enhanced Smith-Waterman protein database search on CUDA-enabled GPUs based on SIMT and virtualized SIMD abstractions</a>". <b>BMC Research Notes</b>, 2010, 3:93</li>
+
+<li><u>Liu Y</u>, Schmidt B, Maskell DL: "<a href="http://www.biomedcentral.com/1471-2105/12/354" style="text-decoration:none">Parallelized short read assembly of large genomes using de Bruijn graphs</a>". <b>BMC Bioinformatics</b>, 2011, 12:354</li>
+
+<li>Kuttippurathu L, Hsing M, <u>Liu Y</u>, Schmidt B, Maskell DL, Lee K, He A, Pu WT, and Kong SW: "<a href="http://bioinformatics.oxfordjournals.org/content/27/5/715.abstract" style="text-decoration:none">CompleteMOTIFs: DNA motif discovery platform for transcription factor binding experiments</a>". <b>Bioinformatics</b>, 2011, 27(5): 715-717</li>
+
+<li><u>Liu Y</u>, Schmidt B, Maskell DL: "<a href="http://bioinformatics.oxfordjournals.org/content/28/14/1830.abstract" style="text-decoration:none">CUSHAW: a CUDA compatible short read aligner to large genomes based on the Burrows-Wheeler transform</a>". <b>Bioinformatics</b>, 2012, 28(14): 1830-1837</li>
+
+<li><u>Liu Y</u> and Schmidt B: "<a href="http://bioinformatics.oxfordjournals.org/content/28/18/i318.abstract" style="text-decoration:none">Long read alignment based on maximal exact match seeds</a>". <b>Bioinformatics</b>, 2012, 28(18): i318-i324 (also from ECCB 2012)</li>
+
+<li><u>Liu Y</u>, Schroeder J, Schmidt B: "<a href="http://bioinformatics.oxfordjournals.org/content/29/3/308.abstract" style="text-decoration:none">Musket: a multistage k-mer spectrum based error corrector for Illumina sequence data</a>". <b>Bioinformatics </b>, 2013, 29(3): 308-315</li>
+
+<li><u>Liu Y</u>, Wirawan A, Schmidt B: "<a href="http://www.biomedcentral.com/1471-2105/14/117" style="text-decoration:none">CUDASW++ 3.0: accelerating Smith-Waterman protein database search by coupling CPU and GPU SIMD instructions</a>". <b>BMC Bioinformatics</b>, 2013, 14:117.</li>
+
+<li><u>Liu Y</u>, Schmidt B: "<a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?tp=&amp;arnumber=6617698&amp;queryText%3DCUSHAW2-GPU%3A+empowering+faster+gapped+short-read+alignment+using+GPU+computing" style="text-decoration:none">CUSHAW2-GPU: empowering faster gapped short-read alignment using GPU computing</a>". <b>IEEE Design &amp; Test</b>, 2014, 31(1): 31-39</li>
+
+<li>Ripp F, Krombholz CF, <u>Liu Y</u>, Weber M, Schaefer A, Schmidt B, Koeppel R, Hankeln T: "<a href="http://www.biomedcentral.com/1471-2164/15/639/abstract" style="text-decoration:none">All-Food-Seq (AFS): a quantifiable screen for species in biological samples by deep DNA sequencing</a>". <b>BMC Genomics</b>, 2014, 15:639</li>
+
+<li><u>Liu Y</u>, Tran TT, Lauenroth F, Schmidt B: "<a href="http://dx.doi.org/10.1109/CLUSTER.2014.6968772" style="text-decoration:none">SWAPHI-LS: Smith-Waterman algorithm on Xeon Phi coprocessors for long DNA sequences</a>". 2014 IEEE International Conference on Cluster Computing <b>(Cluster 2014</b>), 2014, pp. 257-265 (<font color="#ff0000"><b>Best Paper Award Recommendation</b>)</font></li>
+
+<li><u>Liu Y</u>, Schmidt B: "<a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6868657" style="text-decoration:none">SWAPHI: Smith-Waterman protein database search on Xeon Phi coprocessors</a>". 25th IEEE International Conference on Application-specific Systems, Architectures and Processors (<b>ASAP 2014</b>), 2014, pp. 184-185</li>
+
+<li><u>Liu Y</u>, Loewer M, Aluru S, Schmidt B: "<a href="http://dx.doi.org/10.1109/BIBM.2015.7359659" style="text-decoration:none">SNVSniffer: an integrated caller for germline and somatic SNVs based on Bayesian models</a>". 2015 IEEE International Conference on Bioinformatics and Biomedicine (<b>BIBM15</b>), 2015, pp. 83-90.</li>
+
+<li><u>Liu Y</u>, Loewer M, Aluru S, Schmidt B: "<a style="text-decoration: none" href="http://bmcsystbiol.biomedcentral.com/articles/10.1186/s12918-016-0300-5">SNVSniffer: an integrated caller for germline and somatic single-nucleotide and indel mutations</a>". <b>BMC Systems Biology</b>, 2016, 10(Suppl 2):47</li>
+
+<li>Pan T, Flick P, Jain C, <u>Liu Y</u> and Aluru S: "<a style="text-decoration:none" href="http://dl.acm.org/citation.cfm?id=2975211&CFID=870130274&CFTOKEN=58199232">Kmerind: A flexible parallel library for k-mer indexing of biological sequences on distributed memory systems</a>".  7th ACM Conference on Bioinformatics, Computational Biology, and Health Informatics (<b>ACM-BCB 2016</b>), 2016, pp. 422-433</li>
+
+<li>Chan Y, Xu K, Lan H, Liu W, <u>Liu Y</u> and Schmidt B: ”PUNAS: a parallel ungapped-alignment-featured seed verification for next-generation sequencing read alignment”. 31st IEEE International Parallel and Distributed Processing Symposium (<b>IPDPS 2017</b>), 2017, accepted.</li>
+
+<li>Lan H, Liu W, <u>Liu Y</u> and Schmidt B: ”SWhybrid: a hybrid parallel framework for large-scale protein sequence database search”. 31st IEEE International Parallel and Distributed Processing Symposium (<b>IPDPS 2017</b>), 2017, accepted.</li>
+
+</ul>
+</td>
+</tr>
+</table>
+
+<h3>2. Parallel Full-Text Search and Pattern Search</h3>
+<p>
+As part of my LESSA library, this project aims to design parallel and memory-efficient algorithms for full-text indexing and pattern search. In particular, I will investigate the parallel and space-efficient construction of four popular full-text indexing data structures: Burrows-Wheeler transform, FM-index, suffix array and enhanced suffix array, on heterogeneous computing architectures comprising multi-core CPUs and accelerators (specifically, NVIDIA and AMD GPUs and Intel Xeon Phi coprocessors). Based on these indexing data structures, I will further explore full-text pattern search, e.g. searching for maximal exact matches, super maximal exact matches, and approximate pattern matches, which is fudamental and critical to a myriad of applications in various fields such as Bioinformatics (e.g. next-generation sequencing read alignment and genome assembly) and text/data mining.</p>
+
+<p>Both full-text indexing and full-text pattern search engines will be ultimately offered in the form of a library. The libray will provide a unified high-level programming interface for different types of the underlying processing units, which will enhance the productivity of developers and enables performance portability between multi-core CPUs and accelerators. Furthermore, on a heterogeneous computer with accelerators, this library intends to have the capability of autonomously selecting the "most efficient" parallelization, which may run on any of the different types of processing units or even on some hybrid combinations, at runtime. In this fashion, while deploying the parallel algorithms from the library, developers do not need to care more about the details of the underlying hardware configuration, and thereby can pay more attention to the development of other parts of a program. Fig. 2</b> shows the high-level system diagram for my parallel full-text indexing and pattern search project.</p>
+<table align="center" border="0" cellpadding="16">
+<tr>
+<td align="center" valign="middle"><img src="full_text.jpg" height="auto" width="50%">
+</td>
+</tr>
+
+<tr>
+<td align="center" valign="middle">
+<b>Fig. 2</b> System diagram for parallel full-text indexing and pattern search
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="middle">
+<h4>Example work:</h4>
+<p>Full-text Indexing</p>
+<ul>
+<li><u>Liu Y</u>, Hankeln T, Schmidt B: "<a href="http://dx.doi.org/10.1109/TCBB.2015.2430314" style="text-decoration:none">Parallel and space-efficient construction of Burrows-Wheeler transform and suffix array for big genome data</a>". <b>IEEE Transactions on Computational Biology and Bioinformatics</b>, 2016, 13(3): 592-598.</li>
+</ul>
+
+<p>Full-text Pattern Search</p>
+<ul>
+<li><u>Liu Y</u>, Schmidt B, Maskell DL: "<a href="http://bioinformatics.oxfordjournals.org/content/28/14/1830.abstract" style="text-decoration:none">CUSHAW: a CUDA compatible short read aligner to large genomes based on the Burrows-Wheeler transform</a>". <b>Bioinformatics</b> (<i>impact factor </i>5.468), 2012, 28(14): 1830-1837</li>
+
+<li><u>Liu Y</u>, Schmidt B: "<a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?tp=&amp;arnumber=6617698&amp;queryText%3DCUSHAW2-GPU%3A+empowering+faster+gapped+short-read+alignment+using+GPU+computing" style="text-decoration:none">CUSHAW2-GPU: empowering faster gapped short-read alignment using GPU computing</a>". <b>IEEE Design &amp; Test</b>, 2014, 31(1): 31-39</li>
+</ul>
+</td>
+</tr>
+</table>
+
+<h3>3.Compute Unified Parallel Building Blocks (CUPBB)</h3>
+<p>This project aims to build a Compute Unified Parallel Building Blocks (CUPBB) template library using heterogeneous computing. This library will contain popular fundamental building blocks for scientific computing and data science, including, but not limited to, sparse linear algebra (e.g. SpMV), scan, reduction, sort, k-nearest neighbors and etc. For example, sparse linear algebra is recognized as one of the seven dwarfs By UC Berkeley, for parallel computing research, and is believed to be of high importance to science and engineering in the coming years. As an essential primitive in sparse linear algebra, sparse matrix-vector multiplication (SpMV) has garnered intense scientific attention and has been used in a variety of scientific computing applications such as bioinformatics, data mining, graph analytics and iterative methods in scientific computing. I have done some work on parallel sparse linear algebra on CUDA-enabled GPUs and parallel pairwise correlation computation on Intel Xeon Phi clusters for data science (e.g. for feature selection in machine learning)
+
+<table align="center" border="0" cellpadding="16">
+<tr>
+<td align="center" valign="center"><img src="over_cusp.jpg" height="auto" width="400"></td>
+<td align="center" valign="center"><img src="over_cusparse.jpg" height="auto" width="400"></td>
+</tr>
+
+<tr>
+<td align="center" valign="middle" colspan="2">
+<b>Fig. 3</b> (a) speedups of <a href="http://lightspmv.sourceforge.net" style="text-decoration:none">LightSpMV</a> over CUSP on a Telsa K40c GPU  and (b) speedups over cuSPARASE on a Tesla K40c GPU
+</td>
+</tr>
+
+<tr>
+<td colspan="2">
+<h4>Example work:</h4>
+<ul>
+<li><u>Liu Y</u>, Schmidt B: "<a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=7245713" style="text-decoration:none">LightSpMV: faster CSR-based sparse matrix-vector multiplication on CUDA-enabled GPUs</a>". 26th IEEE International Conference on Application-specific Systems, Architectures and Processors (<b>ASAP 2015</b>), 2015, pp. 82-89 (<font color="#ff0000"><b>Best Paper Award</b>)</font></li>
+<li><u>Liu Y</u>, Schmidt B: "<a href="http://link.springer.com/article/10.1007%2Fs11265-016-1216-4" style="text-decoration:none">LightSpMV: faster CUDA-compatible sparse matrix-vector multiplication using compressed sparse rows</a>". <b>Journal of Signal Processing Systems</b>, 2017, doi:10.1007/s11265-016-1216-4.
+<li><u>Liu Y</u>, Pan T and Aluru S: "<a href="https://doi.org/10.1109/SBAC-PAD.2016.26" style="text-decoration:none">Parallel pairwise correlation computation on Intel Xeon Phi clusters</a>". 28th International Symposium on Computer Architecture and High Performance Computing (<b>SBAC-PAD 2016</b>), 2016, pp. 141-149.</li>
+<li><u>Liu Y</u> and Aluru S: "<a href="https://arxiv.org/abs/1604.04815" style="text-decoration:none">LightScan: faster scan primitive on CUDA compatible manycore processors</a>". <b>arXiv:1604.04815</b>, 2016</li>
+<li><u>Liu Y</u>, Pan T, Green O and Aluru S: "Parallelized Kendall's tau coefficient computation via SIMD vectorized sorting on many-integrated-core processors". <b>Journal of Parallel and Distributed Computing</b>, 2017, submitted [<a href="https://arxiv.org/abs/1704.03767" style="text-decoration:none">arXiv</a>]
+</ul>
+</td>
+</tr>
+</table>
+
+
+<!-- update time -->
+<p class="foot">
+	<script language="JavaScript">
+		document.write("Last updated: " + document.lastModified);
+	</script>
+</p>
+</div>
+</html>

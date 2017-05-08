@@ -1,0 +1,165 @@
+
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
+	<title>Software - Yongchao Liu@Georgia Tech</title>
+</head><body bgcolor="#ffffff" text="#000000">
+
+<div style="margin-left: 10%; margin-right: 10%; line-height:200%;font-size:12pt">
+<h2>List of My Software</h2>
+<hr>
+
+
+<h3>Big data</h3>
+<table align="left" border="1" style="width:100%">
+<tr>
+<td><a href="http://parabwt.sourceforge.net" style="text-decoration:none">ParaBWT</a></td>
+<td colspan="2">a leading parallel and space-efficient algorithm for Burrows-Wheeler transform construction on big genome data.</td>
+</tr>
+</table>
+<p></br>&nbsp;</br></p>
+
+
+<h3>Machine Learning</h3>
+<table align="left" border="1" style="width:100%">
+<tbody>
+<td><a href="http://lightpcc.sourceforge.net" style="text-decoration:none">LightPCC</a></td>
+<td colspan="2">the first parallel and distributed pairwise correlation computation on Intel Xeon Phi clusters for data science (e.g. co-expression network construction and feature selection).</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+
+<h3>Scientific Computing</h3>
+<table align="left" border="1" style="width:100%">
+<tbody>
+<tr>
+<td><a href="http://lightspmv.sourceforge.net" style="text-decoration:none">LightSpMV</a></td>
+<td colspan="2">a faster compressed sparse row (CSR)-based sparse matrix-vector multiplication algorithm on CUDA-enabled GPUs.</td>
+</tr>
+<tr>
+
+<tr>
+<td><a href="http://cupbb.sourceforge.net" style="text-decoration:none">LightScan</a></td>
+<td colspan="2">a faster parallel scan primitive for CUDA-enabled GPUs by investigating a hybrid model combining intra-block computation and inter-block communication.</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+
+<h3>Motif Finding</h3>
+<table align="left" border="1" style="width:100%">
+<tr>
+<td><a href="https://sites.google.com/site/yongchaosoftware/Home/cuda-meme" style="text-decoration:none">CUDA-MEME</a></td>
+<td colspan="2">a fast parallel motif finding algorithm based on MEME (version 3.5.4) algorithm for a single GPU device using CUDA.</td>
+</tr>
+
+<tr>
+<td><a href="https://sites.google.com/site/yongchaosoftware/mcuda-meme" style="text-decoration:none">mCUDA-MEME</a></td>
+<td colspan="2">a further extension of CUDA-MEME based on MEME (version 4.4.0) algorithm for multiple GPUs using a hybrid combination of CUDA, MPI and OpenMP.</td>
+</tr>
+
+<tr>
+<td><a href="http://cmotifs.tchlab.org/" style="text-decoration:none" target="_blank">CompleteMOTIFs</a></td>
+<td colspan="2">an integrated web tool developed by Harvard Medical School to facilitate systematic discovery of over-represented transcription factor binding motifs from high-throughput chromatin immunoprecipitation experiments. I contributed CUDA-MEME to accelerate motif discovery.</td>
+</tr>
+</table>
+<p></br>&nbsp;</br></p>
+
+<h3>Next Generation Sequencing (NGS)</h3>
+<table align="left" border="1" style="width:100%">
+<tr>
+<td rowspan="3" width="20%">Short-read alignment</td>
+<td width="12%"><a href="http://cushaw.sourceforge.net/" rel="nofollow" style="text-decoration:none" target="_blank">CUSHAW</a></td>
+<td>the first distribution of the CUSHAW software package for NGS read alignment. It is a CUDA compatible short read alignment algorithm for multiple GPUs sharing a single host. This aligner only provides support for ungapped alignment and has been incorporated to <a href="http://www.nvidia.com/object/gpu-applications.html" style="text-decoration:none">NVIDIA Tesla Bio Workbench</a>.</td>
+</tr>
+
+<tr>
+<td><a href="http://cushaw2.sourceforge.net/" rel="nofollow" style="text-decoration:none" target="_blank">CUSHAW2</a></td>
+<td>the second distribution of the CUSHAW software package for NGS read alignment. It is a fast and parallel gapped read alignment to large genomes, such as the human genome. This aligner has been further accelerated using GPU computing and is implemented in <a href="http://cushaw2.sourceforge.net" style="text-decoration:none">CUSHAW2-GPU</a>.</td>
+</tr>
+
+<tr>
+<td><a href="http://cushaw3.sourceforge.net" style="text-decoration:none" target="_blank">CUSHAW3</a></td>
+<td>the third distribution of the CUSHAW software package for NGS read alignment. It is a parallel, sensitive and accurate short-read aligner for both base-space and color-space single-end/paired-end reads. This aligners has been further enhanced using cluster computing and is implemented in <a href="http://cushaw3.sourceforge.net">CUSHAW3-UPC</a>. </td>
+</tr>
+
+<tr>
+<td rowspan="3">Short-read error correction</td>
+<td><a href="http://decgpu.sourceforge.net/" rel="nofollow" style="text-decoration:none" target="_blank">DecGPU</a></td>
+<td>the first parallel and distributed pre-assembly short read error correction algorithm using CUDA and MPI.
+</td>
+</tr>
+
+<tr>
+<td><a href="http://musket.sourceforge.net" rel="nofollow" style="text-decoration:none" target="_blank">Musket</a></td>
+<td>a parallel and scalable multistage <i>k</i>-mer spectrum based error corrector for Illumina sequence data.</td>
+</tr>
+
+<tr>
+<td><a href="http://hector454.sourceforge.net" style="text-decoration:none">Hector</a></td>
+<td>a parallel multistage homopolymer spectrum based error corrector to handle homopolymer insertions or deletions in 454 sequencing data.</td>
+</tr>
+
+<tr>
+<td rowspan="1">Short-read assembly</td>
+<td><a href="http://pasha.sourceforge.net/" rel="nofollow" style="text-decoration:none" target="_blank">PASHA</a></td>
+<td>a parallelized short read assembler for large genomes, such as the human genome, using de Bruijn graphs.</td>
+</tr>
+
+<tr>
+<td>SNV calling</td>
+<td><a href="http://snvsniffer.sourceforge.net" style="text-decoration:none">SNVSniffer</a></td>
+<td>an integrated caller for germline and somatic single nucleotide variants (SNVs) in diploid genomes.</td>
+</tr>
+
+<tr>
+<td>Metagenomics</td>
+<td><a href="http://all-food-seq.sourceforge.net" style="text-decoration:none">All-Food-Seq</a></td>
+<td>a software pipeline for quantitative measurement of species composition in foodstuff material.</td>
+</tr>
+</table>
+<p></br>&nbsp;</br></p>
+
+<h3>Sequence Alignment</h3>
+<table align="left" border="1" style="width:100%">
+<tr>
+<td><a href="http://cudasw.sourceforge.net/" rel="nofollow" style="text-decoration:none">CUDASW++</a></td>
+<td colspan="2">the fastest parallel Smith Waterman protein database search algorithm for GPGPUs using CUDA.</td>
+</tr>
+
+<tr>
+<td><a href="http://msaprobs.sourceforge.net/" rel="nofollow" style="text-decoration:none">MSAProbs</a></td>
+<td colspan="2">a new and practical multi-threaded multiple protein sequence alignment algorithm, which produces the highest alignment accuracy compared to the existing leading aligners.</td>
+</tr>
+
+<tr>
+<td><a href="http://swaphi.sourceforge.net" style="text-decoration:none">SWAPHI</a></td>
+<td colspan="2">the first parallel algorithm to accelerate the Smith-Waterman protein database search on Xeon Phi coprocessors.</td>
+</tr>
+
+<tr>
+<td><a href="http://swaphi-ls.sourceforge.net" style="text-decoration:none">SWAPHI-LS</a></td>
+<td colspan="2">the first parallel Smith-Waterman algorithm exploiting Xeon Phi clusters to accelerate the alignment of long DNA sequences.</td>
+</tr>
+
+<tr>
+<td><a href="http://xbitpar.sourceforge.net" style="text-decoration:none">XBitPar </a></td>
+<td colspan="2">a Bit-parallel approximate pattern matching algorithm that is based on the Wu-Manber algorithm and further accelerated by Xeon Phi coprocessors.</td>
+</tr>
+</table>
+<p>&nbsp;</p>
+
+
+<p class="foot">
+	<script language="JavaScript">
+		document.write("Last updated: " + document.lastModified);
+	</script>
+</p>
+
+</div>
+</html>
