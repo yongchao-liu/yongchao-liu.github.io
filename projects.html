@@ -5,15 +5,51 @@
 <meta http-equiv="expires" content="0" />
 <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
 <meta http-equiv="pragma" content="no-cache" />
+<link rel="stylesheet" type="text/css" href="style.css">
 	<title>LESSA - Yongchao Liu@Georgia Tech</title>
-</head><body bgcolor="#ffffff" text="#000000">
+</head>
+<body>
+<!--header-->
+<div id="header"></div>
 
-<div style="margin-left: 10%; margin-right: 10%; line-height:150%;font-size:12pt">
+<!--side bar-->
+<div id="sidebar">
 
-<h2>LESSA: a <u>L</u>ibrary of <u>E</u>fficient, <u>S</u>calable and <u>S</u>ervice-oriented <u>A</u>lgorithms</h2>
+<!--photo-->
+<div id="profile"></div>
+<p style="text-align:center">[<a href="data/yongchao-liu-cv.pdf">CV</a>][<a href="https://scholar.google.com/citations?user=qYQHl4sAAAAJ&hl=en&oi=ao">Google Scholar</a>][<a href="https://www.linkedin.com/in/yongchaoliu">LinkedIn</a>]</p>
+
+<!--navigator-->
+<div id="nav">
+<ul>
+<li><b><a style="text-decoration:none" href="index.html">About Me</a></b></li>
+<li><b><a style="text-decoration: none" href="news.html">What's New</a></b></li>
+<li><b><a style="text-decoration: none" href="awards.html">Awards</a></b></li>
+<li><b><a style="text-decoration: none" href="grants.html">Grants</a></b></li>
+<li><b><a style="text-decoration: none" href="publications.html">Publications</a></b></li>
+<li><b><a style="text-decoration: none" href="software.html">Software</a></b></li>
+<li><b><a style="text-decoration: none" href="projects.html">Projects</a></b></li>
+<li><b><a style="text-decoration: none" href="services.html">Services</a></b></li>
+<li><b><a style="text-decoration: none" href="talks.html">Talks</a></b></li>
+<li><b><a style="text-decoration: none" href="teaching.html">Teaching</a></b></li>
+<li><b><a style="text-decoration: none" href="people.html">People</a></b></li>
+</ul>
+</div>
+
+<!--last update-->
+<p class="foot">
+	<script language="JavaScript">
+		document.write("Updated: " + document.lastModified);
+	</script>
+</p>
+
+</div><!--sidebar-->
+
+<div id="main">
+<h1>LESSA: a <u>L</u>ibrary of <u>E</u>fficient, <u>S</u>calable and <u>S</u>ervice-oriented <u>A</u>lgorithms</h1>
 <hr>
 
-<h3>1. Large-Scale Biological Sequence Analysis System</h3>
+<h2>1. Large-Scale Biological Sequence Analysis System</h2>
 <p>
 As part of my LESSA library, this project has been the core of my research on parallel and distributed algorithm design for bioinformatics, by employing a variety of tightly-coupled and loosely-coupled computing architectures, including heterogeneous computers with accelerators (e.g. Intel SSE, Intel AVX, Intel Xeon Phis, NVIDIA GPUs and AMD GPUs), cluster computing and cloud computing. My final objective is to establish an analysis system for large-scale biological sequences, in order to solve some critical and bottleneck problems in bioinformatics and computational biology, such as genome sequencing based on high-throughput sequencing technologies, meta-genomics, motif discovery, sequence alignment, and phylogenetic inference. Fig. 1 illustrates the diagram of an imaginaory biological data analysis system.
 </p>
@@ -77,7 +113,7 @@ As part of my LESSA library, this project has been the core of my research on pa
 </tr>
 </table>
 
-<h3>2. Parallel Full-Text Search and Pattern Search</h3>
+<h2>2. Parallel Full-Text Search and Pattern Search</h2>
 <p>
 As part of my LESSA library, this project aims to design parallel and memory-efficient algorithms for full-text indexing and pattern search. In particular, I will investigate the parallel and space-efficient construction of four popular full-text indexing data structures: Burrows-Wheeler transform, FM-index, suffix array and enhanced suffix array, on heterogeneous computing architectures comprising multi-core CPUs and accelerators (specifically, NVIDIA and AMD GPUs and Intel Xeon Phi coprocessors). Based on these indexing data structures, I will further explore full-text pattern search, e.g. searching for maximal exact matches, super maximal exact matches, and approximate pattern matches, which is fudamental and critical to a myriad of applications in various fields such as Bioinformatics (e.g. next-generation sequencing read alignment and genome assembly) and text/data mining.</p>
 
@@ -112,7 +148,7 @@ As part of my LESSA library, this project aims to design parallel and memory-eff
 </tr>
 </table>
 
-<h3>3.Compute Unified Parallel Building Blocks (CUPBB)</h3>
+<h2>3.Compute Unified Parallel Building Blocks (CUPBB)</h2>
 <p>This project aims to build a Compute Unified Parallel Building Blocks (CUPBB) template library using heterogeneous computing. This library will contain popular fundamental building blocks for scientific computing and data science, including, but not limited to, sparse linear algebra (e.g. SpMV), scan, reduction, sort, k-nearest neighbors and etc. For example, sparse linear algebra is recognized as one of the seven dwarfs By UC Berkeley, for parallel computing research, and is believed to be of high importance to science and engineering in the coming years. As an essential primitive in sparse linear algebra, sparse matrix-vector multiplication (SpMV) has garnered intense scientific attention and has been used in a variety of scientific computing applications such as bioinformatics, data mining, graph analytics and iterative methods in scientific computing. I have done some work on parallel sparse linear algebra on CUDA-enabled GPUs and parallel pairwise correlation computation on Intel Xeon Phi clusters for data science (e.g. for feature selection in machine learning)
 
 <table align="center" border="0" cellpadding="16">
@@ -141,12 +177,19 @@ As part of my LESSA library, this project aims to design parallel and memory-eff
 </tr>
 </table>
 
+<h2>4. Compact Computing for Big Data</h2>
+<p>As data volume increases exponentially and data compression is popularly used in data centers, I would expect that directly operating on compressed data would become commonplace in the future. However, parallel processing of compressed data is a challenging proposition for both shared-memory and distributed-memory systems and the challenges could come from constrained random accesses to uncompressed content, independent decompression of data blocks, balanced distribution of data, memory and computation, adaption of existing algorithms and applications to meet the requirements of compressed data processing and so on. Based on these concerns, I am conceiving of a new concept of computing and name it as <b>Compact Computing</b> tentatively. In general, Compact Computing targets robust, flexible and reproducible parallel processing of big data and consists of three core components, in principle: (1) tightly-coupled architectures, (2) compressive and elastic data representation, and (3) efficient, scalable and service-oriented algorithms and applications. In this context, component 1 can comprise conventional CPUs, a diversity of accelerators (e.g. FPGAs, GPUs, MIC processors and etc.) and fast interconnect communication facilities; component 2 concentrates on data structures and formats that enable efficient on-the-fly streaming compression and decompression; and component 3 targets the development of algorithms and applications that enable robust and efficient processing of big data streams in parallel. By centering around data, Compact Computing enables full-stack computation by tightly coupling algorithms with systems.</p>
 
-<!-- update time -->
-<p class="foot">
-	<script language="JavaScript">
-		document.write("Last updated: " + document.lastModified);
-	</script>
-</p>
+<table>
+<tr>
+<td align="left" valign="middle">
+<h4>Example work:</h4>
+<ul>
+<li><u>Liu Y</u>, Hankeln T, Schmidt B: "<a href="http://dx.doi.org/10.1109/TCBB.2015.2430314" style="text-decoration:none">Parallel and space-efficient construction of Burrows-Wheeler transform and suffix array for big genome data</a>". <b>IEEE Transactions on Computational Biology and Bioinformatics</b>, 2016, 13(3): 592-598.</li>
+</ul>
+</td>
+</tr>
+</table>
+
 </div>
 </html>

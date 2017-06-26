@@ -1,72 +1,352 @@
-BODY {
-    color: #404040;
-    background: #FFFFFF;
-    text-align: justify;
-    //font-family: 'Maven Pro', sans-serif;
-	font-family: sans-serif
-    font-size: 14pt;
-    font-weight: normal;
-    text-decoration: none;
-    line-height: 1.5em;
-    //width: 1024px;
-    margin-left: auto;
-    margin-right: auto;
+
+body {
+	margin:0px auto;
+	height:100%;
+	padding:0;
+	font-family: 'Roboto', sans-serif;
+	font-size: 11pt;
+	background-color: #fff;
+    color: #555;
+	line-height: 150%;
 }
 
+/** element defaults **/
+table {
+	width:100%;
+	text-align:left;
+}
+th, td {
+	padding:10px;
+}
+th {
+	color:#fff;
+	background-color: #B10058;
+	background-image: linear-gradient(#B10058, #99004D);
+}
+td {
+	border-bottom:1px solid #f4f4f4;
+}
+code, blockquote {
+	display:block;
+	border-left:5px solid #ddd;
+	padding:10px;
+	margin-bottom:20px;
+}
+blockquote p {
+	font-style:italic;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	margin:0;
+	height: 1%;
+}
+p {
+	line-height:150%;
+	margin-bottom:20px;
+}
 a {
-    //color: #D03030;
+	color:#004F9E;
+}
+a:hover {
+	color: rgb(128, 64, 64);
+}
+a:focus {
+	outline:none;
+}
+a.button { 
+    background-color: #A60053;
+    border-radius: 30px;
+    color: #FFFFFF;
+    display: inline-block;
+ 
+    padding: 8px 25px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+a.button:hover {
+	background-color: #8F0047;
+}
+
+a.button-reversed { 
+    background-color: #004F9E;
+    color: #fff;
+}
+
+a.button-reversed:hover {
+	background-color: #00366B;
+}
+
+
+h1 {
+	font-size:24pt;
+	color: #000;
+}
+h2 {
+	color:#111;
+	font-size:16pt;
+	font-weight:normal;
+	text-transform:uppercase;
+	letter-spacing:0px;
+	padding:0 0 5px;
+	margin:0;
+}
+h3 {
+	color:#004F9E;
+	font-size:14pt;
+	font-weight: normal;
+	padding-bottom:10px;
+}
+h4 {
+	font-weight:normal;
+	padding-bottom:10px;
+	font-size:1.4em;
+	color:#AA0055;
+}
+h5 {
+	font-weight: normal;
+	padding-bottom:10px;
+	font-size:1.2em;
+	color:#666666;
+}
+ul, ol {
+	margin:0 0 10px 10px;
+}
+li {
+	padding-bottom:5px;
+}
+
+#main
+{
+  margin: 0 0 0 10px;
+  background-color: #fff;
+  background-repeat: repeat-x;
+  padding: 10px;
+  overflow: auto;
+  text-align: justify;
+}
+
+#nav {
+	position:relative;
+	top: 0;
+	left: 0;
+	font-size: 17pt;
+	font-weight: normal;
+	background: rgb(200, 200, 200);
+	width:220px;
+	height: 500px;
+	padding-top: 10px;
+	margin: 0;
+}
+
+#nav ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#nav ul li {
+	display: inline-block;
+	padding: 0;
+}
+
+
+#nav ul li a {
+    color: #004F9E;
+	font-size: 17pt;
+	font-weight: normal;
+    display: inline-block;
+    letter-spacing: -0.25px;
+	margin: 5px 5px 0;
+	text-transform:uppercase;
+    padding: 8px 8px 8px;
     text-decoration: none;
 }
 
-li {
-    margin: 0em;
+
+#nav ul li.selected a,
+#nav ul li.selected a:hover { 
+	background-color: #fff;
+	color: rgb(128, 64, 64);
+	box-shadow: 1px 1px 0 #800040;
+	
 }
 
-.update {
-    float: left;
-    width: 400px;
-    margin-right: 20px;
-    padding-left: 15px;
-    padding-right: 15px;
-    border: solid 1px;
-    border-color: #CCCCCC;
-    border-radius: 7px;
+
+#nav ul li a:hover {
+	color: #fff;
+	background-color: #004F9E;
 }
 
-.head {
-    //color: #FFFFFF;
-    background: #D0E7F6;
-    font-family: 'Lato', sans-serif;
-    font-size: 20pt;
-    font-weight: bold;
-	text-align: center; 
-    padding: 1em 0.25em 1em 0.5em;
-    margin: 10pt 0pt 0pt 0pt;
+#profile {
+	position:relative;
+	top: 0;
+	left: 0;
+	font-size: 16pt;
+	font-weight: normal;
+	border-radius: 50%;
+	background-size: 220px auto;
+	background-image: url("yongchao.jpg");
+	width:220px;
+	height:220px;
+	margin: 0 auto;
 }
 
-.title {
-    font-size: 16pt;
-    line-height: 1.2em;
+#icon {
+	position:relative;
+	top: 0;
+	left: 0;
+	font-size: 16pt;
+	font-weight: normal;
+	background:#fff;
+	width:200px;
+	height: 500px;
+	padding-top: 20px;
+	margin: 0;
 }
 
-.menu {
-    color: white;
-    background: #888888;
-    text-align: right;
-    padding: 0.5em;
-    margin: 0pt;
+#icon ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 
-a.menu {
-    color: #E0E0E0;
+#icon ul li {
+	float: center;
+	display: block;
+	padding: 0;
 }
 
-a.menu:hover {
-    color: #FFFFFF;
+
+#icon ul li a {
+    color: #000;
+	font-weight: 300;
+    display: block;
+    letter-spacing: -0.25px;
+	margin: 5px 5px 0;
+	text-transform:uppercase;
+    padding: 8px 8px 8px;
+    text-decoration: none;
 }
 
-.arrow {
-    margin-bottom: 2.5em;
+p
+{
+  margin: 0 5px 10px 5px;
 }
 
-.foot { font-size: 11pt; }
+#header {
+	height:30px;
+	background-color: rgb(0, 51, 102);
+	background-repeat: repeat-x;
+}
+
+#header h1 {
+	text-align: center;
+	font-size: 27pt;
+	color: #fff;
+	padding:40px 0;
+}
+#header h1 a,
+#header h1 a:hover {
+	color:#fff;
+	text-decoration:none;
+}
+
+/* sidebar */
+#sidebar {
+	margin:0 10px 0 0;
+	float:left;
+	display: inline;
+	width:220px;
+	padding:0;
+	line-height: 150%;
+	font-size: 11pt;
+    color: #555555;
+	background:rgb(200, 200,200);
+}
+#sidebar ul {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+#sidebar li ul {
+	margin-bottom:6px;
+}
+#sidebar li ul li {
+	display:block;
+	padding:12px 5px;
+	border-bottom:1px solid #f0f0f0;
+	color:#777;
+}
+#sidebar li {
+	color:#999;
+}
+
+
+#sidebar ul li.bg {
+	padding: 10px;
+	background-color: #f0f0f0;
+	margin-bottom: 10px;
+}
+
+
+#sidebar li.text { 
+	padding: 0;
+	border-bottom: none;
+}
+#sidebar ul li.bg ul {
+	margin-bottom: 0;
+}
+
+#sidebar ul li.bg h4 { 
+	padding-left: 0;
+	padding-top: 0;
+}
+
+#sidebar ul li a.readmore {
+   font-weight: bold;
+}
+
+#sidebar h3 {
+  margin-bottom:0;
+  color: #072654;
+  font-size: 16pt;
+  font-weight: normal;
+  border: none;
+  padding-top: 0;
+  padding-bottom:4px;
+}
+
+#sidebar h4 { 
+	margin-bottom: 2px;
+	color:#000;
+	font-size:10pt;
+	font-weight: normal;
+	border:none;
+	text-transform:uppercase;
+	padding-top: 0;
+	padding-bottom:4px;
+}
+
+/* footer */
+#footer {
+	color: #888;
+	padding: 0 1em 1em 1em;foo
+	margin-bottom: 10px;
+	font-size: 7pt;
+	font-weight:normal;
+}
+
+/* floatright class */
+.floatright {
+	display: block;
+	font-weight: bold;
+	float: right;
+	margin: 0 0 2em 2em;
+	border: 3px double #666;
+	padding: 1em;
+	font-size: 1.2em;
+	background: #fff;
+}
+.floatright li {
+	margin: 3px;
+	list-style:none;
+}
