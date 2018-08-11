@@ -13,7 +13,7 @@ video{
     position: absolute;
     margin: auto;
     transform-origin: left;
-    transform: rotate(-90deg) translate(50%, 50%) ;
+    transform: rotate(-90deg) translate(600px, 600px) ;
 }
 
 /** element defaults **/
