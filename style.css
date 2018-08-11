@@ -12,6 +12,7 @@ body {
 video{
     position: absolute;
     margin: auto;
+    left: 20%
     transform: rotate(270deg) translate(-10%, -10%);
 }
 
