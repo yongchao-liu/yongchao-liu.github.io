@@ -11,8 +11,10 @@ body {
 }
 video{
     position: absolute;
-    margin: auto;
-    transform: rotate(270deg) translate(600px, 400px);
+    top: 10px;
+    left: 10px;
+    transform: rotate(270deg);
+    transform: translate(50%, 50%);
 }
 
 /** element defaults **/
