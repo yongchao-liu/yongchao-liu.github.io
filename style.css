@@ -9,6 +9,10 @@ body {
     color: #555;
 	line-height: 150%;
 }
+video{
+  display:block;
+  transform: rotate(90deg);
+}
 
 /** element defaults **/
 table {
