@@ -149,28 +149,7 @@ As part of my LESSA library, this project aims to design parallel and memory-eff
 </tr>
 </table>
 
-<h2>3.Compute Unified Parallel Building Blocks (CUPBB)</h2>
-<p>This project aims to build a Compute Unified Parallel Building Blocks (CUPBB) template library using heterogeneous computing. This library will contain popular fundamental building blocks for scientific computing and data science, including, but not limited to, sparse linear algebra (e.g. SpMV), scan, reduction, sort, k-nearest neighbors and etc. For example, sparse linear algebra is recognized as one of the seven dwarfs By UC Berkeley, for parallel computing research, and is believed to be of high importance to science and engineering in the coming years. As an essential primitive in sparse linear algebra, sparse matrix-vector multiplication (SpMV) has garnered intense scientific attention and has been used in a variety of scientific computing applications such as bioinformatics, data mining, graph analytics and iterative methods in scientific computing. I have done some work on parallel sparse linear algebra on CUDA-enabled GPUs and parallel pairwise correlation computation on Intel Xeon Phi clusters for data science (e.g. for feature selection in machine learning)
-
-<table align="center" border="0" cellpadding="16">
-<tr>
-<td colspan="2">
-<h4>Example work:</h4>
-<ul>
-<li><u>Liu Y</u>, Schmidt B: "<a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=7245713" style="text-decoration:none">LightSpMV: faster CSR-based sparse matrix-vector multiplication on CUDA-enabled GPUs</a>". 26th IEEE International Conference on Application-specific Systems, Architectures and Processors (<b>ASAP 2015</b>), 2015, pp. 82-89 (<font color="#ff0000"><b>Best Paper Award</b>)</font></li>
-	
-<li><u>Liu Y</u>, Schmidt B: "<a href="http://link.springer.com/article/10.1007%2Fs11265-016-1216-4" style="text-decoration:none">LightSpMV: faster CUDA-compatible sparse matrix-vector multiplication using compressed sparse rows</a>". <b>Journal of Signal Processing Systems</b>, 2017, doi:10.1007/s11265-016-1216-4.</li>
-
-<li><u>Liu Y</u>, Pan T and Aluru S: "<a href="https://doi.org/10.1109/SBAC-PAD.2016.26" style="text-decoration:none">Parallel pairwise correlation computation on Intel Xeon Phi clusters</a>". 28th International Symposium on Computer Architecture and High Performance Computing (<b>SBAC-PAD 2016</b>), 2016, pp. 141-149.</li>
-	
-<li><u>Liu Y</u> and Aluru S: "<a href="https://arxiv.org/abs/1604.04815" style="text-decoration:none">LightScan: faster scan primitive on CUDA compatible manycore processors</a>". <b>arXiv:1604.04815</b>, 2016</li>
-<li><u>Liu Y</u>, Pan T, Green O and Aluru S: "<a href="https://arxiv.org/abs/1704.03767" style="text-decoration:none">Parallelized Kendall's tau coefficient computation via SIMD vectorized sorting on many-integrated-core processors</a>". arXiv:1704.03767.</li>
-</ul>
-</td>
-</tr>
-</table>
-
-<h2>4. Compact Computing for Big Data</h2>
+<h2>3. Compact Computing for Big Data</h2>
 <p>As data volume increases exponentially and data compression is popularly used in data centers, I would expect that directly operating on compressed data would become commonplace in the future. However, parallel processing of compressed data is a challenging proposition for both shared-memory and distributed-memory systems and the challenges could come from constrained random accesses to uncompressed content, independent decompression of data blocks, balanced distribution of data, memory and computation, adaption of existing algorithms and applications to meet the requirements of compressed data processing and so on. Based on these concerns, I am conceiving of a new concept of computing and name it as <b>Compact Computing</b> tentatively. In general, Compact Computing targets robust, flexible and reproducible parallel processing of big data and consists of three core components, in principle: (1) tightly-coupled architectures, (2) compressive and elastic data representation, and (3) efficient, scalable and service-oriented algorithms and applications. In this context, component 1 can comprise conventional CPUs, a diversity of accelerators (e.g. FPGAs, GPUs, MIC processors and etc.) and fast interconnect communication facilities; component 2 concentrates on data structures and formats that enable efficient on-the-fly streaming compression and decompression; and component 3 targets the development of algorithms and applications that enable robust and efficient processing of big data streams in parallel. By centering around data, Compact Computing enables full-stack computation by tightly coupling algorithms with systems.</p>
 
 <table>
