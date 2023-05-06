@@ -47,10 +47,48 @@
 </div><!--sidebar-->
 
 <div id="main">
-<h1>LESSA: a <u>L</u>ibrary of <u>E</u>fficient, <u>S</u>calable and <u>S</u>ervice-oriented <u>A</u>lgorithms</h1>
+<h1>LESSA: a <u>L</u>ibrary of Building Blocks for <u>E</u>fficient, <u>S</u>calable and <u>S</u>ervice-oriented <u>A</u>lgorithms</h1>
 <hr>
+	
+<h2>1. Compact Computing for Big Data</h2>
+<p>As data volume increases exponentially and data compression is popularly used in data centers, I would expect that directly operating on compressed data would become commonplace in the future. However, parallel processing of compressed data is a challenging proposition for both shared-memory and distributed-memory systems and the challenges could come from constrained random accesses to uncompressed content, independent decompression of data blocks, balanced distribution of data, memory and computation, adaption of existing algorithms and applications to meet the requirements of compressed data processing and so on. Based on these concerns, I am conceiving of a new concept of computing and name it as <b>Compact Computing</b> tentatively. In general, Compact Computing targets robust, flexible and reproducible parallel processing of big data and consists of three core components, in principle: (1) tightly-coupled architectures, (2) compressive and elastic data representation, and (3) efficient, scalable and service-oriented algorithms and applications. In this context, component 1 can comprise conventional CPUs, a diversity of accelerators (e.g. FPGAs, GPUs, MIC processors and etc.) and fast interconnect communication facilities; component 2 concentrates on data structures and formats that enable efficient on-the-fly streaming compression and decompression; and component 3 targets the development of algorithms and applications that enable robust and efficient processing of big data streams in parallel. By centering around data, Compact Computing enables full-stack computation by tightly coupling algorithms with systems.</p>
 
-<h2>1. Large-Scale Biological Sequence Analysis System</h2>
+<table>
+<tr>
+<td align="left" valign="middle">
+<h4>Example work:</h4>
+<ul>
+<li>Yue Jin, <u>Yongchao Liu</u>: "<a href="http://2023.eurosys.org/docs/posters/eurosys23posters-final20.pdf" style="text-decoration:none">GPC: compiler-based optimization for sparse computations in graph neural networks</a>". The European Conference on Computer Systems (<b>EuroSys 2023</b>), 2023 (poster track).</li>
+
+<li>Yuchen Zhou, Yanan Cao, <u>Yongchao Liu</u>, Yanmin Shang, Peng Zhang, Zheng Lin,
+Yun Yue, Baokun Wang, Xing Fu and Weiqiang Wang: "<a href="https://dl.acm.org/doi/10.1145/3543507.3583208" style="text-decoration:none">Multi-aspect heterogeneous graph augmentation</a>".
+The 2023 ACM Web Conference (<b>WWW 2023</b>), 2023, pp. 39-48.</li>
+	
+<li>Chengying Huan, Shuaiwen Leon Song, Santosh Pandey, Hang Liu, <u>Yongchao Liu</u>, Baptiste Lepers, Charles He,
+Kang Chen, Jinlei Jiang, Yongwei Wu: "<a href="https://dl.acm.org/doi/10.1145/3552326.3567491" style="text-decoration:none">TEA: a general-purpose temporal graph random walk engine</a>".
+The European Conference on Computer Systems (<b>EuroSys 2023</b>), 2023, pp. 182-198.</li>
+
+<li>Chengying Huan, Shuaiwen Leon Song, <u>Yongchao Liu</u>, Heng Zhang, Hang Liu, Charles He, Kang Chen, Jinlei Jiang, Yongwei Wu: "<a href="https://dl.acm.org/doi/10.1145/3559009.3569648" style="text-decoration:none">T-GCN: a sampling based streaming graph neural network system with hybrid architecture</a>". 31st International Conference on Parallel Architectures and Compilation Techniques (<b>PACT 2022</b>), 2022, pp. 69–82.</li>
+
+<li>Zhang H, Li L, Liu H, Zhuang D, Liu R, Huan C,  Song S, Tao D, <u>Liu Y</u>, He C, Wu Y, Song SL: "<a href="https://dl.acm.org/doi/10.1145/3524059.3532379" style="text-decoration:none">Bring orders into uncertainty: enabling efficient uncertain graph processing via novel path sampling on multi-accelerator system</a>". International Conference on Supercomputing 2022 (<b>ICS 2022</b>), 2022, 11:14.
+
+<li>Huan C, Liu H, Liu M, <u>Liu Y</u>, He C, Chen K, Jiang J, Wu Y, Song SL: "<a href="https://ieeexplore.ieee.org/abstract/document/9835422", style="text-decoration:none">TeGraph: a novel general-purpose temporal graph computing engine</a>". 38th International Conference on Data Engineering (<b>ICDE 2022</b>), 2022, pp. 578-592.</li>
+	
+<li>Houyi Li, Zhihong Chen, Chenliang Li, Rong Xiao, Hongbo Deng, Peng Zhang, <u>Yongchao Liu</u> and Haihong Tang: "<a href="https://dl.acm.org/doi/abs/10.1145/3404835.3462878" style="text-decoration:none">Path-based deep network for candidate item matching in recommenders</a>". 44th International ACM SIGIR Conference on Research and Development in Information Retrieval (<b>SIGIR 2021</b>), 2021, pp. 1493–1502.</li>
+
+<li><u>Liu Y</u>, Schmidt B: "<a href="http://link.springer.com/article/10.1007%2Fs11265-016-1216-4" style="text-decoration:none">LightSpMV: faster CUDA-compatible sparse matrix-vector multiplication using compressed sparse rows</a>". <b>Journal of Signal Processing Systems</b>, 2017, doi:10.1007/s11265-016-1216-4.</li>
+
+<li><u>Liu Y</u>, Hankeln T, Schmidt B: "<a href="http://dx.doi.org/10.1109/TCBB.2015.2430314" style="text-decoration:none">Parallel and space-efficient construction of Burrows-Wheeler transform and suffix array for big genome data</a>". <b>IEEE Transactions on Computational Biology and Bioinformatics</b>, 2016, 13(3): 592-598.</li>
+	
+<li><u>Liu Y</u>, Schmidt B: "<a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=7245713" style="text-decoration:none">LightSpMV: faster CSR-based sparse matrix-vector multiplication on CUDA-enabled GPUs</a>". 26th IEEE International Conference on Application-specific Systems, Architectures and Processors (<b>ASAP 2015</b>), 2015, pp. 82-89 (<font color="#ff0000"><b>Best Paper Award</b>)</font></li>
+	
+<li><u>Liu Y</u>, Schmidt B, Maskell DL: "<a href="http://www.biomedcentral.com/1471-2105/12/354" style="text-decoration:none">Parallelized short read assembly of large genomes using de Bruijn graphs</a>". <b>BMC Bioinformatics</b>, 2011, 12:354</li>
+</ul>
+</td>
+</tr>
+</table>
+	
+<h2>2. Large-Scale Biological Sequence Analysis System</h2>
 <p>
 As part of my LESSA library, this project has been the core of my research on parallel and distributed algorithm design for bioinformatics, by employing a variety of tightly-coupled and loosely-coupled computing architectures, including heterogeneous computers with accelerators (e.g. Intel SSE, Intel AVX, Intel Xeon Phis, NVIDIA GPUs and AMD GPUs), cluster computing and cloud computing. My final objective is to establish an analysis system for large-scale biological sequences, in order to solve some critical and bottleneck problems in bioinformatics and computational biology, such as genome sequencing based on high-throughput sequencing technologies, meta-genomics, motif discovery, sequence alignment, and phylogenetic inference. Fig. 1 illustrates the diagram of an imaginaory biological data analysis system.
 </p>
@@ -114,7 +152,7 @@ As part of my LESSA library, this project has been the core of my research on pa
 </tr>
 </table>
 
-<h2>2. Parallel Full-Text Search and Pattern Search</h2>
+<h2>3. Parallel Full-Text Search and Pattern Search</h2>
 <p>
 As part of my LESSA library, this project aims to design parallel and memory-efficient algorithms for full-text indexing and pattern search. In particular, I will investigate the parallel and space-efficient construction of four popular full-text indexing data structures: Burrows-Wheeler transform, FM-index, suffix array and enhanced suffix array, on heterogeneous computing architectures comprising multi-core CPUs and accelerators (specifically, NVIDIA and AMD GPUs and Intel Xeon Phi coprocessors). Based on these indexing data structures, I will further explore full-text pattern search, e.g. searching for maximal exact matches, super maximal exact matches, and approximate pattern matches, which is fudamental and critical to a myriad of applications in various fields such as Bioinformatics (e.g. next-generation sequencing read alignment and genome assembly) and text/data mining.</p>
 
@@ -144,38 +182,6 @@ As part of my LESSA library, this project aims to design parallel and memory-eff
 <li><u>Liu Y</u>, Schmidt B, Maskell DL: "<a href="http://bioinformatics.oxfordjournals.org/content/28/14/1830.abstract" style="text-decoration:none">CUSHAW: a CUDA compatible short read aligner to large genomes based on the Burrows-Wheeler transform</a>". <b>Bioinformatics</b> (<i>impact factor </i>5.468), 2012, 28(14): 1830-1837</li>
 
 <li><u>Liu Y</u>, Schmidt B: "<a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?tp=&amp;arnumber=6617698&amp;queryText%3DCUSHAW2-GPU%3A+empowering+faster+gapped+short-read+alignment+using+GPU+computing" style="text-decoration:none">CUSHAW2-GPU: empowering faster gapped short-read alignment using GPU computing</a>". <b>IEEE Design &amp; Test</b>, 2014, 31(1): 31-39</li>
-</ul>
-</td>
-</tr>
-</table>
-
-<h2>3. Compact Computing for Big Data</h2>
-<p>As data volume increases exponentially and data compression is popularly used in data centers, I would expect that directly operating on compressed data would become commonplace in the future. However, parallel processing of compressed data is a challenging proposition for both shared-memory and distributed-memory systems and the challenges could come from constrained random accesses to uncompressed content, independent decompression of data blocks, balanced distribution of data, memory and computation, adaption of existing algorithms and applications to meet the requirements of compressed data processing and so on. Based on these concerns, I am conceiving of a new concept of computing and name it as <b>Compact Computing</b> tentatively. In general, Compact Computing targets robust, flexible and reproducible parallel processing of big data and consists of three core components, in principle: (1) tightly-coupled architectures, (2) compressive and elastic data representation, and (3) efficient, scalable and service-oriented algorithms and applications. In this context, component 1 can comprise conventional CPUs, a diversity of accelerators (e.g. FPGAs, GPUs, MIC processors and etc.) and fast interconnect communication facilities; component 2 concentrates on data structures and formats that enable efficient on-the-fly streaming compression and decompression; and component 3 targets the development of algorithms and applications that enable robust and efficient processing of big data streams in parallel. By centering around data, Compact Computing enables full-stack computation by tightly coupling algorithms with systems.</p>
-
-<table>
-<tr>
-<td align="left" valign="middle">
-<h4>Example work:</h4>
-<ul>
-<li>Yue Jin, <u>Yongchao Liu</u>: "GPC: compiler-based optimization for sparse computations in graph neural networks". The European Conference on Computer Systems (<b>EuroSys 2023</b>), 2023, accepted (poster track).</li>
-
-<li>Zhou Y, Cao Y, <u>Liu Y</u>, Shang Y, Zhang P, Lin Z, Yue Y, Wang B, Fu X, Wang W: " Multi-aspect heterogeneous graph augmentation". The 2023 ACM Web Conference (<b>WWW 2023</b>), 2023, accepted.</li>
-	
-<li>Huan C, Song SL, Pandey S, Liu H, <u>Liu Y</u>, Lepers B, He C, Chen K, Jiang J, Wu Y: "TEA: a general-purpose temporal graph random walk engine". The European Conference on Computer Systems (<b>EuroSys 2023</b>), 2023, accepted.</li>
-
-<li>Huan C, Song SL, <u>Liu Y</u>, Zhang H, Liu H, He C, Chen K, Jiang J, Wu Y: "T-GCN: a sampling based streaming graph neural network system with hybrid architecture". 31st International Conference on Parallel Architectures and Compilation Techniques (<b>PACT 2022</b>), 2022, in press.</li>
-
-<li>Zhang H, Li L, Liu H, Zhuang D, Liu R, Huan C,  Song S, Tao D, <u>Liu Y</u>, He C, Wu Y, Song SL: "<a href="https://dl.acm.org/doi/10.1145/3524059.3532379" style="text-decoration:none">Bring orders into uncertainty: enabling efficient uncertain graph processing via novel path sampling on multi-accelerator system</a>". International Conference on Supercomputing 2022 (<b>ICS 2022</b>), 2022, 11:14.
-
-<li>Huan C, Liu H, Liu M, <u>Liu Y</u>, He C, Chen K, Jiang J, Wu Y, Song SL: "<a href="https://ieeexplore.ieee.org/abstract/document/9835422", style="text-decoration:none">TeGraph: a novel general-purpose temporal graph computing engine</a>". 38th International Conference on Data Engineering (<b>ICDE 2022</b>), 2022, pp. 578-592.</li>
-
-<li><u>Liu Y</u>, Schmidt B: "<a href="http://link.springer.com/article/10.1007%2Fs11265-016-1216-4" style="text-decoration:none">LightSpMV: faster CUDA-compatible sparse matrix-vector multiplication using compressed sparse rows</a>". <b>Journal of Signal Processing Systems</b>, 2017, doi:10.1007/s11265-016-1216-4.</li>
-
-<li><u>Liu Y</u>, Hankeln T, Schmidt B: "<a href="http://dx.doi.org/10.1109/TCBB.2015.2430314" style="text-decoration:none">Parallel and space-efficient construction of Burrows-Wheeler transform and suffix array for big genome data</a>". <b>IEEE Transactions on Computational Biology and Bioinformatics</b>, 2016, 13(3): 592-598.</li>
-	
-<li><u>Liu Y</u>, Schmidt B: "<a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=7245713" style="text-decoration:none">LightSpMV: faster CSR-based sparse matrix-vector multiplication on CUDA-enabled GPUs</a>". 26th IEEE International Conference on Application-specific Systems, Architectures and Processors (<b>ASAP 2015</b>), 2015, pp. 82-89 (<font color="#ff0000"><b>Best Paper Award</b>)</font></li>
-	
-<li><u>Liu Y</u>, Schmidt B, Maskell DL: "<a href="http://www.biomedcentral.com/1471-2105/12/354" style="text-decoration:none">Parallelized short read assembly of large genomes using de Bruijn graphs</a>". <b>BMC Bioinformatics</b>, 2011, 12:354</li>
 </ul>
 </td>
 </tr>
