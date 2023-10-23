@@ -189,39 +189,5 @@ As part of my LESSA library, this project has been the core of my research on pa
 </td>
 </tr>
 </table>
-
-<h2>3. Parallel Full-Text Search and Pattern Search</h2>
-<p>
-As part of my LESSA library, this project aims to design parallel and memory-efficient algorithms for full-text indexing and pattern search. In particular, I will investigate the parallel and space-efficient construction of four popular full-text indexing data structures: Burrows-Wheeler transform, FM-index, suffix array and enhanced suffix array, on heterogeneous computing architectures comprising multi-core CPUs and accelerators (specifically, NVIDIA and AMD GPUs and Intel Xeon Phi coprocessors). Based on these indexing data structures, I will further explore full-text pattern search, e.g. searching for maximal exact matches, super maximal exact matches, and approximate pattern matches, which is fudamental and critical to a myriad of applications in various fields such as Bioinformatics (e.g. next-generation sequencing read alignment and genome assembly) and text/data mining.</p>
-
-<p>Both full-text indexing and full-text pattern search engines will be ultimately offered in the form of a library. The libray will provide a unified high-level programming interface for different types of the underlying processing units, which will enhance the productivity of developers and enables performance portability between multi-core CPUs and accelerators. Furthermore, on a heterogeneous computer with accelerators, this library intends to have the capability of autonomously selecting the "most efficient" parallelization, which may run on any of the different types of processing units or even on some hybrid combinations, at runtime. In this fashion, while deploying the parallel algorithms from the library, developers do not need to care more about the details of the underlying hardware configuration, and thereby can pay more attention to the development of other parts of a program. Fig. 2</b> shows the high-level system diagram for my parallel full-text indexing and pattern search project.</p>
-<table align="center" border="0" cellpadding="16">
-<tr>
-<td align="center" valign="middle"><img src="full_text.jpg" height="auto" width="50%">
-</td>
-</tr>
-
-<tr>
-<td align="center" valign="middle">
-<b>Fig. 2</b> System diagram for parallel full-text indexing and pattern search
-</td>
-</tr>
-
-<tr>
-<td align="left" valign="middle">
-<p><h4>Example work:</h4></p>
-<p>Full-text Indexing</p>
-<ul>
-
-</ul>
-
-<p>Full-text Pattern Search</p>
-<ul>
-
-</ul>
-</td>
-</tr>
-</table>
-
 </div>
 </html>
