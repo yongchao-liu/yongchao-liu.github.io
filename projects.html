@@ -49,8 +49,49 @@
 <div id="main">
 <h1>LESSA: a <u>L</u>ibrary of Building Blocks for <u>E</u>fficient, <u>S</u>calable and <u>S</u>ervice-oriented <u>A</u>lgorithms</h1>
 <hr>
+
+<h2>1.Machine Learning Foundation Techniques</h2>
+<p>We are dedicated to developing foundation techinques in machine learning, including but not limited to foundation models (e.g. large large models and large graph models), gradient desecent optimizers, distrbuted learning systems (e.g. deep learning and graph learning), compiler-oriented hardware acceleration and automatic machine learning (AutoML).</p>
+
+<table>
+<tr>
+<td align="left" valign="middle" style="font-size: 11pt">
+<p><h4>Example work:</h4></p>
+<ul>
+<li>
+Yun Yue, Zhiling Ye, Jiadi Jiang, <u>Yongchao Liu</u>, Ke Zhang:
+	"AGD: an auto-switchable optimizer using stepwise gradient difference for preconditioning matrix".
+	37th Conference on Neural Information Processing Systems (<b>NeurIPS 2023</b>), 2023, accepted.
+</li>
 	
-<h2>1. Compact Computing for Big Data</h2>
+<li>Yun Yue, Jiadi Jiang, Zhiling Ye, Gao Ning, <u>Yongchao Liu</u>, Ke Zhang:
+	"<a href="https://dl.acm.org/doi/10.1145/3580305.3599501", style="text-decoration:none">Sharpness-aware minimization revisited: weighted sharpness as a regularization term</a>".
+	2023 ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (<b>KDD 2023</b>), 2023, pp. 3185–3194 (research track)
+</li>
+
+<li>Yang Gao, Peng Zhang, Zhao Li, Chuan Zhou, Hong Yang, <u>Yongchao Liu</u>, and Yue Hu:
+	"<a href="https://ieeexplore.ieee.org/document/9679011", style="text-decoration:none">Heterogeneous graph neural architecture search</a>".
+	IEEE International Conference on Data Mining (<b>ICDM 2021</b>), 2021, pp. 1066-1071</li>
+
+<li>Yun Yue, <u>Yongchao Liu</u>, Suo Tong, Minghao Li, Zhen Zhang, Chunyang Wen, Huanjun Bao, Lihong Gu, Jinjie Gu and Yixiang Mu:
+	"<a href="https://2021.ecmlpkdd.org/wp-content/uploads/2021/07/sub_1040.pdf" style="text-decoration: none">Adaptive optimizers with sparse group lasso for neural networks in CTR prediction</a>".
+	The European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases (<b>ECML-PKDD 2021</b>), 2021, pp. 314–329 .</li>
+
+<li><u>Yongchao Liu</u>, Houyi Li, Guowei Zhang, Xintan Zeng, Yongyong Li, Bin Huang, Peng Zhang, Zhao Li, Xiaowei Zhu, Changhua He, Guowei Zhang, Xintan Zeng:
+	"<a style="text-decoration: none", href="https://arxiv.org/abs/2104.10569">GraphTheta: A distributed graph neural network learning system with flexible training strategy</a>".
+	arXiv:2104.10569, 2021
+</li>
+	
+<li><u>Yongchao Liu</u>, Yue Jin, Yong Chen, Teng Teng, Hang Ou, Rui Zhao, Yao Zhang:
+	"<a style="text-decoration:none" href="https://arxiv.org/pdf/2008.04567.pdf">Woodpecker-DL: Accelerating Deep Neural Networks via Hardware-Aware Multifaceted Optimizations</a>".
+	arXiv:2008.04567 [cs.DC], 2020.
+</li>
+</ul>
+</td>
+</tr>
+</table>
+
+<h2>2. Compact Computing for Big Data</h2>
 <p>As data volume increases exponentially and data compression is popularly used in data centers, I would expect that directly operating on compressed data would become commonplace in the future. However, parallel processing of compressed data is a challenging proposition for both shared-memory and distributed-memory systems and the challenges could come from constrained random accesses to uncompressed content, independent decompression of data blocks, balanced distribution of data, memory and computation, adaption of existing algorithms and applications to meet the requirements of compressed data processing and so on. Based on these concerns, I am conceiving of a new concept of computing and name it as <b>Compact Computing</b> tentatively. In general, Compact Computing targets robust, flexible and reproducible parallel processing of big data and consists of three core components, in principle: (1) tightly-coupled architectures, (2) compressive and elastic data representation, and (3) efficient, scalable and service-oriented algorithms and applications. In this context, component 1 can comprise conventional CPUs, a diversity of accelerators (e.g. FPGAs, GPUs, MIC processors and etc.) and fast interconnect communication facilities; component 2 concentrates on data structures and formats that enable efficient on-the-fly streaming compression and decompression; and component 3 targets the development of algorithms and applications that enable robust and efficient processing of big data streams in parallel. By centering around data, Compact Computing enables full-stack computation by tightly coupling algorithms with systems.</p>
 
 <table>
@@ -126,7 +167,7 @@ Yue Jin, Chengying Huan, Heng Zhang, Yongchao Liu, Shuaiwen Leon Song, Rui Zhao,
 </tr>
 </table>
 	
-<h2>2. Large-Scale Biological Sequence Analysis System</h2>
+<h2>3. Large-Scale Biological Sequence Analysis System</h2>
 <p>
 As part of my LESSA library, this project has been the core of my research on parallel and distributed algorithm design for bioinformatics, by employing a variety of tightly-coupled and loosely-coupled computing architectures, including heterogeneous computers with accelerators (e.g. Intel SSE, Intel AVX, Intel Xeon Phis, NVIDIA GPUs and AMD GPUs), cluster computing and cloud computing. My final objective is to establish an analysis system for large-scale biological sequences, in order to solve some critical and bottleneck problems in bioinformatics and computational biology, such as genome sequencing based on high-throughput sequencing technologies, meta-genomics, motif discovery, sequence alignment, and phylogenetic inference. Fig. 1 illustrates the diagram of an imaginaory biological data analysis system.
 </p>
