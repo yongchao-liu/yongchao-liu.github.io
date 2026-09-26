@@ -58,38 +58,22 @@
 the apparent diversity of topics resolves
 into <b>one through-line</b>: making large-scale data <i>searchable, matchable, and understandable</i>.
 The domains changed &mdash; genomes, then user and transaction graphs, now knowledge and language
-&mdash; and one methodology persisted throughout: squeeze intelligence out of data through compact
-representations and tightly co-designed algorithms and systems. This page reorganizes the work along
-six threads; the full publication list, with every entry tagged by its thread, is on the
-<a href="publications.html">Publications</a> page.</p>
-
-<h2 class="t1" id="t1">T1 &middot; Compact Computing: Algorithms &times; Systems</h2>
-<div class="tile t1"></div>
-<p>Proposed around 2015&ndash;2016 and named <b>Compact Computing (凝练计算)</b>, this is the
-methodological core of everything on this site: a style of computing that centers on data and fuses
-algorithms with systems for full-stack performance. Its signature is operating directly on
+&mdash; and one methodology persisted throughout. Proposed around 2015&ndash;2016 and named
+<b>Compact Computing (凝练计算)</b>, it is the foundation beneath every thread on this page rather
+than a thread of its own: a style of computing that centers on data and fuses algorithms with
+systems for full-stack performance. Its signature is operating directly on
 <i>compressed, sparse, or elastic representations</i> &mdash; Burrows&ndash;Wheeler transform and
 suffix arrays for genome-scale indexing, CSR-based sparse matrix&ndash;vector multiplication on
 GPUs, compiler-generated sparse kernels for GNNs &mdash; and it now extends to the foundation-model
-era through KV-cache reuse for RAG and tree speculation for hybrid-attention language models
-(<a href="#t6">Thread T6</a> applies these habits to RAG and LLM serving). Compact Computing
-consists of three components in
-principle: (1) tightly-coupled architectures (CPUs, GPUs, Xeon Phis, clusters), (2) compressive and
-elastic data representation, and (3) efficient, scalable, service-oriented algorithms.</p>
+era through KV-cache reuse for RAG and tree speculation for hybrid-attention language models.
+Compact Computing consists of three components in principle: (1) tightly-coupled architectures
+(CPUs, GPUs, Xeon Phis, clusters), (2) compressive and elastic data representation, and (3)
+efficient, scalable, service-oriented algorithms. This page reorganizes the work along five
+threads; the full publication list, with every entry tagged by its thread, is on the
+<a href="publications.html">Publications</a> page.</p>
 
-<h4>Example work</h4>
-<ul>
-<li>Xiabao Wu, <u>Yongchao Liu</u>, Wei Qin, Chuntao Hong: "<a href="https://arxiv.org/abs/2607.21599" style="text-decoration:none">Decoupled attention fusion: accelerating RAG with efficient KV cache reuse</a>". <b>EuroSys 2026</b> (poster track).</li>
-<li>Li Wang, Yi Su, Xiabao Wu, Chiran You, <u>Yongchao Liu</u>, Zhan Qiu, Juelu Zhang, Jiajun Zheng, Fangxin Liu, Jie Zhang, Chen Tian, Chengying Huan: "<a href="https://arxiv.org/abs/2608.01651" style="text-decoration:none">Bole: efficient tree speculation for hybrid-attention language models</a>". arXiv:2608.01651, 2026.</li>
-<li><u>Yongchao Liu</u>, Bernt Popp, and Bertil Schmidt: "<a href="http://www.ncbi.nlm.nih.gov/pubmed/24466273" style="text-decoration:none">CUSHAW3: sensitive and accurate base-space and color-space short-read alignment with hybrid seeding</a>". <b>PLOS ONE</b>, 2014 &mdash; hybrid seeding over compressed indexes.</li>
-<li><u>Yongchao Liu</u>, Thomas Hankeln, and Bertil Schmidt: "<a href="http://dx.doi.org/10.1109/TCBB.2015.2430314" style="text-decoration:none">Parallel and space-efficient construction of Burrows-Wheeler transform and suffix array for big genome data</a>". <b>IEEE TCBB</b>, 2016 &mdash; the compact index at genome scale.</li>
-<li><u>Yongchao Liu</u> and Bertil Schmidt: "<a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=7245713" style="text-decoration:none">LightSpMV: faster CSR-based sparse matrix-vector multiplication on CUDA-enabled GPUs</a>". <b>IEEE ASAP 2015</b> (<font color="#ff0000"><b>Best Paper Award</b></font>).</li>
-<li>Junyi Mei, Shixuan Sun, Chao Li, Jing Wang, Xiaofeng Hou, Minyi Guo, <u>Yongchao Liu</u>, Chuntao Hong: "<a href="https://dl.acm.org/doi/abs/10.1145/3817060" style="text-decoration:none">DGS: a GPU-based adaptive graph sampling framework</a>". <b>ACM TACO</b>, 2026.</li>
-<li>Yue Jin, Chengying Huan, Heng Zhang, <u>Yongchao Liu</u>, Shuaiwen Leon Song, Rui Zhao, Yao Zhang, Changhua He, Wenguang Chen: "<a href="https://www.computer.org/csdl/proceedings-article/pact/2023/425400a137/1TdF4jY5hkI" style="text-decoration:none">G-Sparse: compiler-driven acceleration for generalized sparse computation for graph neural networks on modern GPUs</a>". <b>PACT 2023</b>.</li>
-</ul>
-
-<h2 class="t2" id="t2">T2 &middot; Sequence Intelligence</h2>
-<div class="tile t2"></div>
+<h2 class="t1" id="t1">T1 &middot; Sequence Intelligence</h2>
+<div class="tile t1"></div>
 <p>The first act, 2009&ndash;2017: in retrospect, a <i>search engine for the genome</i>. The pipeline
 was always the same one we now use everywhere else &mdash; build a compact index (BWT, suffix array,
 k-mer tables), search against it with approximate matching (Smith&ndash;Waterman, seed&ndash;extend
@@ -107,14 +91,18 @@ data structure &rarr; parallel algorithm &rarr; open-source tool.</p>
 <li><u>Yongchao Liu</u>, Adrianto Wirawan and Bertil Schmidt: "<a href="http://www.biomedcentral.com/1471-2105/14/117" style="text-decoration:none">CUDASW++ 3.0: accelerating Smith-Waterman protein database search by coupling CPU and GPU SIMD instructions</a>". <b>BMC Bioinformatics</b>, 2013.</li>
 <li><u>Yongchao Liu</u>, Jan Schr&ouml;der, and Bertil Schmidt: "<a href="http://bioinformatics.oxfordjournals.org/content/29/3/308.abstract" style="text-decoration:none">Musket: a multistage k-mer spectrum based error corrector for Illumina sequence data</a>". <b>Bioinformatics</b>, 2013.</li>
 <li><u>Yongchao Liu</u>, Tran TT, Felix Lauenroth and Bertil Schmidt: "<a href="http://dx.doi.org/10.1109/CLUSTER.2014.6968772" style="text-decoration:none">SWAPHI-LS: Smith-Waterman algorithm on Xeon Phi coprocessors for long DNA sequences</a>". <b>IEEE Cluster 2014</b> (<font color="#ff0000"><b>Best Paper Award Recommendation</b></font>).</li>
+<li><u>Yongchao Liu</u>, Bernt Popp, and Bertil Schmidt: "<a href="http://www.ncbi.nlm.nih.gov/pubmed/24466273" style="text-decoration:none">CUSHAW3: sensitive and accurate base-space and color-space short-read alignment with hybrid seeding</a>". <b>PLOS ONE</b>, 2014 &mdash; hybrid seeding over compressed indexes.</li>
+<li><u>Yongchao Liu</u> and Bertil Schmidt: "<a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=7245713" style="text-decoration:none">LightSpMV: faster CSR-based sparse matrix-vector multiplication on CUDA-enabled GPUs</a>". <b>IEEE ASAP 2015</b> (<font color="#ff0000"><b>Best Paper Award</b></font>) &mdash; the Compact Computing habit, distilled into a general-purpose GPU primitive.</li>
 <li><u>Yongchao Liu</u>, Bertil Schmidt, and Douglas L. Maskell: "<a href="http://bioinformatics.oxfordjournals.org/content/26/16/1958.abstract" style="text-decoration:none">MSAProbs: multiple sequence alignment based on pair hidden Markov models and partition function posterior probabilities</a>". <b>Bioinformatics</b>, 2010.</li>
+<li><u>Yongchao Liu</u>, Bertil Schmidt, Weiguo Liu, and Douglas L. Maskell: "<a href="http://www.sciencedirect.com/science/article/pii/S0167865509002840" style="text-decoration:none">CUDA-MEME: accelerating motif discovery in biological sequences using CUDA-enabled graphics processing units</a>". <b>Pattern Recognition Letters</b>, 2010 &mdash; the first of the CUDA-accelerated tools.</li>
 <li>Tony Pan, Patrick Flick, Chirag Jain, <u>Yongchao Liu</u> and Srinivas Aluru: "<a href="https://dl.acm.org/doi/10.1109/TCBB.2017.2760829" style="text-decoration:none">Kmerind: a flexible parallel library for k-mer indexing of biological sequences on distributed memory systems</a>". <b>ACM-BCB 2016</b> / <b>IEEE/ACM TCBB</b>, 2019.</li>
+<li><u>Yongchao Liu</u>, Thomas Hankeln, and Bertil Schmidt: "<a href="http://dx.doi.org/10.1109/TCBB.2015.2430314" style="text-decoration:none">Parallel and space-efficient construction of Burrows-Wheeler transform and suffix array for big genome data</a>". <b>IEEE TCBB</b>, 2016 &mdash; the compact index at genome scale.</li>
 </ul>
 <p>Several of this era's open-source tools (CUDASW++, CUSHAW, MSAProbs, Musket, SWAPHI, ParaBWT,
 LightSpMV, LightPCC and more) are catalogued on the <a href="software.html">Software</a> page.</p>
 
-<h2 class="t3" id="t3">T3 &middot; Graph Intelligence</h2>
-<div class="tile t3"></div>
+<h2 class="t2" id="t2">T2 &middot; Graph Intelligence</h2>
+<div class="tile t2"></div>
 <p>The second act began at Ant Group in 2017, when the "database being searched" became the graph:
 hundred-million-user banking relationships, transactions, and behaviors. He led
 <a href="https://arxiv.org/abs/2104.10569">GeaLearning (alias GraphTheta)</a> &mdash; the first
@@ -126,7 +114,7 @@ world record on the Stanford Open Graph Benchmark proteins leaderboard in 2021. 
 system, the thread covers the temporal-graph stack (TeGraph, TEA, TeMatch), compiler and GPU
 optimizations for GNN training/inference, and graph learning methodology from heterogeneous graph
 architecture search to benchmarks and defenses for text-attributed graph learning; the
-foundation-model line continues in <a href="#t4">Thread T4</a>.</p>
+foundation-model line continues in <a href="#t3">Thread T3</a>.</p>
 
 <h4>Example work</h4>
 <ul>
@@ -134,12 +122,14 @@ foundation-model line continues in <a href="#t4">Thread T4</a>.</p>
 <li>Chengying Huan, Hang Liu, Mengxing Liu, <u>Yongchao Liu</u>, Changhua He, Kang Chen, Jinlei Jiang, Yongwei Wu, Shuaiwen Leon Song: "<a href="https://ieeexplore.ieee.org/abstract/document/9835422" style="text-decoration:none">TeGraph: a novel general-purpose temporal graph computing engine</a>". <b>ICDE 2022</b>.</li>
 <li>Chengying Huan, Shuaiwen Leon Song, Santosh Pandey, Hang Liu, <u>Yongchao Liu</u>, Baptiste Lepers, Changhua He, Kang Chen, Jinlei Jiang, Yongwei Wu: "<a href="https://dl.acm.org/doi/10.1145/3552326.3567491" style="text-decoration:none">TEA: a general-purpose temporal graph random walk engine</a>". <b>EuroSys 2023</b>.</li>
 <li>Chengying Huan, Shuaiwen Leon Song, <u>Yongchao Liu</u>, Heng Zhang, Hang Liu, Charles He, Kang Chen, Jinlei Jiang, Yongwei Wu: "<a href="https://dl.acm.org/doi/10.1145/3559009.3569648" style="text-decoration:none">T-GCN: a sampling based streaming graph neural network system with hybrid architecture</a>". <b>PACT 2022</b>.</li>
+<li>Yue Jin, Chengying Huan, Heng Zhang, <u>Yongchao Liu</u>, Shuaiwen Leon Song, Rui Zhao, Yao Zhang, Changhua He, Wenguang Chen: "<a href="https://www.computer.org/csdl/proceedings-article/pact/2023/425400a137/1TdF4jY5hkI" style="text-decoration:none">G-Sparse: compiler-driven acceleration for generalized sparse computation for graph neural networks on modern GPUs</a>". <b>PACT 2023</b>.</li>
+<li>Junyi Mei, Shixuan Sun, Chao Li, Jing Wang, Xiaofeng Hou, Minyi Guo, <u>Yongchao Liu</u>, Chuntao Hong: "<a href="https://dl.acm.org/doi/abs/10.1145/3817060" style="text-decoration:none">DGS: a GPU-based adaptive graph sampling framework</a>". <b>ACM TACO</b>, 2026.</li>
 <li>Yunhui Liu, <u>Yongchao Liu</u>, Yinfeng Chen, Chuntao Hong, Tao Zheng, Tieke He: "<a href="https://dl.acm.org/doi/10.1145/3770854.3780260" style="text-decoration:none">Learning hierarchical knowledge in text-rich networks with taxonomy-informed representation learning</a>". <b>KDD 2026</b>.</li>
 <li>Chengying Huan, Zhengyi Yang, Haoshen Yang, Shaonan Ma, Rong Gu, Fang Xi, <u>Yongchao Liu</u>, Guihai Chen, Chen Tian: "<a href="https://dl.acm.org/doi/abs/10.1145/3769795" style="text-decoration:none">Gem: scalable monotonic graph processing beyond billion-scale on a single machine</a>". <b>SIGMOD 2026</b>.</li>
 </ul>
 
-<h2 class="t4" id="t4">T4 &middot; Foundation Models: from Graphs to Users</h2>
-<div class="tile t4"></div>
+<h2 class="t3" id="t3">T3 &middot; Foundation Models: from Graphs to Users</h2>
+<div class="tile t3"></div>
 <p>GraphCLIP and the FIND/FOUND series are one technology applied to two worlds: pretrain over
 large graphs, then transfer across domains, scenarios and tasks. GraphCLIP brings the playbook to
 text-attributed graphs, making graph foundation models transferable across domains; the FIND
@@ -156,14 +146,14 @@ user understanding into a pretrain-once, transfer-everywhere capability.</p>
 <li>Jiahao Yuan, Yike Xu, Jinyong Wen, Baokun Wang, Ziyi Gao, Xiaotong Lin, Yun Liu, Xing Fu, Yu Cheng, <u>Yongchao Liu</u>, Weiqiang Wang, Zhongle Xie: "<a href="https://dl.acm.org/doi/10.1145/3770855.3818464" style="text-decoration:none">Query as Anchor: scenario-adaptive user representation via large language model</a>". <b>KDD 2026</b>.</li>
 </ul>
 
-<h2 class="t5" id="t5">T5 &middot; User Understanding &amp; Trust Intelligence</h2>
-<div class="tile t5"></div>
+<h2 class="t4" id="t4">T4 &middot; User Understanding &amp; Trust Intelligence</h2>
+<div class="tile t4"></div>
 <p>Graph intelligence points at people. This thread turns the engines of T3 into understanding of
 users and protection of trust: recommendation as the matching of users to items over big graphs
 &mdash; from path-based candidate item matching in recommenders, CTR prediction, multi-behavior
 sequential and cold-start recommendation to agentic point-of-interest recommendation; and trust
 intelligence as graph-powered risk control for industrial transaction networks, backbone of the
-award-winning Alipay credit system and of the joint industry white paper <a href="https://github.com/yongchao-liu/yongchao-liu.github.io/blob/master/data/%E5%9B%BE%E9%A3%8E%E6%8E%A7%E8%A1%8C%E4%B8%9A%E6%8A%80%E6%9C%AF%E6%8A%A5%E5%91%8A.pdf">图风控行业技术报告</a>. The user-foundation-model line of this story sits in <a href="#t4">Thread T4</a>.</p>
+award-winning Alipay credit system and of the joint industry white paper <a href="https://github.com/yongchao-liu/yongchao-liu.github.io/blob/master/data/%E5%9B%BE%E9%A3%8E%E6%8E%A7%E8%A1%8C%E4%B8%9A%E6%8A%80%E6%9C%AF%E6%8A%A5%E5%91%8A.pdf">图风控行业技术报告</a>. The user-foundation-model line of this story sits in <a href="#t3">Thread T3</a>.</p>
 
 <h4>Example work</h4>
 <ul>
@@ -175,8 +165,8 @@ award-winning Alipay credit system and of the joint industry white paper <a href
 <li>Yice Luo, Guannan Wang, <u>Yongchao Liu</u>, Jiaxin Yue, Weihong Cheng and Binjie Fei: "<a href="https://dl.acm.org/doi/10.1145/3583780.3615477" style="text-decoration:none">FAF: a risk detection framework on industry-scale graphs</a>". <b>CIKM 2023</b>.</li>
 </ul>
 
-<h2 class="t6" id="t6">T6 &middot; Retrieval-Augmented Reasoning &amp; Agents</h2>
-<div class="tile t6"></div>
+<h2 class="t5" id="t5">T5 &middot; Retrieval-Augmented Reasoning &amp; Agents</h2>
+<div class="tile t5"></div>
 <p>The current act: when the data became language and knowledge, the through-line &mdash; index,
 retrieve, match, understand &mdash; re-emerged as RAG. He is the lead author of the globally
 recognized survey "<a href="https://dl.acm.org/doi/10.1145/3777378">Graph Retrieval-Augmented
@@ -185,9 +175,9 @@ in both directions: reasoning quality &mdash; graph-trajectory-augmented reinfor
 multi-turn RAG (GTA-RAG), multi-hop multi-setting graph question answering (M3GQA), subgraph
 retrieval enhanced by graph&ndash;text alignment, vision-guided knowledge-graph reasoning with LLMs
 (Foresight-on-Graph), and multi-agent graph reasoning; and serving efficiency &mdash; declarative
-auto-optimization of RAG pipelines (AutoRAGTuner), KV-cache reuse (Decoupled Attention Fusion) and
-long-context prefilling acceleration (CutAttn) &mdash; the Compact Computing habits applied to
-LLMs.</p>
+auto-optimization of RAG pipelines (AutoRAGTuner), KV-cache reuse (Decoupled Attention Fusion),
+long-context prefilling acceleration (CutAttn) and tree speculation for hybrid-attention models
+(Bole) &mdash; the Compact Computing habits applied to LLMs.</p>
 
 <h4>Example work</h4>
 <ul>
@@ -198,7 +188,9 @@ LLMs.</p>
 <li>Yuwei Hu, Runlin Lei, Zhewei Wei, <u>Yongchao Liu</u>, Chuntao Hong, Jiajun Zheng, Juelu Zhang: "<a href="https://openreview.net/forum?id=CDLY4742RJ" style="text-decoration:none">Foresight-on-Graph: vision-guided knowledge graph reasoning with large language models</a>". <b>EMNLP 2026</b>.</li>
 <li>Chengying Huan, Ziheng Meng, <u>Yongchao Liu</u>, Zhengyi Yang, Yun Zhu, Yue Yun, Shipeng Li, Rong Gu, Xiabao Wu, Haitao Zhang, Chuntao Hong, Shaonan Ma, Guihai Chen, Chen Tian: "<a href="https://arxiv.org/abs/2511.01633" style="text-decoration:none">Scaling Graph Chain-of-Thought Reasoning: a multi-agent framework with efficient LLM serving</a>". arXiv:2511.01633, 2025.</li>
 <li>Xintan Zeng, <u>Yongchao Liu</u>, Yice Luo, Jiajun Zheng: "<a href="https://arxiv.org/abs/2605.02967" style="text-decoration:none">AutoRAGTuner: a declarative framework for automatic optimization of RAG pipelines</a>". <b>EuroSys 2026</b> (poster track).</li>
+<li>Xiabao Wu, <u>Yongchao Liu</u>, Wei Qin, Chuntao Hong: "<a href="https://arxiv.org/abs/2607.21599" style="text-decoration:none">Decoupled attention fusion: accelerating RAG with efficient KV cache reuse</a>". <b>EuroSys 2026</b> (poster track).</li>
 <li>Wentao Liu, Xiabao Wu, <u>Yongchao Liu</u>, Haitao Zhang, Jiajun Zheng, Ruiting Zhou: "CutAttn: discovering cognitive transition layers for efficient long-context prefilling". <b>NeurIPS 2026</b>.</li>
+<li>Li Wang, Yi Su, Xiabao Wu, Chiran You, <u>Yongchao Liu</u>, Zhan Qiu, Juelu Zhang, Jiajun Zheng, Fangxin Liu, Jie Zhang, Chen Tian, Chengying Huan: "<a href="https://arxiv.org/abs/2608.01651" style="text-decoration:none">Bole: efficient tree speculation for hybrid-attention language models</a>". arXiv:2608.01651, 2026.</li>
 </ul>
 
 <h2>Explorations Beyond the Threads</h2>
@@ -206,7 +198,8 @@ LLMs.</p>
 <p>A few pieces of work do not sit inside the five threads but enrich them: federated and
 privacy-preserving learning (DiVerFed, Best Student Paper at KSEM 2024; "Integer is Enough"), general
 optimization methodology for deep learning (AGD at NeurIPS 2023; weighted sharpness-aware
-minimization at KDD 2023), and earlier heterogeneous-computing collaborations such as the PyCAC
+minimization at KDD 2023), hardware-aware acceleration of deep learning (Woodpecker-DL), and
+earlier heterogeneous-computing collaborations such as the PyCAC
 concurrent atomistic-continuum simulation environment.</p>
 
 </div><!--main-->
