@@ -1,12 +1,13 @@
 /* ==========================================================================
    Yongchao Liu — personal homepage
-   Design system: organized around six research threads
-     T1  Compact Computing (algorithms x systems)   — blue
-     T2  Sequence Intelligence                      — teal
-     T3  Graph Intelligence                         — violet
-     T4  Foundation Models (graphs & users)         — green
-     T5  User Understanding & Trust Intelligence    — amber
-     T6  Retrieval-Augmented Reasoning & Agents     — crimson
+   Design system: organized around five research threads
+     T1  Sequence Intelligence                       — teal
+     T2  Graph Intelligence                          — violet
+     T3  Foundation Models (graphs & users)          — green
+     T4  User Understanding & Trust Intelligence      — amber
+     T5  Retrieval-Augmented Reasoning & Agents       — crimson
+   Compact Computing (凝练计算), the methodology underneath all threads,
+   is rendered in the site-accent blue rather than a thread color.
    Keeps the legacy sidebar layout so older pages stay usable.
    ========================================================================== */
 
@@ -20,19 +21,19 @@
   --panel: #f5f7fa;
   --rule: #e4e9ef;
 
-  --t1: #004f9e;
-  --t2: #0e8a76;
-  --t3: #6a4fb3;
-  --t4: #2e7d32;
-  --t5: #a85f00;
-  --t6: #b10039;
+  --site-accent: #004f9e;
 
-  --t1-bg: #eaf2fb;
-  --t2-bg: #e8f5f2;
-  --t3-bg: #f0ecf9;
-  --t4-bg: #e9f4ea;
-  --t5-bg: #fbf3e7;
-  --t6-bg: #fbeaf0;
+  --t1: #0e8a76;
+  --t2: #6a4fb3;
+  --t3: #2e7d32;
+  --t4: #a85f00;
+  --t5: #b10039;
+
+  --t1-bg: #e8f5f2;
+  --t2-bg: #f0ecf9;
+  --t3-bg: #e9f4ea;
+  --t4-bg: #fbf3e7;
+  --t5-bg: #fbeaf0;
 }
 
 html { box-sizing: border-box; }
@@ -53,8 +54,8 @@ table { width: 100%; text-align: left; border-collapse: collapse; }
 th, td { padding: 10px; }
 th {
   color: #fff;
-  background-color: var(--t1);
-  background-image: linear-gradient(var(--t1), #003c7a);
+  background-color: var(--site-accent);
+  background-image: linear-gradient(var(--site-accent), #003c7a);
 }
 td { border-bottom: 1px solid var(--rule); }
 
@@ -79,7 +80,7 @@ a:hover { color: var(--link-hover); }
 a:focus { outline: none; }
 
 a.button {
-  background-color: var(--t5);
+  background-color: #a85f00;
   border-radius: 30px;
   color: #fff;
   display: inline-block;
@@ -89,7 +90,7 @@ a.button {
 }
 a.button:hover { background-color: #8f0047; }
 
-a.button-reversed { background-color: var(--t1); color: #fff; }
+a.button-reversed { background-color: var(--site-accent); color: #fff; }
 a.button-reversed:hover { background-color: #00366b; }
 
 h1 {
@@ -109,7 +110,7 @@ h2 {
   padding: 0 0 6px;
   margin: 1.6em 0 0.5em;
 }
-h3 { color: var(--t1); font-size: 13pt; font-weight: normal; padding-bottom: 8px; }
+h3 { color: var(--site-accent); font-size: 13pt; font-weight: normal; padding-bottom: 8px; }
 h4 { font-weight: bold; padding-bottom: 8px; font-size: 1.15em; color: var(--ink); }
 h5 { font-weight: normal; padding-bottom: 8px; font-size: 1.1em; color: #666; }
 
@@ -120,7 +121,7 @@ li { padding-bottom: 5px; }
 #header {
   height: 42px;
   background-color: rgb(0, 51, 102);
-  background-image: linear-gradient(135deg, #003366, var(--t1));
+  background-image: linear-gradient(135deg, #003366, var(--site-accent));
 }
 
 #sidebar {
@@ -177,11 +178,11 @@ li { padding-bottom: 5px; }
 }
 #nav ul li a:hover {
   color: #fff;
-  background-color: var(--t1);
+  background-color: var(--site-accent);
 }
 #nav ul li.selected a,
 #nav ul li.selected a:hover {
-  background-color: var(--t1);
+  background-color: var(--site-accent);
   color: #fff;
 }
 
@@ -219,7 +220,7 @@ li { padding-bottom: 5px; }
 }
 .thread-card {
   border: 1px solid var(--rule);
-  border-top: 4px solid var(--accent, var(--t1));
+  border-top: 4px solid var(--accent, var(--site-accent));
   border-radius: 10px;
   padding: 14px 16px 10px;
   background: #fff;
@@ -229,15 +230,14 @@ li { padding-bottom: 5px; }
 .thread-card h3 {
   margin: 0 0 6px;
   padding-bottom: 2px;
-  color: var(--accent, var(--t1));
+  color: var(--accent, var(--site-accent));
   font-size: 11.5pt;
   font-weight: 700;
 }
 .thread-card p { margin: 0 0 8px; font-size: 10pt; color: var(--muted); text-align: left; }
-.thread-card a.more { font-size: 9.5pt; font-weight: 600; text-decoration: none; color: var(--accent, var(--t1)); }
+.thread-card a.more { font-size: 9.5pt; font-weight: 600; text-decoration: none; color: var(--accent, var(--site-accent)); }
 .thread-card a.more:hover { text-decoration: underline; }
 
-.thread-card.t6 { --accent: var(--t6); background: linear-gradient(180deg, var(--t6-bg), #fff 55%); }
 .thread-card.t1 { --accent: var(--t1); background: linear-gradient(180deg, var(--t1-bg), #fff 55%); }
 .thread-card.t2 { --accent: var(--t2); background: linear-gradient(180deg, var(--t2-bg), #fff 55%); }
 .thread-card.t3 { --accent: var(--t3); background: linear-gradient(180deg, var(--t3-bg), #fff 55%); }
@@ -264,25 +264,24 @@ li { padding-bottom: 5px; }
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background: var(--dot, var(--t1));
+  background: var(--dot, var(--site-accent));
   border: 2.5px solid #fff;
-  box-shadow: 0 0 0 2px var(--dot, var(--t1));
+  box-shadow: 0 0 0 2px var(--dot, var(--site-accent));
 }
 .timeline .era {
   font-weight: 700;
-  color: var(--dot, var(--t1));
+  color: var(--dot, var(--site-accent));
   margin-right: 6px;
 }
 .timeline p { margin: 0 0 4px; text-align: left; }
 
 /* Thread accent headings on section pages */
-h2.t1, h2.t2, h2.t3, h2.t4, h2.t5, h2.t6 { border-bottom: 3px solid; padding-bottom: 6px; }
+h2.t1, h2.t2, h2.t3, h2.t4, h2.t5 { border-bottom: 3px solid; padding-bottom: 6px; }
 h2.t1 { color: var(--t1); border-color: var(--t1); }
 h2.t2 { color: var(--t2); border-color: var(--t2); }
 h2.t3 { color: var(--t3); border-color: var(--t3); }
 h2.t4 { color: var(--t4); border-color: var(--t4); }
 h2.t5 { color: var(--t5); border-color: var(--t5); }
-h2.t6 { color: var(--t6); border-color: var(--t6); }
 
 .tile { /* thin colored separator bar after a thread heading */
   height: 4px;
@@ -292,7 +291,7 @@ h2.t6 { color: var(--t6); border-color: var(--t6); }
 }
 .tile.t1 { background: var(--t1); } .tile.t2 { background: var(--t2); }
 .tile.t3 { background: var(--t3); } .tile.t4 { background: var(--t4); }
-.tile.t5 { background: var(--t5); } .tile.t6 { background: var(--t6); }
+.tile.t5 { background: var(--t5); }
 
 /* Tag badges (publications & topics) */
 .tag {
@@ -313,7 +312,6 @@ h2.t6 { color: var(--t6); border-color: var(--t6); }
 .tag.t3 { background: var(--t3); }
 .tag.t4 { background: var(--t4); }
 .tag.t5 { background: var(--t5); }
-.tag.t6 { background: var(--t6); }
 
 /* Quick facts strip */
 .facts {
@@ -330,19 +328,19 @@ h2.t6 { color: var(--t6); border-color: var(--t6); }
   background: var(--panel);
   padding: 10px 14px;
 }
-.fact .num { display: block; font-size: 15pt; font-weight: 700; color: var(--t1); }
+.fact .num { display: block; font-size: 15pt; font-weight: 700; color: var(--site-accent); }
 .fact .lbl { font-size: 9pt; color: var(--muted); }
 
 /* Methodology callout */
 .callout {
   border: 1px solid var(--rule);
-  border-left: 5px solid var(--t1);
+  border-left: 5px solid var(--site-accent);
   border-radius: 8px;
   background: var(--panel);
   padding: 12px 18px;
   margin: 12px 0 20px;
 }
-.callout h4 { margin: 0 0 6px; color: var(--t1); }
+.callout h4 { margin: 0 0 6px; color: var(--site-accent); }
 
 /* Legacy helpers kept for old pages */
 .floatright {
