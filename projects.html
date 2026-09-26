@@ -77,7 +77,7 @@ threads; the full publication list, with every entry tagged by its thread, is on
 <p>The first act, 2009&ndash;2017: in retrospect, a <i>search engine for the genome</i>. The pipeline
 was always the same one we now use everywhere else &mdash; build a compact index (BWT, suffix array,
 k-mer tables), search against it with approximate matching (Smith&ndash;Waterman, seed&ndash;extend
-alignment), and understand the results (variant calling, metagenomic quantification, assembly). The
+alignment), and understand the results (variant calling, metagenomic quantification). The
 CUSHAW suite, CUDASW++ and SWAPHI families of tools were accelerated across the full hardware
 spectrum of the day &mdash; CUDA GPUs, Xeon Phi coprocessors, UPC++ clusters &mdash; and three of
 them were rated by NVIDIA as popular GPU-accelerated applications; DecGPU was reported by
@@ -86,9 +86,10 @@ data structure &rarr; parallel algorithm &rarr; open-source tool.</p>
 
 <h4>Example work</h4>
 <ul>
+<li>Yuandong Chan, Kai Xu, Haidong Lan, Weiguo Liu, <u>Yongchao Liu</u> and Bertil Schmidt: "<a style="text-decoration:none" href="https://doi.org/10.1109/IPDPS.2017.35">PUNAS: a parallel ungapped-alignment-featured seed verification for next-generation sequencing read alignment</a>". <b>IEEE IPDPS 2017</b> &mdash; the seed&ndash;extend alignment line, at its last stop before Ant.</li>
+<li>Haidong Lan, Weiguo Liu, <u>Yongchao Liu</u> and Bertil Schmidt: "<a style="text-decoration:none" href="https://doi.org/10.1109/IPDPS.2017.42">SWhybrid: a hybrid parallel framework for large-scale protein sequence database search</a>". <b>IEEE IPDPS 2017</b> &mdash; the SWAPHI family's final continuation, from Xeon Phi to hybrid parallelism.</li>
 <li>Tony Pan, Patrick Flick, Chirag Jain, <u>Yongchao Liu</u> and Srinivas Aluru: "<a href="https://dl.acm.org/doi/10.1109/TCBB.2017.2760829" style="text-decoration:none">Kmerind: a flexible parallel library for k-mer indexing of biological sequences on distributed memory systems</a>". <b>ACM-BCB 2016</b> / <b>IEEE/ACM TCBB</b>, 2019.</li>
 <li><u>Yongchao Liu</u>, Thomas Hankeln, and Bertil Schmidt: "<a href="http://dx.doi.org/10.1109/TCBB.2015.2430314" style="text-decoration:none">Parallel and space-efficient construction of Burrows-Wheeler transform and suffix array for big genome data</a>". <b>IEEE TCBB</b>, 2016 &mdash; the compact index at genome scale.</li>
-<li><u>Yongchao Liu</u> and Bertil Schmidt: "<a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=7245713" style="text-decoration:none">LightSpMV: faster CSR-based sparse matrix-vector multiplication on CUDA-enabled GPUs</a>". <b>IEEE ASAP 2015</b> (<font color="#ff0000"><b>Best Paper Award</b></font>) &mdash; the Compact Computing habit, distilled into a general-purpose GPU primitive.</li>
 <li><u>Yongchao Liu</u>, Tran TT, Felix Lauenroth and Bertil Schmidt: "<a href="http://dx.doi.org/10.1109/CLUSTER.2014.6968772" style="text-decoration:none">SWAPHI-LS: Smith-Waterman algorithm on Xeon Phi coprocessors for long DNA sequences</a>". <b>IEEE Cluster 2014</b> (<font color="#ff0000"><b>Best Paper Award Recommendation</b></font>).</li>
 <li><u>Yongchao Liu</u>, Bernt Popp, and Bertil Schmidt: "<a href="http://www.ncbi.nlm.nih.gov/pubmed/24466273" style="text-decoration:none">CUSHAW3: sensitive and accurate base-space and color-space short-read alignment with hybrid seeding</a>". <b>PLOS ONE</b>, 2014 &mdash; hybrid seeding over compressed indexes.</li>
 <li><u>Yongchao Liu</u>, Adrianto Wirawan and Bertil Schmidt: "<a href="http://www.biomedcentral.com/1471-2105/14/117" style="text-decoration:none">CUDASW++ 3.0: accelerating Smith-Waterman protein database search by coupling CPU and GPU SIMD instructions</a>". <b>BMC Bioinformatics</b>, 2013.</li>
@@ -99,12 +100,17 @@ data structure &rarr; parallel algorithm &rarr; open-source tool.</p>
 <li><u>Yongchao Liu</u>, Bertil Schmidt, and Douglas L. Maskell: "<a href="http://bioinformatics.oxfordjournals.org/content/26/16/1958.abstract" style="text-decoration:none">MSAProbs: multiple sequence alignment based on pair hidden Markov models and partition function posterior probabilities</a>". <b>Bioinformatics</b>, 2010.</li>
 </ul>
 <p>Several of this era's open-source tools (CUDASW++, CUSHAW, MSAProbs, Musket, SWAPHI, ParaBWT,
-LightSpMV, LightPCC and more) are catalogued on the <a href="software.html">Software</a> page.</p>
+LightPCC and more) are catalogued on the <a href="software.html">Software</a> page.</p>
 
 <h2 class="t2" id="t2">T2 &middot; Graph Intelligence</h2>
 <div class="tile t2"></div>
 <p>The second act began at Ant Group in 2017, when the "database being searched" became the graph:
-hundred-million-user banking relationships, transactions, and behaviors. He led
+hundred-million-user banking relationships, transactions, and behaviors. The graph itself had in
+fact entered the picture during the genome years: de Bruijn graph assembly of large genomes (2011)
+was the first large-graph compute problem tackled, and LightSpMV (2015,
+<font color="#ff0000"><b>Best Paper Award</b></font>) distilled the workhorse primitive of graph
+analytics &mdash; CSR-based sparse matrix&ndash;vector multiplication on GPUs &mdash; into a
+general-purpose kernel. At Ant, he led
 <a href="https://arxiv.org/abs/2104.10569">GeaLearning (alias GraphTheta)</a> &mdash; the first
 distributed, scalable graph learning system built on the vertex-centric graph processing paradigm
 &mdash; whose landing on Zhima Credit in Alipay was listed in Ant Technology Memorabilia 2020 and
@@ -136,6 +142,10 @@ foundation-model line continues in <a href="#t3">Thread T3</a>.</p>
 <li>Chengying Huan, Shuaiwen Leon Song, <u>Yongchao Liu</u>, Heng Zhang, Hang Liu, Charles He, Kang Chen, Jinlei Jiang, Yongwei Wu: "<a href="https://dl.acm.org/doi/10.1145/3559009.3569648" style="text-decoration:none">T-GCN: a sampling based streaming graph neural network system with hybrid architecture</a>". <b>PACT 2022</b>.</li>
 <li>Chengying Huan, Hang Liu, Mengxing Liu, <u>Yongchao Liu</u>, Changhua He, Kang Chen, Jinlei Jiang, Yongwei Wu, Shuaiwen Leon Song: "<a href="https://ieeexplore.ieee.org/abstract/document/9835422" style="text-decoration:none">TeGraph: a novel general-purpose temporal graph computing engine</a>". <b>ICDE 2022</b>.</li>
 <li><u>Yongchao Liu</u>, Houyi Li, Guowei Zhang, Xintan Zeng, Yongyong Li, Bin Huang, Peng Zhang, Zhao Li, Xiaowei Zhu, Changhua He, Wenguang Chen: "<a href="https://arxiv.org/abs/2104.10569" style="text-decoration:none">GraphTheta: a distributed graph neural network learning system with flexible training strategy</a>" (GeaLearning). arXiv:2104.10569, 2021.</li>
+<li><u>Yongchao Liu</u> and Bertil Schmidt: "<a href="http://link.springer.com/article/10.1007%2Fs11265-016-1216-4" style="text-decoration:none">LightSpMV: faster CUDA-compatible sparse matrix-vector multiplication using compressed sparse rows</a>". <b>Journal of Signal Processing Systems</b>, 2018, 90(1):69-86.</li>
+<li><u>Yongchao Liu</u> and Bertil Schmidt: "<a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=7245713" style="text-decoration:none">LightSpMV: faster CSR-based sparse matrix-vector multiplication on CUDA-enabled GPUs</a>". <b>IEEE ASAP 2015</b> (<font color="#ff0000"><b>Best Paper Award</b></font>) &mdash; the kernel beneath vertex-centric graph processing, the paradigm GeaLearning would later build on.</li>
+<li><u>Yongchao Liu</u>: "<a style="text-decoration:none" href="https://www.researchgate.net/publication/309673143_OpenGraphAssembly_abstract_modularize_and_parallelize_fundamental_building_blocks_for_graph-based_genome_assembly">OpenGraphAssembly: abstract, modularize and parallelize fundamental building blocks for graph-based genome assembly</a>". <b>ResearchGate</b>, 2015 &mdash; the graph view of genome assembly, recast as modular parallel building blocks.</li>
+<li><u>Yongchao Liu</u>, Bertil Schmidt, and Douglas L. Maskell: "<a href="http://www.biomedcentral.com/1471-2105/12/354" style="text-decoration:none">Parallelized short read assembly of large genomes using de Bruijn graphs</a>". <b>BMC Bioinformatics</b>, 2011 &mdash; the genome assembled as one giant graph, long before graphs became about people.</li>
 </ul>
 
 <h2 class="t3" id="t3">T3 &middot; Foundation Models: from Graphs to Users</h2>
