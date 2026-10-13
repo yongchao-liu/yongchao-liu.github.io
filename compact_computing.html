@@ -112,19 +112,19 @@ independent advances in genomics, graph systems, foundation models, and large-mo
 this paradigm has achieved &mdash; <i>Scaling Data Intelligence</i> &mdash; is the subject of <a href="#s10">&sect;10</a>.</p>
 
 <h2 id="s2">2. What Compact Computing is</h2>
-<p>Compact Computing rests on <b>three components in principle</b>:</p>
+<p>Compact Computing rests on <b>three components</b>:</p>
 
 <div class="callout">
 <h4>The three components</h4>
 <ol>
 <li><b>Tightly-coupled architectures</b> &mdash; CPUs, GPUs, Xeon Phi coprocessors, and clusters, treated
 not as interchangeable but as a spectrum over which the same logical operation must be
-<i>re-compacted</i>. A sparse kernel that is optimal on a SIMT GPU is wrong on a wide-SIMD Xeon Phi,
-and wrong again on a distributed-memory cluster; the primitive is constant, the compaction is
-domain-specific.</li>
+<i>re-compacted</i>. A sparse kernel that is optimal on a SIMT GPU does not carry over to a wide-SIMD Xeon
+Phi or to a distributed-memory cluster; the primitive is constant, the compaction is domain-specific.</li>
 <li><b>Compressive and elastic data representation</b> &mdash; the load-bearing idea. Data is kept in the
 form that most faithfully exposes its intrinsic structure and locality: <i>compressed</i>
-representations (BWT and suffix arrays for redundant strings), <i>sparse</i> representations (CSR,
+representations (BWT and suffix arrays for redundant strings; embeddings of graphs and users;
+rounded gradients and compact parameters for the model), <i>sparse</i> representations (CSR,
 CSR-based sparse matrix&ndash;vector multiplication, compiler-generated sparse GNN kernels), and
 <i>elastic</i> representations whose size and shape follow the data (dynamic/temporal graphs, on-the-fly
 sampled subgraphs, KV caches that grow and are reused at serving time).</li>
@@ -135,11 +135,11 @@ graph intelligence system serving billions of users to a RAG serving pipeline.</
 </ol>
 </div>
 
-<p>The signature of the paradigm is the joint application of the three: to operate <i>directly</i> on
-the compressed/sparse/elastic form, rather than materialising a dense intermediate and paying for it,
-and to do so in a way that is portable across the hardware spectrum in (1). Compact Computing is
-therefore not a single technique but a <b>methodological invariant</b> &mdash; a constraint on how any
-data-intensive computation should be structured.</p>
+<p>The signature of the paradigm is the joint application of the three: operating <i>directly</i> on
+the compressed/sparse/elastic form rather than materialising a dense, costly intermediate, and doing so
+portably across the architecture spectrum. Compact Computing is therefore not a single technique but a
+<b>methodological invariant</b> &mdash; a constraint on how any data-intensive computation should be
+structured.</p>
 
 <h2 id="s3">3. First principles</h2>
 <p>Five principles, each drawn from the published record, constitute the paradigm.</p>
@@ -166,6 +166,17 @@ a user into compact, transferable tokens (FOUNDv2, <i>KDD</i> 2026). Where the d
 <i>elastic</i>: it grows, shrinks, and reshapes with the data rather than being rebuilt (TeGraph/TeGraph+,
 <i>ICDE</i> 2022 / <i>IEEE TPDS</i> 2024; TEA/TEA+, <i>EuroSys</i> 2023 / <i>ACM TACO</i> 2024; T-GCN,
 <i>PACT</i> 2022; ATLAS, <i>ICPP</i> 2026).</p>
+
+<p>Those four sit inside a wider family of compressed representations the work keeps returning to. An
+<i>embedding</i> &mdash; a graph encoder's output, as in GraphCLIP, or FOUNDv2's quantised user tokens
+&mdash; compacts a population of relationships into a few coordinates that still transfer across tasks,
+and a foundation model packages that whole population as one reusable pretrained object. The numeric
+form of the model is compaction territory too: rounding gradients to integers
+(&ldquo;Integer is Enough&rdquo;), re-using gradient differences (AGD), and regularising the optimizer
+state (weighted sharpness-aware minimization) are compressions of the parameter bookkeeping, not of the
+data. The family has well-known siblings the record does not claim to have produced &mdash; low-rank
+factorisation, pruning, and distillation all shrink a model for the same reason Compact Computing
+compresses its data &mdash; but the instances named here are the ones this author's work supplies.</p>
 
 <h3 id="s33">3.3 Algorithm&ndash;system co-design for full-stack performance</h3>
 <p>Algorithms are designed against the architecture and systems are designed around the algorithm's
@@ -220,7 +231,7 @@ and suffix array were constructed in parallel and space-efficient form for big g
 TCBB</i> 2016); <i>k</i>-mer indexing was generalised on distributed memory as Kmerind (<i>ACM-BCB</i>
 2016; <i>IEEE/ACM TCBB</i> 2019). <b>Approximate search.</b> Smith&ndash;Waterman protein database search was
 accelerated by coupling CPU and GPU SIMD (CUDASW++ 3.0, <i>BMC Bioinformatics</i> 2013), pushed onto
-Xeon Phi (SWAPHI-LS, <i>IEEE Cluster</i> 2014; SWAPHI, <i>IEEE ASAP</i> 2014), and hybridised across
+Xeon Phi (SWAPHI-LS, <i>IEEE Cluster</i> 2014), and hybridised across
 CPU+GPU for large-scale protein search (SWhybrid, <i>IEEE IPDPS</i> 2017); seed-verification was
 parallelised for ungapped alignment (PUNAS, <i>IEEE IPDPS</i> 2017). <b>Error correction and
 assembly</b> treated sequencing noise compactly: Musket, a multistage <i>k</i>-mer spectrum error
@@ -317,15 +328,13 @@ caught up with it. A foundation model <i>compresses</i> a whole graph or user po
 reusable object &mdash; a pretrained graph encoder in GraphCLIP, quantised user tokens in FOUNDv2
 &mdash; that <i>transfers elastically</i> across domains, scenarios, and tasks. An LLM's attention is
 <i>compressed</i> by reusing the KV cache instead of recomputing it (Decoupled Attention Fusion) and by
-quantising the tokens it keeps; it is <i>sparse</i> because genuine long-context access touches only a
+quantising the tokens it keeps. It is <i>sparse</i> because genuine long-context access touches only a
 small fraction of the sequence &mdash; the cognitive transition layers CutAttn identifies &mdash; and
-because retrieval attends to a sparse set of subgraphs rather than the whole corpus (Graph RAG); and it
-is <i>elastic</i> because the cache and the speculative tree grow, are reused, and are pruned at serving
+because retrieval attends to a sparse set of subgraphs rather than the whole corpus (Graph RAG). It is <i>elastic</i> because the cache and the speculative tree grow, are reused, and are pruned at serving
 time as the conversation evolves (Bole). Vision&ndash;language models carry the same three modes across
-modalities: the cross-modal token stream is <i>compressed</i> by sharing the language backbone's cache
-across visual and textual tokens, <i>sparse</i> because a multimodal batch is reached only through a few
-salient patches or frames plus retrieved visual&ndash;graph evidence rather than the full pixel mass, and
-<i>elastic</i> because the multimodal context grows with every added modality or turn &mdash; which is
+modalities. The cross-modal token stream is <i>compressed</i> by sharing the language backbone's cache
+across visual and textual tokens. It is <i>sparse</i> because a multimodal batch is reached only through a few
+salient patches or frames plus retrieved visual&ndash;graph evidence rather than the full pixel mass. It is <i>elastic</i> because the multimodal context grows with every added modality or turn &mdash; which is
 how vision-guided graph reasoning with an LLM, as in Foresight-on-Graph, keeps retrieval tractable. Across foundation models, LLMs, and VLMs, the same compressed, sparse, and elastic
 representations that served the genome and the graph now shape the transformer's context and the
 multimodal token stream &mdash; large models are the newest shape Compact Computing takes, not an
@@ -521,10 +530,14 @@ Scaling Data Intelligence is the name for carrying it forward.</p>
 <li>Yunhui Liu, <u>Yongchao Liu</u>, Y. Chen, C. Hong, T. Zheng, T. He. &ldquo;Learning hierarchical knowledge in text-rich networks with taxonomy-informed representation learning.&rdquo; <i>KDD</i> 2026.</li>
 <li>Yunhui Liu, P. Qiu, Y. Xing, P. Du, <u>Yongchao Liu</u>, C. Hong, J. Zheng, T. Zheng, T. He. &ldquo;Bridging Academia and Industry: a comprehensive benchmark for attributed graph clustering.&rdquo; <i>NeurIPS</i> 2026.</li>
 <li>Ant Group et&nbsp;al. &ldquo;Graph+AI: 大模型浪潮下的图计算.&rdquo; White Paper, 2024.</li>
+<li>Y. Jin, <u>Yongchao Liu</u>. &ldquo;GPC: compiler-based optimization for sparse computations in graph neural networks.&rdquo; <i>EuroSys</i> 2023 (poster track).</li>
+<li>Y. Jin, S. Tian, <u>Yongchao Liu</u>, C. Hong. &ldquo;GraphGen: a distributed graph sample generation framework on industry-scale graphs.&rdquo; <i>EuroSys</i> 2024 (poster track).</li>
+<li>Y. Jin, <u>Yongchao Liu</u>, C. Hong. &ldquo;GraphGen+: advancing distributed subgraph generation and graph learning on industrial graphs.&rdquo; <i>EuroSys</i> 2025 (poster track).</li>
+<li>X. Wu, <u>Yongchao Liu</u>, W. Qin, C. Hong. &ldquo;Distributed graph neural network inference with just-in-time compilation for industry-scale graphs.&rdquo; <i>EuroSys</i> 2025 (poster track).</li>
 </ol>
 
 <h3>Foundation models <span class="tag t3">Era III</span></h3>
-<ol start="42">
+<ol start="46">
 <li>Y. Zhu, H. Shi, X. Wang, <u>Yongchao Liu</u>, Y. Wang, B. Peng, C. Hong, S. Tang. &ldquo;GraphCLIP: enhancing transferability in graph foundation models for text-attributed graphs.&rdquo; <i>WWW</i> 2025.</li>
 <li>B. Dou, B. Wang, Y. Zhu, X. Lin, Y. Xu, X. Huang, Y. Chen, <u>Yongchao Liu</u>, et&nbsp;al. &ldquo;Transferable and forecastable user targeting foundation model.&rdquo; <i>WWW</i> 2025 (industry).</li>
 <li>C. He, Y. Chen, B. Dou, W. Huang, B. Wang, <u>Yongchao Liu</u>, et&nbsp;al. &ldquo;FOUNDv2: learning unified user quantized tokenizers for user representation.&rdquo; <i>KDD</i> 2026 (oral).</li>
@@ -532,7 +545,7 @@ Scaling Data Intelligence is the name for carrying it forward.</p>
 </ol>
 
 <h3>Users &amp; trust intelligence <span class="tag t4">cross-era</span></h3>
-<ol start="46">
+<ol start="50">
 <li>H. Li, Z. Chen, C. Li, R. Xiao, H. Deng, P. Zhang, <u>Yongchao Liu</u>, H. Tang. &ldquo;Path-based deep network for candidate item matching in recommenders.&rdquo; <i>SIGIR</i> 2021.</li>
 <li>Y. Yue, <u>Yongchao Liu</u>, S. Tong, M. Li, Z. Zhang, C. Wen, H. Bao, L. Gu, J. Gu, Y. Mu. &ldquo;Adaptive optimizers with sparse group lasso for neural networks in CTR prediction.&rdquo; <i>ECML-PKDD</i> 2021.</li>
 <li>Y. Luo, G. Wang, <u>Yongchao Liu</u>, J. Yue, W. Cheng, B. Fei. &ldquo;FAF: a risk detection framework on industry-scale graphs.&rdquo; <i>CIKM</i> 2023.</li>
@@ -542,7 +555,7 @@ Scaling Data Intelligence is the name for carrying it forward.</p>
 </ol>
 
 <h3>Retrieval-augmented reasoning, agents &amp; efficient LLM serving <span class="tag t5">Era IV</span></h3>
-<ol start="52">
+<ol start="56">
 <li>B. Peng, Y. Zhu, <u>Yongchao Liu</u>, X. Bo, H. Shi, C. Hong, Y. Zhang, S. Tang. &ldquo;Graph retrieval-augmented generation: a survey.&rdquo; <i>ACM TOIS</i>, 2026 (<b>ESI Highly Cited Paper</b>).</li>
 <li>J. Chen, <u>Yongchao Liu</u>, P. Qiu, J. Zheng, J. Zhang, Y. Zeng, Q. Zhang, X. Luo, Z. Qiao. &ldquo;GTA-RAG: graph-trajectory-augmented reinforcement learning for multi-turn retrieval-augmented reasoning.&rdquo; <i>EMNLP</i> 2026.</li>
 <li>Y. Hu, R. Lei, X. Huang, Z. Wei, <u>Yongchao Liu</u>. &ldquo;Scalable and accurate graph reasoning with LLM-based multi-agents.&rdquo; <i>AAAI</i> 2026 Workshop (WMAC).</li>
@@ -555,7 +568,7 @@ Scaling Data Intelligence is the name for carrying it forward.</p>
 </ol>
 
 <h3>Cross-disciplinary explorations</h3>
-<ol start="61">
+<ol start="65">
 <li>Y. Yue, Z. Ye, J. Jiang, <u>Yongchao Liu</u>, K. Zhang. &ldquo;AGD: an auto-switchable optimizer using stepwise gradient difference for preconditioning matrix.&rdquo; <i>NeurIPS</i> 2023.</li>
 <li>Y. Yue, J. Jiang, Z. Ye, G. Ning, <u>Yongchao Liu</u>, K. Zhang. &ldquo;Sharpness-aware minimization revisited: weighted sharpness as a regularization term.&rdquo; <i>KDD</i> 2023.</li>
 <li>P. Qiu, Y. Pu, <u>Yongchao Liu</u>, W. Liu, Y. Yue, X. Zhu, L. Li, J. Li, S. Ji. &ldquo;Integer is Enough: when vertical federated learning meets rounding.&rdquo; <i>AAAI</i> 2024.</li>
