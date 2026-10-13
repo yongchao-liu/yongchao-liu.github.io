@@ -1,1 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Compact Computing (凝练计算): a technical report on a cross-disciplinary paradigm for Scaling Data Intelligence — making large-scale data searchable, matchable, and understandable across sequences, graphs, foundation models, and retrieval-augmented reasoning.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Compact Computing (凝练计算) &mdash; A Paradigm for Scaling Data Intelligence</title>
+</head>
 
+<body>
+<!--header-->
+<div id="header"></div>
+
+<!--side bar-->
+<div id="sidebar">
+
+<!--photo-->
+<div id="profile"></div>
+<p style="text-align:center">[<a href="contact.html">Contact</a>][<a href="https://scholar.google.com/citations?user=qYQHl4sAAAAJ&hl=en&oi=ao">Google Scholar</a>]</p>
+
+<!--navigator-->
+<div id="nav">
+<ul>
+<li><a href="index.html">About Me</a></li>
+<li><a href="news.html">What's New</a></li>
+<li><a href="awards.html">Awards</a></li>
+<li><a href="grants.html">Grants</a></li>
+<li><a href="publications.html">Publications</a></li>
+<li><a href="software.html">Software</a></li>
+<li class="selected"><a href="projects.html">Research</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="talks.html">Talks</a></li>
+<li><a href="teaching.html">Teaching</a></li>
+<li><a href="people.html">People</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+
+<!--last update-->
+<p class="foot">
+	<script language="JavaScript">
+		document.write("Updated: " + document.lastModified);
+	</script>
+</p>
+
+</div><!--sidebar-->
+
+<div id="main">
+
+<h1>Compact Computing (凝练计算)</h1>
+<h3>A Cross-Disciplinary Paradigm for Scaling Data Intelligence</h3>
+<hr>
+
+<blockquote><p>Across changing data &mdash; genomes, then the graphs of a hundred-million-customer fintech,
+now knowledge and language in the era of large models &mdash; one method has persisted: center on the
+data, keep its representations compressed and sparse, and co-design the algorithm with the system.
+That method is Compact Computing.</p></blockquote>
+
+<h3 id="abstract">Abstract</h3>
+<p>Compact Computing is a data-first, cross-disciplinary computing paradigm whose thesis is that the
+scalability of intelligence is governed not by raw hardware but by how faithfully computation
+<i>compresses the intrinsic structure of data</i>. It operates directly on compressed, sparse, and
+elastic representations and co-designs the algorithm with the system for full-stack performance.
+This report distils the paradigm into five first principles, then grounds every claim in the
+author's published work along four eras &mdash; sequence intelligence (the genome as a search engine),
+graph intelligence (from sparse primitives to distributed learning and foundation models), user and
+trust intelligence, and retrieval-augmented reasoning, agents, and efficient LLM serving. Because
+the same compactness-preserving moves recur across biological sequences, financial graphs,
+materials simulation, privacy-preserving learning, and large-model serving, Compact Computing
+constitutes a unifying technical paradigm rather than a domain technique. It is the enabling
+physics beneath a unifying ambition &mdash; <b>Scaling Data Intelligence</b> &mdash; making
+large-scale data <i>searchable, matchable, and understandable</i> at every scale the data reaches.</p>
+
+<h2 id="s1">1. Introduction: the through-line and the question</h2>
+<p>Software and data have a tangled history, and most of that history is a history of <i>compaction</i>.
+Burrows and Wheeler reordered a string so its redundancy became locality; suffix arrays stored the
+sorted shape of a text without storing the text twice; sparse formats stored the zeros of a graph by
+not storing them at all. Each of these moves let computation scale past the volumetric growth of the
+data it described. Compact Computing names the discipline that keeps making this move, deliberately,
+across data modalities and across the compute stack.</p>
+
+<p>The work surveyed here spans over fifteen years and four data eras. In the first (2009&ndash;2017) the
+data was the genome and the goal was to make it <i>searchable</i>; the pipeline was a search engine
+&mdash; build a compact index (Burrows&ndash;Wheeler transform, suffix array, <i>k</i>-mer tables), search it
+with approximate matching (Smith&ndash;Waterman, seed&ndash;extend alignment), and turn the hits into
+understanding (variant calling, metagenomic quantification). In the second (2017&ndash;) the data became
+the graph &mdash; the hundred-million-user relationships, transactions, and behaviours of a large fintech
+platform &mdash; and the same three-step pipeline returned as <i>index, traverse, learn</i>. In the third,
+the representational substrate became the foundation model &mdash; a compact, pretrained, transferable
+object that compresses a whole graph or user population into a reusable embedding. In the fourth and
+current era the data is language and knowledge, and the pipeline returns once more, as
+<i>retrieve, match, reason</i> &mdash; RAG and agents.</p>
+
+<p>Amid this drift of domains, a single method persisted. Proposed around 2015&ndash;2016 and named
+<b>Compact Computing (凝练计算)</b>, it is a style of computing that <i>centers on data and fuses
+algorithms with systems for full-stack performance</i>, operating directly on compressed, sparse, or
+elastic representations. The question
+this report answers is the one a broad claim must justify: <i>is Compact Computing a paradigm
+&mdash; something that generalises across data, hardware, and disciplines &mdash; or merely a recurring
+habit?</i></p>
+
+<p>The argument that follows is that it is a paradigm, and that the evidence is the published record
+itself: the same five principles, instantiated with different data on different hardware, produced
+independent advances in genomics, graph systems, foundation models, and large-model serving. The reach that
+this paradigm has achieved &mdash; <i>Scaling Data Intelligence</i> &mdash; is the subject of <a href="#s10">&sect;10</a>.</p>
+
+<h2 id="s2">2. What Compact Computing is</h2>
+<p>Compact Computing rests on <b>three components in principle</b>:</p>
+
+<div class="callout">
+<h4>The three components</h4>
+<ol>
+<li><b>Tightly-coupled architectures</b> &mdash; CPUs, GPUs, Xeon Phi coprocessors, and clusters, treated
+not as interchangeable but as a spectrum over which the same logical operation must be
+<i>re-compacted</i>. A sparse kernel that is optimal on a SIMT GPU is wrong on a wide-SIMD Xeon Phi,
+and wrong again on a distributed-memory cluster; the primitive is constant, the compaction is
+domain-specific.</li>
+<li><b>Compressive and elastic data representation</b> &mdash; the load-bearing idea. Data is kept in the
+form that most faithfully exposes its intrinsic structure and locality: <i>compressed</i>
+representations (BWT and suffix arrays for redundant strings), <i>sparse</i> representations (CSR,
+CSR-based sparse matrix&ndash;vector multiplication, compiler-generated sparse GNN kernels), and
+<i>elastic</i> representations whose size and shape follow the data (dynamic/temporal graphs, on-the-fly
+sampled subgraphs, KV caches that grow and are reused at serving time).</li>
+<li><b>Efficient, scalable, service-oriented algorithms</b> &mdash; algorithms that are not ends in
+themselves but <i>services</i>: open-source tools, distributed systems, and serving stacks that take
+the compact representation through to a deployed capability &mdash; from a read aligner to a
+graph intelligence system serving billions of users to a RAG serving pipeline.</li>
+</ol>
+</div>
+
+<p>The signature of the paradigm is the joint application of the three: to operate <i>directly</i> on
+the compressed/sparse/elastic form, rather than materialising a dense intermediate and paying for it,
+and to do so in a way that is portable across the hardware spectrum in (1). Compact Computing is
+therefore not a single technique but a <b>methodological invariant</b> &mdash; a constraint on how any
+data-intensive computation should be structured.</p>
+
+<h2 id="s3">3. First principles</h2>
+<p>Five principles, each drawn from the published record, constitute the paradigm.</p>
+
+<h3 id="s31">3.1 Data-first computing</h3>
+<p>The data &mdash; its redundancy, distribution, sparsity, and locality &mdash; dictates the computation,
+never the reverse. A principle stated most crisply in the genome era: a genome is not an arbitrary
+byte stream but a text with deep internal repetition, and that repetition <i>is</i> the index
+(CUSHAW, <i>Bioinformatics</i> 2012; parallel/space-efficient BWT &amp; suffix-array construction,
+<i>IEEE TCBB</i> 2016). The same inversion governs graphs &mdash; the sparsity of a billion-edge
+transaction graph is not a nuisance to be densified but the very structure a CSR-based kernel or a
+vertex-centric system should exploit (LightSpMV, <i>IEEE ASAP</i> 2015)
+&mdash; and governs attention, whose redundancy across queries is not wasted work but a cache to be
+reused (Decoupled Attention Fusion, <i>EuroSys</i> 2026 poster).</p>
+
+<h3 id="s32">3.2 Compressive and elastic representation</h3>
+<p>The paradigm's central act is to <i>not materialise</i>. Four materialisations are refused in the
+record: (i) the dense string, refused by BWT and suffix arrays; (ii) the dense graph, refused by CSR
+and by materialization-free community detection (<i>SIGMOD</i> 2025); (iii) the dense attention,
+refused by KV-cache reuse and by tree speculation over hybrid-attention models (Decoupled Attention
+Fusion; Bole); (iv) the dense user, refused by <i>quantized tokenizers</i> that compress
+a user into compact, transferable tokens (FOUNDv2, <i>KDD</i> 2026). Where the data is dynamic
+&mdash; temporal graphs, streaming GNNs, evolving user populations &mdash; the representation is
+<i>elastic</i>: it grows, shrinks, and reshapes with the data rather than being rebuilt (TeGraph/TeGraph+,
+<i>ICDE</i> 2022 / <i>IEEE TPDS</i> 2024; TEA/TEA+, <i>EuroSys</i> 2023 / <i>ACM TACO</i> 2024; T-GCN,
+<i>PACT</i> 2022; ATLAS, <i>ICPP</i> 2026).</p>
+
+<h3 id="s33">3.3 Algorithm&ndash;system co-design for full-stack performance</h3>
+<p>Algorithms are designed against the architecture and systems are designed around the algorithm's
+data-access pattern; the frontier is <i>full-stack</i>, from representation to kernel to distributed
+system to serving layer. The genome years instantiated this across the full hardware spectrum of the
+day &mdash; CUDA GPUs, Xeon Phi coprocessors, UPC++ clusters &mdash; within a single tool family
+(CUDASW++ 3.0, <i>BMC Bioinformatics</i> 2013; SWAPHI-LS, <i>IEEE Cluster</i> 2014; CUSHAW2-GPU,
+<i>IEEE Design &amp; Test</i> 2014; DecGPU, <i>BMC Bioinformatics</i> 2011). At Ant the same principle
+scaled from a single CSR kernel (LightSpMV) to the first distributed, scalable graph-learning system
+on the vertex-centric paradigm, GeaLearning/GraphTheta, which became a core component of
+GeaGraph (TuGraph), recognised as a World's Leading Internet Scientific and Technological Achievement
+at the World Internet Conference 2021, and broke the world record on the Stanford Open Graph Benchmark
+proteins leaderboard in 2021. In the LLM era the co-design target is the <i>serving stack</i>:
+declarative auto-optimisation of RAG pipelines (AutoRAGTuner, <i>EuroSys</i> 2026 poster),
+compiler-driven long-context prefilling (CutAttn, <i>NeurIPS</i> 2026), and tree speculation for
+hybrid-attention models (<a href="projects.html#t5">Bole</a>).</p>
+
+<h3 id="s34">3.4 Generality through primitive distillation (凝练)</h3>
+<p>A small set of compute primitives &mdash; sparse matrix&ndash;vector multiplication, the scan/reduction
+family, indexing and search, and approximate matching &mdash; once compactly optimised across the
+hardware spectrum, transfers across domains. <b>LightSpMV</b> distils the workhorse of graph analytics,
+CSR-based sparse matrix&ndash;vector multiplication on GPUs, into a general-purpose kernel that is reused
+from graph processing through GNN training (<i>IEEE ASAP</i> 2015, Best Paper Award;
+<i>J. Signal Processing Systems</i> 2018). <b>LightScan</b> distils the scan primitive on many-core
+processors; the SIMD-vectorised <b>Kendall's tau</b> computation distils a statistical primitive, and parallel <b>pairwise-correlation</b>
+computation extends to Intel Xeon Phi clusters (<i>SBAC-PAD</i> 2016). These are
+not tied to genomics or graphs &mdash; they are <i>the compaction of a primitive</i>, which is why a
+genome-alignment kernel and a GNN-aggregation kernel can share an ancestry. Even genome assembly,
+retrospectively, was a graph problem: <b>de Bruijn graph assembly</b> of large genomes was the first
+large-graph compute problem tackled (<i>BMC Bioinformatics</i> 2011), and <b>OpenGraphAssembly</b>
+recast the building blocks of graph-based assembly as modular, parallel, reusable
+components &mdash; an explicit act of distillation.</p>
+
+<h3 id="s35">3.5 Comprehension as the terminal operation (searchable &rarr; matchable &rarr; understandable)</h3>
+<p>A compact computation is not complete until it produces <i>understanding</i>. The pipeline always
+ends in a decision: an aligned read becomes a called variant (SNVSniffer, <i>IEEE BIBM</i> 2015 /
+<i>BMC Systems Biology</i> 2016); a traversed graph becomes a risk flag or a recommendation (FAF,
+<i>CIKM</i> 2023; GraphRPM, <i>ECML PKDD</i> 2024; path-based candidate matching, <i>SIGIR</i> 2021); a
+retrieved subgraph becomes an answer (subgraph retrieval enhanced by graph&ndash;text alignment,
+<i>ECML PKDD</i> 2024; M3GQA, <i>ACL</i> 2025; GTA-RAG, <i>EMNLP</i> 2026). Compact Computing therefore
+spans the full <i>index &rarr; retrieve &rarr; match &rarr; understand</i> stack; the comprehension layer
+is what makes the compaction &ldquo;intelligence&rdquo; rather than compression.</p>
+
+<h2 id="s4">4. Era I &mdash; Sequence Intelligence: the genome as a search engine</h2>
+<p>The first act, 2009&ndash;2017, reads in retrospect as building a search engine for the genome, and it
+is where the habits of Compact Computing were internalised.</p>
+
+<p><b>Compact index.</b> The CUSHAW line built a CUDA-compatible short-read aligner to large genomes on
+the Burrows&ndash;Wheeler transform (CUSHAW, <i>Bioinformatics</i> 2012) and extended to color-space and
+hybrid seeding (CUSHAW2-GPU, <i>IEEE Design &amp; Test</i> 2014; CUSHAW3, <i>PLOS ONE</i> 2014); the BWT
+and suffix array were constructed in parallel and space-efficient form for big genome data (<i>IEEE
+TCBB</i> 2016); <i>k</i>-mer indexing was generalised on distributed memory as Kmerind (<i>ACM-BCB</i>
+2016; <i>IEEE/ACM TCBB</i> 2019). <b>Approximate search.</b> Smith&ndash;Waterman protein database search was
+accelerated by coupling CPU and GPU SIMD (CUDASW++ 3.0, <i>BMC Bioinformatics</i> 2013), pushed onto
+Xeon Phi (SWAPHI-LS, <i>IEEE Cluster</i> 2014; SWAPHI, <i>IEEE ASAP</i> 2014), and hybridised across
+CPU+GPU for large-scale protein search (SWhybrid, <i>IEEE IPDPS</i> 2017); seed-verification was
+parallelised for ungapped alignment (PUNAS, <i>IEEE IPDPS</i> 2017). <b>Error correction and
+assembly</b> treated sequencing noise compactly: Musket, a multistage <i>k</i>-mer spectrum error
+corrector (<i>Bioinformatics</i> 2013), and DecGPU, distributed error correction on massively parallel
+GPUs using CUDA and MPI (<i>BMC Bioinformatics</i> 2011), with parallelised de Bruijn-graph assembly
+of large genomes (<i>BMC Bioinformatics</i> 2011) &mdash; the first large-graph compute problem in the
+record. <b>Understanding.</b> SNVSniffer integrated germline and somatic variant calling on Bayesian
+models (<i>BIBM</i> 2015 / <i>BMC Systems Biology</i> 2016); AFS performed metagenomic identification
+and quantification of species composition (<i>Bioinformatics</i> 2017). <b>Multiple alignment and
+motif discovery</b> &mdash; MSAProbs (<i>Bioinformatics</i> 2010) and CUDA-MEME (<i>Pattern Recognition
+Letters</i> 2010) &mdash; rounded out the toolkit; three of these tools were rated by NVIDIA as popular GPU-accelerated
+applications, and DecGPU was reported by GenomeWeb.</p>
+
+<p>The through-line is unmistakable: <i>domain problem &rarr; compact data structure &rarr; parallel
+algorithm &rarr; open-source tool</i> (CUSHAW book chapter, Springer 2017). Every step is an instance of
+the five principles on a single data modality, across a full hardware spectrum. The era handed to the
+next the conviction that compaction, not volumetric force, is the lever.</p>
+
+<h2 id="s5">5. Era II &mdash; Graph Intelligence: from sparsity to distributed learning</h2>
+<p>The second act began at Ant Group in 2017, when &ldquo;the database being searched&rdquo; became the graph
+&mdash; and the graph had in fact been present since the genome years. Two bridging works made the
+continuity explicit: de Bruijn graph assembly of large genomes (<i>BMC Bioinformatics</i> 2011) as the
+first large-graph compute problem, and <b>LightSpMV</b> (<i>IEEE ASAP</i> 2015, Best Paper Award;
+<i>J. Signal Processing Systems</i> 2018) which distilled CSR-based sparse matrix&ndash;vector
+multiplication on GPUs into the general-purpose kernel that vertex-centric graph processing would
+later build on. <b>OpenGraphAssembly</b> recast genome assembly's building blocks
+as modular, parallel, graph-native components &mdash; the conceptual hinge from sequence to graph.</p>
+
+<p><b>Distributed graph learning systems.</b> <a href="projects.html#t2">GeaLearning (alias GraphTheta)</a> was the first
+distributed, scalable graph learning system built on the vertex-centric graph processing paradigm; its
+landing on Zhima Credit in Alipay was listed in Ant Technology Memorabilia 2020, it is a core component
+of GeaGraph (TuGraph), recognised at the World Internet Conference 2021, and the team broke the OGB
+proteins world record in 2021. The system was supported by a general information-propagation algorithm,
+GIPA.</p>
+
+<p><b>Temporal and streaming graphs &mdash; the elastic representation.</b> TeGraph (<i>ICDE</i> 2022) and
+TeGraph+ (<i>IEEE TPDS</i> 2024) provided a general-purpose temporal graph computing engine with
+flexible edge modifications; TEA (<i>EuroSys</i> 2023) and TEA+ (<i>ACM TACO</i> 2024) gave a
+temporal-graph random-walk engine with hybrid storage; TeMatch (<i>ICDE</i> 2025) added fast temporal
+subgraph matching; T-GCN (<i>PACT</i> 2022) delivered a sampling-based streaming GNN with hybrid
+architecture; ATLAS (<i>ICPP</i> 2026) an asynchronous state-aware pipeline for temporal GNN training.</p>
+
+<p><b>Compiler and GPU co-design for GNNs.</b> G-Sparse (<i>PACT</i> 2023) gave compiler-driven
+acceleration for generalised sparse computation for GNNs on modern GPUs; the GPC poster (<i>EuroSys</i>
+2023) added compiler-based optimisation for sparse GNN computation; distributed GNN inference used
+just-in-time compilation for industry-scale graphs (<i>EuroSys</i> 2025 poster). The same
+hardware-aware discipline reached into query primitives at scale: Gem pushed scalable monotonic graph
+processing beyond billion-scale on a single machine (<i>SIGMOD</i> 2026); BCCE introduced a
+block-centric GPU co-design for real-time range-top-<i>k</i> query at scale (<i>HPDC</i> 2026); PGMiner
+attacked load-aware dynamic graph pattern matching on GPUs (<i>IEEE TKDE</i> 2026); DGS gave a
+GPU-based adaptive graph sampling framework (<i>ACM TACO</i> 2026); OTM delivered efficient
+<i>k</i>-order core maintenance in large-scale dynamic hypergraphs (<i>ACM TKDD</i> 2025); GraphGen and
+GraphGen+ provided distributed graph sample generation on industry-scale graphs (<i>EuroSys</i> 2024,
+2025).</p>
+
+<p><b>Graph learning methodology &mdash; compaction at the model level.</b> Community detection in
+heterogeneous information networks <i>without materialisation</i> (<i>SIGMOD</i> 2025) is the principle
+of refusing dense intermediates applied to algorithms themselves. The methodology thread spans
+heterogeneous graph neural architecture search (<i>ICDM</i> 2021), multi-aspect heterogeneous graph
+augmentation (<i>WWW</i> 2023), graph triple attention networks from a decoupled perspective
+(<i>KDD</i> 2025), and a line on text-attributed graphs: robustness, trade-offs, and defences
+(<i>ICLR</i> 2026), the GDGB benchmark for generative dynamic text-attributed graph learning
+(<i>ICLR</i> 2026), taxonomy-informed representation learning in text-rich networks (<i>KDD</i> 2026), a
+comprehensive benchmark for attributed graph clustering bridging academia and industry (<i>NeurIPS</i>
+2026), tabular foundation models as strong graph anomaly detectors (<i>WWW</i> 2026), and explorations
+of large language models as predictors in dynamic text-attributed graphs. The Graph+AI
+white paper (2024) surveyed the confluence that this methodology now navigates.</p>
+
+<p>In this era the three components are all visibly load-bearing: the hardware spectrum (distributed
+clusters, GPUs, single-machine multicore), the elastic representation (temporal, streaming, sampled,
+hypergraph), and the service-oriented systems (GeaLearning, TeGraph, TEA) that ship the compaction to
+production.</p>
+
+<h2 id="s6">6. Era III &mdash; Foundation Models: compact representations that transfer</h2>
+<p>The third act turns compact representations into a <i>reusable</i> object: the foundation model,
+pretrained once and transferred across domains, scenarios, and tasks. <b>GraphCLIP</b> (<i>WWW</i> 2025)
+brings the pretrain-then-transfer playbook to text-attributed graphs, making graph foundation models
+transferable across domains. The same idea, applied to users, yields the <b>FIND/FOUND</b>
+series: the first transferable and forecastable user-targeting foundation model (<i>WWW</i> 2025 industry
+track), <b>FOUNDv2</b>'s unified user <i>quantized tokenizers</i> for user representation (<i>KDD</i>
+2026, oral), and <b>Query-as-Anchor</b>'s scenario-adaptive user representation via an LLM
+(<i>KDD</i> 2026). FOUNDv2 is principle 3.2 (compressive representation) at the granularity of an entire
+user population: a user is compacted into quantised tokens that transfer.</p>
+
+<p>Foundation models are, in the language of Compact Computing, the <i>most compact representation
+yet</i> &mdash; a single pretrained object that compresses a whole graph or user population and is reused
+cheaply thereafter. They are also where the graph and language eras begin to fuse, since
+text-attributed graphs (GraphCLIP) and LLM-driven user anchors (Query-as-Anchor) point forward to
+Era IV.</p>
+
+<p>Read across these two eras, large models are where compressed, sparse, and elastic representations
+become unmistakable, and where the paradigm shows it did not change for the new era &mdash; the era
+caught up with it. A foundation model <i>compresses</i> a whole graph or user population into a single
+reusable object &mdash; a pretrained graph encoder in GraphCLIP, quantised user tokens in FOUNDv2
+&mdash; that <i>transfers elastically</i> across domains, scenarios, and tasks. An LLM's attention is
+<i>compressed</i> by reusing the KV cache instead of recomputing it (Decoupled Attention Fusion) and by
+quantising the tokens it keeps; it is <i>sparse</i> because genuine long-context access touches only a
+small fraction of the sequence &mdash; the cognitive transition layers CutAttn identifies &mdash; and
+because retrieval attends to a sparse set of subgraphs rather than the whole corpus (Graph RAG); and it
+is <i>elastic</i> because the cache and the speculative tree grow, are reused, and are pruned at serving
+time as the conversation evolves (Bole). Vision&ndash;language models carry the same three modes across
+modalities: the cross-modal token stream is <i>compressed</i> by sharing the language backbone's cache
+across visual and textual tokens, <i>sparse</i> because a multimodal batch is reached only through a few
+salient patches or frames plus retrieved visual&ndash;graph evidence rather than the full pixel mass, and
+<i>elastic</i> because the multimodal context grows with every added modality or turn &mdash; which is
+how vision-guided graph reasoning with an LLM, as in Foresight-on-Graph, keeps retrieval tractable. Across foundation models, LLMs, and VLMs, the same compressed, sparse, and elastic
+representations that served the genome and the graph now shape the transformer's context and the
+multimodal token stream &mdash; large models are the newest shape Compact Computing takes, not an
+exception to it.</p>
+
+<h2 id="s7">7. Era IV &mdash; Retrieval-augmented reasoning, agents, and efficient LLM serving</h2>
+<p>When the data became language and knowledge, the index&rarr;retrieve&rarr;match&rarr;understand
+through-line re-emerged as RAG. The anchor of the era is the globally recognised survey
+<b>&ldquo;Graph Retrieval-Augmented Generation: A Survey&rdquo;</b> (<i>ACM TOIS</i> 2026,
+<b>ESI Highly Cited Paper</b>), which positions graph-structured retrieval as a first-class component
+of RAG. The thread extends it in both directions.</p>
+
+<p><b>Reasoning quality.</b> GTA-RAG augments multi-turn retrieval-augmented reasoning with
+graph-trajectory-augmented reinforcement learning (<i>EMNLP</i> 2026); M3GQA benchmarks multi-entity,
+multi-hop, multi-setting graph question answering (<i>ACL</i> 2025); subgraph retrieval is enhanced by
+graph&ndash;text alignment for commonsense QA (<i>ECML PKDD</i> 2024); Foresight-on-Graph brings
+vision-guided knowledge-graph reasoning with LLMs (<i>EMNLP</i> 2026); scalable and accurate graph
+reasoning is achieved with LLM-based multi-agents (<i>AAAI</i> 2026 Workshop); and a multi-agent
+framework scales graph chain-of-thought reasoning with efficient LLM serving.</p>
+
+<p><b>Serving efficiency &mdash; Compact Computing applied to LLMs.</b> This is where the paradigm's
+machinery visibly crosses into the foundation-model stack: AutoRAGTuner provides a declarative
+framework for automatic optimisation of RAG pipelines (<i>EuroSys</i> 2026 poster); Decoupled Attention
+Fusion accelerates RAG with efficient <b>KV-cache reuse</b> (<i>EuroSys</i> 2026 poster); CutAttn
+discovers cognitive transition layers for efficient <b>long-context prefilling</b> (<i>NeurIPS</i>
+2026); and Bole provides efficient <b>tree speculation for hybrid-attention language models</b>. KV-cache reuse and tree speculation are principle 3.2 (compressive/elastic
+representation) applied to attention: the dense recomputation is refused, and the already-computed
+structure is reused &mdash; exactly the move the BWT made for strings and LightSpMV made for graphs, now
+made for transformers.</p>
+
+<p>Era IV closes the loop: the same refusal of materialisation that compressed the genome and the graph
+now compresses the transformer's context, and the same full-stack co-design &mdash; from representation
+(cache, tokens) through kernel (prefilling, speculation) to system (RAG pipeline optimisation)
+&mdash; governs the LLM serving stack.</p>
+
+<h2 id="s8">8. Cross-disciplinary reach</h2>
+<p>The four data eras are one axis on which Compact Computing generalises. The record shows a second:
+the same principles hold when the subject itself changes &mdash; from sequence and graph to materials,
+gradient states, and bare compute primitives &mdash; and compaction survives the change:</p>
+<ul>
+<li><b>Materials science.</b> PyCAC, the concurrent atomistic&ndash;continuum simulation environment with
+a Python scripting interface (<i>J. Materials Research</i> 2018; <i>TMS</i> 2018), couples atomistic
+and continuum scales &mdash; a problem whose bottleneck is, again, the compaction of a multi-scale
+representation onto heterogeneous compute. The instance proves the principles transfer outside any
+single data type.</li>
+<li><b>Privacy-preserving learning.</b> DiVerFed, distribution-aware vertical federated learning for
+missing information (<i>KSEM</i> 2024, Best Student Paper), and &ldquo;Integer is Enough,&rdquo; on rounding
+in vertical federated learning (<i>AAAI</i> 2024), compact the communication and the numeric
+representation of federated gradients &mdash; principle 3.2 applied to a distributed-privacy setting.</li>
+<li><b>Optimization methodology.</b> AGD, an auto-switchable optimizer using stepwise gradient
+difference for preconditioning (<i>NeurIPS</i> 2023), and weighted sharpness-aware minimization
+(<i>KDD</i> 2023), are compactness moves in <i>the optimizer state</i> (reusing gradient differences,
+regularising sharpness) &mdash; proving the principles apply to the learning algorithm itself, not only
+its data.</li>
+<li><b>Hardware-aware deep learning.</b> Woodpecker-DL accelerates deep neural networks via
+hardware-aware multifaceted optimisations &mdash; a direct ancestor of the
+GPU/compiler co-design later applied to GNNs and LLMs.</li>
+<li><b>Parallel primitives.</b> LightScan (scan on many-core processors), SIMD-vectorised
+Kendall's tau, and parallel pairwise correlation on Xeon Phi clusters (<i>SBAC-PAD</i>
+2016) are pure distillations (principle 3.4) &mdash; compaction at the level of the primitive, unbound to
+any domain.</li>
+</ul>
+<p>In every instance compaction survives the change of subject &mdash; whether the compacted object is a
+multi-scale representation, a federated gradient, an optimizer state, or a bare primitive. Compact
+Computing generalises, then, on two axes at once: across the data eras, and across the disciplines that
+data happens to live in. That is what makes it a <i>cross-disciplinary paradigm</i>, not a method
+stitched onto one field.</p>
+
+<h2 id="s9">9. Compact Computing as a unifying paradigm for big data and AI</h2>
+<p>Two forces define the age: data outgrows the hardware that stores and moves it, and AI, to matter,
+must cross from research to industry at scale. Compact Computing meets both with one lever, because
+underneath them is the same cost &mdash; materialising data the algorithm does not need.</p>
+
+<p>For <b>big data</b>, the lever is to keep the data in its most compact faithful form and let the
+hardware chase the structure, not the volume. BWT compresses the genome; CSR compresses the graph;
+KV-cache reuse compresses attention; quantized tokenizers compress the user. Each compaction is a
+scaling law in miniature, decoupling useful work from sheer volume.</p>
+
+<p>For <b>AI</b>, the same lever is what makes a model <i>servable</i>, and servability is a compaction
+problem at the system level. The RAG serving stack &mdash; declarative optimisation, cache reuse,
+long-context prefilling, speculative decoding &mdash; is the algorithm&ndash;system co-design of Era I
+reappearing at the transformer frontier. What held for a Smith&ndash;Waterman kernel on a GPU in 2013
+holds for an attention kernel in 2026: the frontier of intelligence is set by the discipline that
+compacts it onto the system that runs it.</p>
+
+<p>In this sense Compact Computing <i>is</i> the bridge from big data to artificial intelligence: the
+invariant that makes large data tractable as models, and models tractable as services. The four eras
+are not a career trajectory; they are four instances of one invariant, which is why the work can move
+across all of them without changing its core.</p>
+
+<h2 id="s10">10. Scaling Data Intelligence: the scope of impact and application value</h2>
+<p>If Compact Computing is the paradigm, <b>Scaling Data Intelligence</b> names the reach it has
+achieved. The phrase captures the persistent goal behind the work &mdash; making large-scale data
+<i>searchable, matchable, and understandable</i> &mdash; at every scale the data reaches. Three
+properties show why that reach is broad and deep enough to deserve a single name rather than a
+list of separate projects.</p>
+
+<p><b>It spans data eras without changing its core.</b> Sequence, graph, foundation-model, and
+RAG/LLM-serving data are all handled by the same invariant; the mission moves across them without
+restructuring. Compact Computing is the <i>physics</i> that keeps the through-line intact as the data
+changes underneath it.</p>
+
+<p><b>It spans disciplines.</b> The same compactness moves recur in bioinformatics, fintech and
+trust intelligence, materials simulation, privacy-preserving learning, optimization, and
+large-model systems. &ldquo;Scaling Data Intelligence&rdquo; therefore names an impact that is not confined to
+one field &mdash; genome, graph, LLM, and cross-disciplinary work are different instantiations of the same
+compaction-driven scaling, with no implicit hierarchy among them.</p>
+
+<p><b>It is grounded in deployed impact, not only publications.</b> The survey &ldquo;Graph
+Retrieval-Augmented Generation&rdquo; is an ESI Highly Cited Paper; GeaLearning/TuGraph is recognised at
+the World Internet Conference and broke the OGB proteins world record; the work spans
+NeurIPS/ICLR/KDD/SIGMOD/WWW/ACL/EMNLP/EuroSys; and the algorithms and systems run behind a
+hundred-million-customer fintech platform. The application value is concrete: compaction that
+operates at industrial scale, not only in the lab.</p>
+
+<p>Taken together, Compact Computing's impact is large enough &mdash; across data modalities,
+disciplines, hardware eras, and the research-to-industry gap &mdash; that <b>Scaling Data
+Intelligence</b> is the right name for what it does, and the right ambition to build on from here:
+<i>the scalability of intelligence is a compaction problem</i>, and the work is to keep solving it
+across whatever data comes next.</p>
+
+<h2 id="s11">11. Outlook and roadmap</h2>
+<p>The paradigm points to four forward directions, each already seeded in the record:</p>
+<ol>
+<li><b>Compaction as a science of scaling laws.</b> Treat each compact representation (BWT, CSR, sparse
+GNN kernel, KV-cache, quantized tokens) as an object whose scaling behaviour can be characterised and
+predicted &mdash; an attempt to state, for compaction, what scaling laws state for parameters and
+compute.</li>
+<li><b>Elastic, dynamic, streaming representations as the default.</b> The graph system stack
+(TeGraph, TEA, ATLAS, OTM) and the streaming-GNN line point toward a world where static materialisation
+is never assumed; the same default should govern LLM context and user/tokeniser representations.</li>
+<li><b>Algorithm&ndash;system co-design for the foundation-model serving stack.</b> AutoRAGTuner,
+Decoupled Attention Fusion, CutAttn, and Bole are early instances; the agenda is a unified serving
+compiler that treats cache reuse, speculative execution, and retrieval as first-class co-design
+targets, in the lineage of G-Sparse and Woodpecker-DL.</li>
+<li><b>Cross-disciplinary compaction.</b> Materials (PyCAC), privacy (DiVerFed), and optimization
+(AGD) show the principles holding across subjects beyond the four eras; the agenda is to apply them deliberately to scientific and industrial
+domains where data growth has outpaced compaction effort &mdash; quantitative finance, (bio)medicine,
+climate and earth observation, and the simulation sciences.</li>
+</ol>
+<p>The through-line of the work &mdash; searchable, matchable, understandable &mdash; is also the
+through-line of the field. Compact Computing is the discipline that has carried it across four eras;
+Scaling Data Intelligence is the name for carrying it forward.</p>
+
+<hr>
+
+<h2>References <span style="font-weight:normal;font-size:10pt">(selected, formally published work)</span></h2>
+
+<h3>Genome / Sequence Intelligence <span class="tag t1">Era I</span></h3>
+<ol start="1">
+<li><u>Yongchao Liu</u>, B. Schmidt, D. L. Maskell. &ldquo;CUSHAW: a CUDA compatible short read aligner to large genomes based on the Burrows&ndash;Wheeler transform.&rdquo; <i>Bioinformatics</i>, 2012.</li>
+<li><u>Yongchao Liu</u>, T. Hankeln, B. Schmidt. &ldquo;Parallel and space-efficient construction of Burrows&ndash;Wheeler transform and suffix array for big genome data.&rdquo; <i>IEEE/ACM TCBB</i>, 2016.</li>
+<li><u>Yongchao Liu</u>, A. Wirawan, B. Schmidt. &ldquo;CUDASW++ 3.0: accelerating Smith&ndash;Waterman protein database search by coupling CPU and GPU SIMD instructions.&rdquo; <i>BMC Bioinformatics</i>, 2013.</li>
+<li><u>Yongchao Liu</u>, B. Schmidt, D. L. Maskell. &ldquo;Parallelized short read assembly of large genomes using de Bruijn graphs.&rdquo; <i>BMC Bioinformatics</i>, 2011. <i>(first large-graph compute problem)</i></li>
+<li><u>Yongchao Liu</u>, B. Schmidt, D. L. Maskell. &ldquo;DecGPU: distributed error correction on massively parallel graphics processing units using CUDA and MPI.&rdquo; <i>BMC Bioinformatics</i>, 2011.</li>
+<li><u>Yongchao Liu</u>, J. Schr&ouml;der, B. Schmidt. &ldquo;Musket: a multistage <i>k</i>-mer spectrum based error corrector for Illumina sequence data.&rdquo; <i>Bioinformatics</i>, 2013.</li>
+<li><u>Yongchao Liu</u>, M. Loewer, S. Aluru, B. Schmidt. &ldquo;SNVSniffer: an integrated caller for germline and somatic SNVs based on Bayesian models.&rdquo; <i>IEEE BIBM</i> 2015 / <i>BMC Systems Biology</i>, 2016.</li>
+<li><u>Yongchao Liu</u>, T. Tran, F. Lauenroth, B. Schmidt. &ldquo;SWAPHI-LS: Smith&ndash;Waterman algorithm on Xeon Phi coprocessors for long DNA sequences.&rdquo; <i>IEEE Cluster</i> 2014 (Best Paper Award Recommendation).</li>
+<li>H. Lan, W. Liu, <u>Yongchao Liu</u>, B. Schmidt. &ldquo;SWhybrid: a hybrid parallel framework for large-scale protein sequence database search.&rdquo; <i>IEEE IPDPS</i> 2017.</li>
+<li>Y. Chan, K. Xu, H. Lan, W. Liu, <u>Yongchao Liu</u>, B. Schmidt. &ldquo;PUNAS: a parallel ungapped-alignment-featured seed verification for next-generation sequencing read alignment.&rdquo; <i>IEEE IPDPS</i> 2017.</li>
+<li>T. C. Pan, P. Flick, C. Jain, <u>Yongchao Liu</u>, S. Aluru. &ldquo;Kmerind: a flexible parallel library for <i>k</i>-mer indexing of biological sequences on distributed memory systems.&rdquo; <i>ACM-BCB</i> 2016 / <i>IEEE/ACM TCBB</i>, 2019.</li>
+<li><u>Yongchao Liu</u>, F. Ripp, et&nbsp;al. &ldquo;AFS: identification and quantification of species composition by metagenomic sequencing.&rdquo; <i>Bioinformatics</i>, 2017.</li>
+<li><u>Yongchao Liu</u>, B. Schmidt, D. L. Maskell. &ldquo;MSAProbs: multiple sequence alignment based on pair hidden Markov models and partition function posterior probabilities.&rdquo; <i>Bioinformatics</i>, 2010.</li>
+<li><u>Yongchao Liu</u>, B. Schmidt, W. Liu, D. L. Maskell. &ldquo;CUDA-MEME: accelerating motif discovery in biological sequences using CUDA-enabled graphics processing units.&rdquo; <i>Pattern Recognition Letters</i>, 2010.</li>
+<li><u>Yongchao Liu</u>, B. Schmidt. &ldquo;CUSHAW2-GPU: empowering faster gapped short-read alignment using GPU computing.&rdquo; <i>IEEE Design &amp; Test</i>, 2014.</li>
+<li><u>Yongchao Liu</u>, B. Popp, B. Schmidt. &ldquo;CUSHAW3: sensitive and accurate base-space and color-space short-read alignment with hybrid seeding.&rdquo; <i>PLOS ONE</i>, 2014.</li>
+<li><u>Yongchao Liu</u>, B. Schmidt. &ldquo;CUSHAW Suite: parallel and efficient algorithms for NGS read alignment.&rdquo; <i>Book chapter, Springer</i>, 2017.</li>
+</ol>
+
+<h3>Graph primitives, systems &amp; learning <span class="tag t2">Era II</span></h3>
+<ol start="18">
+<li><u>Yongchao Liu</u>, B. Schmidt. &ldquo;LightSpMV: faster CSR-based sparse matrix&ndash;vector multiplication on CUDA-enabled GPUs.&rdquo; <i>IEEE ASAP</i> 2015 (<b>Best Paper Award</b>); journal version <i>J. Signal Processing Systems</i>, 2018.</li>
+<li>C. Huan, H. Liu, M. Liu, <u>Yongchao Liu</u>, et&nbsp;al. &ldquo;TeGraph: a novel general-purpose temporal graph computing engine.&rdquo; <i>IEEE ICDE</i> 2022.</li>
+<li>C. Huan, <u>Yongchao Liu</u>, H. Zhang, et&nbsp;al. &ldquo;TeGraph+: scalable temporal graph processing enabling flexible edge modifications.&rdquo; <i>IEEE TPDS</i>, 2024.</li>
+<li>C. Huan, S. L. Song, S. Pandey, H. Liu, <u>Yongchao Liu</u>, et&nbsp;al. &ldquo;TEA: a general-purpose temporal graph random-walk engine.&rdquo; <i>EuroSys</i> 2023.</li>
+<li>C. Huan, <u>Yongchao Liu</u>, H. Zhang, et&nbsp;al. &ldquo;TEA+: a novel temporal graph random-walk engine with hybrid storage architecture.&rdquo; <i>ACM TACO</i>, 2024.</li>
+<li>C. Huan, H. Zhang, <u>Yongchao Liu</u>, et&nbsp;al. &ldquo;TeMatch: a fast temporal subgraph matching framework.&rdquo; <i>IEEE ICDE</i> 2025.</li>
+<li>C. Huan, S. L. Song, <u>Yongchao Liu</u>, et&nbsp;al. &ldquo;T-GCN: a sampling based streaming graph neural network system with hybrid architecture.&rdquo; <i>PACT</i> 2022.</li>
+<li>Y. Jin, C. Huan, H. Zhang, <u>Yongchao Liu</u>, et&nbsp;al. &ldquo;G-Sparse: compiler-driven acceleration for generalized sparse computation for graph neural networks on modern GPUs.&rdquo; <i>PACT</i> 2023.</li>
+<li>Y. Jiang, <u>Yongchao Liu</u>, K. Jia, H. Zhang. &ldquo;ATLAS: enabling an asynchronous state-aware pipeline for efficient training of temporal graph neural networks.&rdquo; <i>ICPP</i> 2026.</li>
+<li>C. Huan, Z. Yang, H. Yang, S. Ma, R. Gu, F. Xi, <u>Yongchao Liu</u>, G. Chen, C. Tian. &ldquo;Gem: scalable monotonic graph processing beyond billion-scale on a single machine.&rdquo; <i>SIGMOD</i> 2026.</li>
+<li>C. Huan, Z. Meng, Z. Yang, <u>Yongchao Liu</u>, et&nbsp;al. &ldquo;BCCE: block-centric GPU co-design for real-time range-top-<i>k</i> query at scale.&rdquo; <i>HPDC</i> 2026.</li>
+<li>Y. Zhang, Y. Guo, F. Mao, <u>Yongchao Liu</u>, et&nbsp;al. &ldquo;PGMiner: a load-aware dynamic graph pattern matching approach on GPUs.&rdquo; <i>IEEE TKDE</i>, 2026.</li>
+<li>J. Mei, S. Sun, C. Li, J. Wang, X. Hou, M. Guo, <u>Yongchao Liu</u>, C. Hong. &ldquo;DGS: a GPU-based adaptive graph sampling framework.&rdquo; <i>ACM TACO</i>, 2026.</li>
+<li>X. Fang, C. Huan, H. Zhang, <u>Yongchao Liu</u>, S. Ma, Y. Wu, C. Zhao. &ldquo;OTM: efficient K-order-based core maintenance in large-scale dynamic hypergraphs.&rdquo; <i>ACM TKDD</i>, 2025.</li>
+<li>J. Jiang, S. Yao, Y. Chen, B. He, Y. Niu, Y. Li, S. Sun, <u>Yongchao Liu</u>. &ldquo;Community detection in heterogeneous information networks without materialization.&rdquo; <i>SIGMOD</i> 2025.</li>
+<li>Y. Zhou, Y. Cao, <u>Yongchao Liu</u>, et&nbsp;al. &ldquo;Multi-aspect heterogeneous graph augmentation.&rdquo; <i>WWW</i> 2023.</li>
+<li>Y. Gao, P. Zhang, Z. Li, C. Zhou, H. Yang, <u>Yongchao Liu</u>, Y. Hu. &ldquo;Heterogeneous graph neural architecture search.&rdquo; <i>IEEE ICDM</i> 2021.</li>
+<li>X. Wang, Y. Zhu, H. Shi, <u>Yongchao Liu</u>, C. Hong. &ldquo;Graph triple attention networks: a decoupled perspective.&rdquo; <i>KDD</i> 2025.</li>
+<li>R. Lei, L. Yi, M. He, P. Qiu, Z. Wei, <u>Yongchao Liu</u>, C. Hong. &ldquo;Robustness in text-attributed graph learning: insights, trade-offs, and new defenses.&rdquo; <i>ICLR</i> 2026.</li>
+<li>J. Peng, J. Ji, R. Lei, Z. Wei, <u>Yongchao Liu</u>, C. Hong. &ldquo;GDGB: a benchmark for generative dynamic text-attributed graph learning.&rdquo; <i>ICLR</i> 2026.</li>
+<li>Yunhui Liu, T. He, <u>Yongchao Liu</u>, C. Yi, H. Jin, C. Hong. &ldquo;Tabular foundation models are strong graph anomaly detectors.&rdquo; <i>WWW</i> 2026.</li>
+<li>Yunhui Liu, <u>Yongchao Liu</u>, Y. Chen, C. Hong, T. Zheng, T. He. &ldquo;Learning hierarchical knowledge in text-rich networks with taxonomy-informed representation learning.&rdquo; <i>KDD</i> 2026.</li>
+<li>Yunhui Liu, P. Qiu, Y. Xing, P. Du, <u>Yongchao Liu</u>, C. Hong, J. Zheng, T. Zheng, T. He. &ldquo;Bridging Academia and Industry: a comprehensive benchmark for attributed graph clustering.&rdquo; <i>NeurIPS</i> 2026.</li>
+<li>Ant Group et&nbsp;al. &ldquo;Graph+AI: 大模型浪潮下的图计算.&rdquo; White Paper, 2024.</li>
+</ol>
+
+<h3>Foundation models <span class="tag t3">Era III</span></h3>
+<ol start="42">
+<li>Y. Zhu, H. Shi, X. Wang, <u>Yongchao Liu</u>, Y. Wang, B. Peng, C. Hong, S. Tang. &ldquo;GraphCLIP: enhancing transferability in graph foundation models for text-attributed graphs.&rdquo; <i>WWW</i> 2025.</li>
+<li>B. Dou, B. Wang, Y. Zhu, X. Lin, Y. Xu, X. Huang, Y. Chen, <u>Yongchao Liu</u>, et&nbsp;al. &ldquo;Transferable and forecastable user targeting foundation model.&rdquo; <i>WWW</i> 2025 (industry).</li>
+<li>C. He, Y. Chen, B. Dou, W. Huang, B. Wang, <u>Yongchao Liu</u>, et&nbsp;al. &ldquo;FOUNDv2: learning unified user quantized tokenizers for user representation.&rdquo; <i>KDD</i> 2026 (oral).</li>
+<li>J. Yuan, Y. Xu, J. Wen, B. Wang, Z. Gao, X. Lin, <u>Yongchao Liu</u>, et&nbsp;al. &ldquo;Query as Anchor: scenario-adaptive user representation via large language model.&rdquo; <i>KDD</i> 2026.</li>
+</ol>
+
+<h3>Users &amp; trust intelligence <span class="tag t4">cross-era</span></h3>
+<ol start="46">
+<li>H. Li, Z. Chen, C. Li, R. Xiao, H. Deng, P. Zhang, <u>Yongchao Liu</u>, H. Tang. &ldquo;Path-based deep network for candidate item matching in recommenders.&rdquo; <i>SIGIR</i> 2021.</li>
+<li>Y. Yue, <u>Yongchao Liu</u>, S. Tong, M. Li, Z. Zhang, C. Wen, H. Bao, L. Gu, J. Gu, Y. Mu. &ldquo;Adaptive optimizers with sparse group lasso for neural networks in CTR prediction.&rdquo; <i>ECML-PKDD</i> 2021.</li>
+<li>Y. Luo, G. Wang, <u>Yongchao Liu</u>, J. Yue, W. Cheng, B. Fei. &ldquo;FAF: a risk detection framework on industry-scale graphs.&rdquo; <i>CIKM</i> 2023.</li>
+<li>S. Tian, X. Zeng, Y. Hu, B. Wang, <u>Yongchao Liu</u>, et&nbsp;al. &ldquo;GraphRPM: risk pattern mining on industrial large attributed graphs.&rdquo; <i>ECML PKDD</i> 2024.</li>
+<li>X. Zhu, Z. Fu, Z. Pan, J. Jiang, C. Hong, <u>Yongchao Liu</u>, Y. Fang, W. Chen, C. He. &ldquo;Taking the Pulse of Financial Activities with Online Graph Processing.&rdquo; <i>ACM SIGOPS OSR</i>, 2021.</li>
+<li>Ant Group et&nbsp;al. &ldquo;图风控行业技术报告.&rdquo; Industry Technical Report, 2023.</li>
+</ol>
+
+<h3>Retrieval-augmented reasoning, agents &amp; efficient LLM serving <span class="tag t5">Era IV</span></h3>
+<ol start="52">
+<li>B. Peng, Y. Zhu, <u>Yongchao Liu</u>, X. Bo, H. Shi, C. Hong, Y. Zhang, S. Tang. &ldquo;Graph retrieval-augmented generation: a survey.&rdquo; <i>ACM TOIS</i>, 2026 (<b>ESI Highly Cited Paper</b>).</li>
+<li>J. Chen, <u>Yongchao Liu</u>, P. Qiu, J. Zheng, J. Zhang, Y. Zeng, Q. Zhang, X. Luo, Z. Qiao. &ldquo;GTA-RAG: graph-trajectory-augmented reinforcement learning for multi-turn retrieval-augmented reasoning.&rdquo; <i>EMNLP</i> 2026.</li>
+<li>Y. Hu, R. Lei, X. Huang, Z. Wei, <u>Yongchao Liu</u>. &ldquo;Scalable and accurate graph reasoning with LLM-based multi-agents.&rdquo; <i>AAAI</i> 2026 Workshop (WMAC).</li>
+<li>Y. Hu, R. Lei, Z. Wei, <u>Yongchao Liu</u>, C. Hong, J. Zheng, J. Zhang. &ldquo;Foresight-on-Graph: vision-guided knowledge graph reasoning with large language models.&rdquo; <i>EMNLP</i> 2026.</li>
+<li>B. Peng, <u>Yongchao Liu</u>, X. Bo, J. Guo, Y. Zhu, X. Fan, C. Hong, Y. Zhang. &ldquo;M3GQA: a multi-entity multi-hop multi-setting graph question answering benchmark.&rdquo; <i>ACL</i> 2025.</li>
+<li>B. Peng, <u>Yongchao Liu</u>, X. Bo, S. Tian, B. Wang, C. Hong, Y. Zhang. &ldquo;Subgraph retrieval enhanced by graph-text alignment for commonsense question answering.&rdquo; <i>ECML PKDD</i> 2024.</li>
+<li>X. Zeng, <u>Yongchao Liu</u>, Y. Luo, J. Zheng. &ldquo;AutoRAGTuner: a declarative framework for automatic optimization of RAG pipelines.&rdquo; <i>EuroSys</i> 2026 (poster).</li>
+<li>X. Wu, <u>Yongchao Liu</u>, W. Qin, C. Hong. &ldquo;Decoupled attention fusion: accelerating RAG with efficient KV cache reuse.&rdquo; <i>EuroSys</i> 2026 (poster).</li>
+<li>W. Liu, X. Wu, <u>Yongchao Liu</u>, H. Zhang, J. Zheng, R. Zhou. &ldquo;CutAttn: discovering cognitive transition layers for efficient long-context prefilling.&rdquo; <i>NeurIPS</i> 2026.</li>
+</ol>
+
+<h3>Cross-disciplinary explorations</h3>
+<ol start="61">
+<li>Y. Yue, Z. Ye, J. Jiang, <u>Yongchao Liu</u>, K. Zhang. &ldquo;AGD: an auto-switchable optimizer using stepwise gradient difference for preconditioning matrix.&rdquo; <i>NeurIPS</i> 2023.</li>
+<li>Y. Yue, J. Jiang, Z. Ye, G. Ning, <u>Yongchao Liu</u>, K. Zhang. &ldquo;Sharpness-aware minimization revisited: weighted sharpness as a regularization term.&rdquo; <i>KDD</i> 2023.</li>
+<li>P. Qiu, Y. Pu, <u>Yongchao Liu</u>, W. Liu, Y. Yue, X. Zhu, L. Li, J. Li, S. Ji. &ldquo;Integer is Enough: when vertical federated learning meets rounding.&rdquo; <i>AAAI</i> 2024.</li>
+<li>P. Qiu, <u>Yongchao Liu</u>, X. Zeng. &ldquo;DiVerFed: distribution-aware vertical federated learning for missing information.&rdquo; <i>KSEM</i> 2024 (Best Student Paper).</li>
+<li><u>Yongchao Liu</u>, T. Pan, S. Aluru. &ldquo;Parallel pairwise correlation computation on Intel Xeon Phi clusters.&rdquo; <i>SBAC-PAD</i> 2016.</li>
+<li>S. Xu, T. Payne, H. Chen, <u>Yongchao Liu</u>, L. Xiong, Y. Chen, D. McDowell. &ldquo;PyCAC: the concurrent atomistic-continuum simulator with a Python scripting interface.&rdquo; <i>J. Materials Research</i>, 2018; <i>TMS</i> 2018.</li>
+</ol>
+
+<hr>
+
+<p style="font-size:9.5pt;color:#6b7684">This report is a self-contained position document. The full publication list, with every entry tagged
+by research thread (T1&ndash;T5), is maintained on the <a href="publications.html">Publications</a> page;
+the per-thread narratives live on the <a href="projects.html">Research</a> page.</p>
+
+</div><!--main-->
+</body>
+</html>
