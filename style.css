@@ -344,7 +344,8 @@ h2.t5 { color: var(--t5); border-color: var(--t5); }
 
 /* Footer motto + logo strip — desktop: motto left / logos right */
 .footer-strip {
-  margin: 22px 0 10px;
+  margin: 22px auto 10px;
+  max-width: 1000px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -358,7 +359,7 @@ h2.t5 { color: var(--t5); border-color: var(--t5); }
   font-size: 11pt;
   text-align: left;
   margin: 0;
-  max-width: 26em;
+  max-width: 22em;
 }
 .logo-strip {
   list-style: none;
