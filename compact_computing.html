@@ -11,10 +11,11 @@
 <meta name="description" content="Compact Computing (凝练计算): a technical report on a cross-disciplinary paradigm for Scaling Data Intelligence — making large-scale data searchable, matchable, and understandable across sequences, graphs, foundation models, and retrieval-augmented reasoning.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" href="research-visuals.css">
 <title>Compact Computing (凝练计算) &mdash; A Paradigm for Scaling Data Intelligence</title>
 </head>
 
-<body>
+<body class="visual-page compact-page">
 <!--header-->
 <div id="header"></div>
 
@@ -57,6 +58,47 @@
 <h1>Compact Computing (凝练计算)</h1>
 <h3>A Cross-Disciplinary Paradigm for Scaling Data Intelligence</h3>
 <hr>
+
+<!-- Visual reading guide; all original report sections remain below. -->
+<section class="method-overview visual-panel" aria-labelledby="method-guide-title">
+  <div class="method-summary">
+    <p class="visual-eyebrow">The methodology behind the research</p>
+    <h2 id="method-guide-title">Three components.<br>One co-design discipline.</h2>
+    <p>Keep data in a compact, structure-preserving form. Design the algorithm and the architecture together, and carry that design through to a scalable service.</p>
+    <ul class="method-key">
+      <li><strong>Representations</strong><span>Compressed, sparse, and elastic</span></li>
+      <li><strong>Architectures</strong><span>Tightly coupled hardware and systems</span></li>
+      <li><strong>Algorithms</strong><span>Efficient, scalable, service-oriented</span></li>
+    </ul>
+    <a class="visual-text-link" href="projects.html">Explore the five research threads <span aria-hidden="true">→</span></a>
+  </div>
+  <figure class="research-figure method-figure">
+    <img src="assets/research/compact-method.svg" width="640" height="430" decoding="async"
+         alt="Three components collaborate through co-design: compressed, sparse and elastic data representations; tightly coupled architectures; and efficient, scalable, service-oriented algorithms. All connections are bidirectional, not a sequential pipeline.">
+    <figcaption>Conceptual overview · Components are co-designed, not sequential stages.</figcaption>
+  </figure>
+</section>
+
+<nav class="report-contents visual-panel" id="report-contents" aria-labelledby="contents-title">
+  <p class="visual-eyebrow">Read the technical report</p>
+  <h2 id="contents-title">Contents</h2>
+  <a class="abstract-link" href="#abstract">Abstract</a>
+  <ol>
+    <li><a href="#s1">Introduction</a></li>
+    <li><a href="#s2">What Compact Computing is</a></li>
+    <li><a href="#s3">First principles</a></li>
+    <li><a href="#s4">Era I · Sequence Intelligence</a></li>
+    <li><a href="#s5">Era II · Graph Intelligence</a></li>
+    <li><a href="#s6">Era III · Foundation Models</a></li>
+    <li><a href="#s7">Era IV · RAG, agents &amp; serving</a></li>
+    <li><a href="#s8">Cross-disciplinary reach</a></li>
+    <li><a href="#s9">A unifying paradigm</a></li>
+    <li><a href="#s10">Impact &amp; application value</a></li>
+    <li><a href="#s11">Outlook &amp; roadmap</a></li>
+  </ol>
+  <a class="references-link" href="#references">Selected references <span aria-hidden="true">↓</span></a>
+</nav>
+
 
 <blockquote><p>Across changing data &mdash; genomes, then the graphs of a hundred-million-customer fintech,
 now knowledge and language in the era of large models &mdash; one method has persisted: center on the
@@ -144,6 +186,24 @@ structured.</p>
 <h2 id="s3">3. First principles</h2>
 <p>Five principles, each drawn from the published record, constitute the paradigm.</p>
 
+<nav class="principles-overview" id="principles-overview" aria-label="Five first principles">
+  <a class="principle-card" href="#s31"><span class="principle-number" aria-hidden="true">01</span>
+    <strong>Data first</strong><span>Let redundancy, sparsity, and locality shape computation.</span>
+  </a>
+  <a class="principle-card" href="#s32"><span class="principle-number" aria-hidden="true">02</span>
+    <strong>Compact representations</strong><span>Operate on compressed, sparse, or elastic forms.</span>
+  </a>
+  <a class="principle-card" href="#s33"><span class="principle-number" aria-hidden="true">03</span>
+    <strong>Co-design the stack</strong><span>Align data access, algorithms, hardware, and serving.</span>
+  </a>
+  <a class="principle-card" href="#s34"><span class="principle-number" aria-hidden="true">04</span>
+    <strong>Distil reusable primitives</strong><span>Carry compact building blocks across domains.</span>
+  </a>
+  <a class="principle-card" href="#s35"><span class="principle-number" aria-hidden="true">05</span>
+    <strong>End in understanding</strong><span>Make data searchable, matchable, and understandable.</span>
+  </a>
+</nav>
+
 <h3 id="s31">3.1 Data-first computing</h3>
 <p>The data &mdash; its redundancy, distribution, sparsity, and locality &mdash; dictates the computation,
 never the reverse. A principle stated most crisply in the genome era: a genome is not an arbitrary
@@ -219,6 +279,31 @@ retrieved subgraph becomes an answer (subgraph retrieval enhanced by graph&ndash
 <i>ECML PKDD</i> 2024; M3GQA, <i>ACL</i> 2025; GTA-RAG, <i>EMNLP</i> 2026). Compact Computing therefore
 spans the full <i>index &rarr; retrieve &rarr; match &rarr; understand</i> stack; the comprehension layer
 is what makes the compaction &ldquo;intelligence&rdquo; rather than compression.</p>
+
+<section class="eras-overview visual-panel" id="eras-overview" aria-labelledby="eras-title">
+  <p class="visual-eyebrow">The same method across changing data</p>
+  <h2 id="eras-title">Four eras, a shared foundation</h2>
+  <p class="visual-intro">Different data representations. The same commitment to compact computation.</p>
+  <nav class="era-grid" aria-label="Explore four data eras">
+    <a class="era-card visual-t1" href="#s4">
+      <span class="era-number">Era I</span><strong>Sequence Intelligence</strong>
+      <span>BWT · suffix arrays · k-mer indexes</span><span class="era-work">CUSHAW · CUDASW++</span>
+    </a>
+    <a class="era-card visual-t2" href="#s5">
+      <span class="era-number">Era II</span><strong>Graph Intelligence</strong>
+      <span>CSR · sparse kernels · sampled subgraphs</span><span class="era-work">LightSpMV · GraphTheta</span>
+    </a>
+    <a class="era-card visual-t3" href="#s6">
+      <span class="era-number">Era III</span><strong>Foundation Models</strong>
+      <span>Embeddings · quantized user tokens</span><span class="era-work">GraphCLIP · FOUNDv2</span>
+    </a>
+    <a class="era-card visual-t5" href="#s7">
+      <span class="era-number">Era IV</span><strong>RAG, Agents &amp; Serving</strong>
+      <span>Retrieved subgraphs · reusable KV caches</span><span class="era-work">GTA-RAG · Decoupled Attention Fusion</span>
+    </a>
+  </nav>
+  <p class="cross-era-note"><strong>User understanding &amp; trust intelligence</strong> connects these eras as a cross-era application, rather than a separate stage. <a href="projects.html#t4">Explore T4 →</a></p>
+</section>
 
 <h2 id="s4">4. Era I &mdash; Sequence Intelligence: the genome as a search engine</h2>
 <p>The first act, 2009&ndash;2017, reads in retrospect as building a search engine for the genome, and it
@@ -481,7 +566,7 @@ Scaling Data Intelligence is the name for carrying it forward.</p>
 
 <hr>
 
-<h2>References <span style="font-weight:normal;font-size:10pt">(selected, formally published work)</span></h2>
+<h2 id="references">References <span style="font-weight:normal;font-size:10pt">(selected, formally published work)</span></h2>
 
 <h3>Genome / Sequence Intelligence <span class="tag t1">Era I</span></h3>
 <ol start="1">
