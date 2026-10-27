@@ -10,9 +10,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" href="research-visuals.css">
 <title>Research Threads</title>
 </head>
-<body>
+<body class="visual-page research-page">
 <!--header-->
 <div id="header"></div>
 
@@ -54,6 +55,46 @@
 <h1>Research Threads: Scaling Data Intelligence</h1>
 <hr>
 
+<!-- Visual guide: the full original introduction follows below. -->
+<section class="research-overview visual-panel" id="research-overview" aria-labelledby="research-map-title">
+  <p class="visual-eyebrow">Five threads · one methodology</p>
+  <h2 id="research-map-title">A connected research landscape</h2>
+  <p class="visual-intro">Explore the data, systems, and applications behind each thread.</p>
+  <nav class="thread-map" aria-label="Explore the five research threads">
+    <a class="thread-link visual-t1" href="#t1">
+      <span class="thread-number">T1</span>
+      <strong>Sequence Intelligence</strong>
+      <span>Genomes &amp; sequences</span>
+    </a>
+    <a class="thread-link visual-t2" href="#t2">
+      <span class="thread-number">T2</span>
+      <strong>Graph Intelligence</strong>
+      <span>Graphs &amp; systems</span>
+    </a>
+    <a class="thread-link visual-t3" href="#t3">
+      <span class="thread-number">T3</span>
+      <strong>Foundation Models</strong>
+      <span>Graphs &amp; users</span>
+    </a>
+    <a class="thread-link visual-t4" href="#t4">
+      <span class="thread-number">T4</span>
+      <strong>User Understanding &amp; Trust</strong>
+      <span>Recommendation &amp; risk</span>
+    </a>
+    <a class="thread-link visual-t5" href="#t5">
+      <span class="thread-number">T5</span>
+      <strong>Retrieval-Augmented Reasoning</strong>
+      <span>Knowledge &amp; language</span>
+    </a>
+  </nav>
+  <a class="method-foundation" href="compact_computing.html">
+    <span class="foundation-kicker">The shared methodology</span>
+    <strong>Compact Computing <span lang="zh">凝练计算</span> <span aria-hidden="true">↗</span></strong>
+    <span>Compact representations · Parallel algorithms · Scalable systems</span>
+  </a>
+</section>
+
+
 <p>From sequence alignment to user understanding, from Burrows&ndash;Wheeler transform to Graph RAG,
 the apparent diversity of topics resolves
 into <b>one through-line</b>: making large-scale data <i>searchable, matchable, and understandable</i>.
@@ -73,7 +114,19 @@ threads; the full publication list, with every entry tagged by its thread, is on
 <a href="publications.html">Publications</a> page.</p>
 
 <h2 class="t1" id="t1">T1 &middot; Sequence Intelligence</h2>
-<div class="tile t1"></div>
+<div class="thread-visual visual-t1">
+  <figure class="research-figure">
+    <img src="assets/research/sequence.svg" width="640" height="280" loading="lazy" decoding="async"
+         alt="DNA reads are matched against a compact BWT or suffix-array index to produce aligned reads.">
+    <figcaption>Conceptual overview · T1</figcaption>
+  </figure>
+  <div class="thread-summary">
+    <p class="visual-eyebrow">Genomes &amp; sequences</p>
+    <h3>A search engine for the genome</h3>
+    <p>Build compact indexes, match biological sequences, and turn aligned reads into understanding. The representation and the parallel algorithm are designed together.</p>
+    <p class="representative-work">CUSHAW · CUDASW++ · Musket</p>
+  </div>
+</div>
 <p>The first act, 2009&ndash;2017: in retrospect, a <i>search engine for the genome</i>. The pipeline
 was always the same one we now use everywhere else &mdash; build a compact index (BWT, suffix array,
 k-mer tables), search against it with approximate matching (Smith&ndash;Waterman, seed&ndash;extend
@@ -104,7 +157,19 @@ data structure &rarr; parallel algorithm &rarr; open-source tool.</p>
 LightPCC and more) are catalogued on the <a href="software.html">Software</a> page.</p>
 
 <h2 class="t2" id="t2">T2 &middot; Graph Intelligence</h2>
-<div class="tile t2"></div>
+<div class="thread-visual visual-t2">
+  <figure class="research-figure">
+    <img src="assets/research/graph.svg" width="640" height="280" loading="lazy" decoding="async"
+         alt="Sparse graph connections feed parallel graph computation and learned graph representations.">
+    <figcaption>Conceptual overview · T2</figcaption>
+  </figure>
+  <div class="thread-summary">
+    <p class="visual-eyebrow">Graphs &amp; systems</p>
+    <h3>From sparse connections to graph learning</h3>
+    <p>Preserve the sparse structure of connected data, then scale graph computation and learning across processors and distributed systems.</p>
+    <p class="representative-work">LightSpMV · GraphTheta · TeGraph</p>
+  </div>
+</div>
 <p>The second act began at Ant Group in 2017, when the "database being searched" became the graph:
 hundred-million-user banking relationships, transactions, and behaviors. The graph itself had in
 fact entered the picture during the genome years: de Bruijn graph assembly of large genomes (2011)
@@ -150,7 +215,19 @@ foundation-model line continues in <a href="#t3">Thread T3</a>.</p>
 </ul>
 
 <h2 class="t3" id="t3">T3 &middot; Foundation Models: from Graphs to Users</h2>
-<div class="tile t3"></div>
+<div class="thread-visual visual-t3">
+  <figure class="research-figure">
+    <img src="assets/research/foundation.svg" width="640" height="280" loading="lazy" decoding="async"
+         alt="Graph and user data are used to pretrain reusable representations that transfer across tasks.">
+    <figcaption>Conceptual overview · T3</figcaption>
+  </figure>
+  <div class="thread-summary">
+    <p class="visual-eyebrow">Graphs &amp; users</p>
+    <h3>Pretrain once. Transfer across tasks.</h3>
+    <p>Learn reusable representations from graphs and user data, then transfer them across domains, scenarios, and tasks.</p>
+    <p class="representative-work">GraphCLIP · FIND / FOUNDv2</p>
+  </div>
+</div>
 <p>GraphCLIP and the FIND/FOUND series are one technology applied to two worlds: pretrain over
 large graphs, then transfer across domains, scenarios and tasks. GraphCLIP brings the playbook to
 text-attributed graphs, making graph foundation models transferable across domains; the FIND
@@ -168,7 +245,19 @@ user understanding into a pretrain-once, transfer-everywhere capability.</p>
 </ul>
 
 <h2 class="t4" id="t4">T4 &middot; User Understanding &amp; Trust Intelligence</h2>
-<div class="tile t4"></div>
+<div class="thread-visual visual-t4">
+  <figure class="research-figure">
+    <img src="assets/research/trust.svg" width="640" height="280" loading="lazy" decoding="async"
+         alt="User, item and transaction interactions branch into preference-based recommendation and risk-pattern detection.">
+    <figcaption>Conceptual overview · T4</figcaption>
+  </figure>
+  <div class="thread-summary">
+    <p class="visual-eyebrow">Recommendation &amp; risk</p>
+    <h3>Understand users. Protect trust.</h3>
+    <p>Use patterns in interactions for two complementary goals: matching preferences in recommendation and identifying risk in transaction networks.</p>
+    <p class="representative-work">GraphRPM · GraphFAS · Recommendation</p>
+  </div>
+</div>
 <p>Graph intelligence points at people. This thread turns the engines of T3 into understanding of
 users and protection of trust: recommendation as the matching of users to items over big graphs
 &mdash; from path-based candidate item matching in recommenders, CTR prediction, multi-behavior
@@ -188,7 +277,19 @@ award-winning Alipay credit system and of the joint industry white paper <a href
 </ul>
 
 <h2 class="t5" id="t5">T5 &middot; Retrieval-Augmented Reasoning &amp; Agents</h2>
-<div class="tile t5"></div>
+<div class="thread-visual visual-t5">
+  <figure class="research-figure">
+    <img src="assets/research/reasoning.svg" width="640" height="280" loading="lazy" decoding="async"
+         alt="A question retrieves connected graph evidence that supports reasoning and a grounded answer.">
+    <figcaption>Conceptual overview · T5</figcaption>
+  </figure>
+  <div class="thread-summary">
+    <p class="visual-eyebrow">Knowledge &amp; language</p>
+    <h3>Connect evidence to reasoning</h3>
+    <p>Retrieve connected evidence for grounded reasoning, while co-designing retrieval and model serving for efficient execution.</p>
+    <p class="representative-work">Graph RAG · GTA-RAG · AutoRAGTuner</p>
+  </div>
+</div>
 <p>The current act: when the data became language and knowledge, the through-line &mdash; index,
 retrieve, match, understand &mdash; re-emerged as RAG. He is the lead author of the globally
 recognized survey "<a href="https://dl.acm.org/doi/10.1145/3777378">Graph Retrieval-Augmented
