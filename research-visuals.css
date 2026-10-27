@@ -1,0 +1,120 @@
+/* Dedicated to projects.html and compact_computing.html.
+   Existing site colors, content and navigation are preserved. */
+.visual-page { max-width: 1480px; }
+.visual-page #main { padding: 25px 34px 64px; min-width: 0; }
+.visual-page #main > h1 { text-align: left; line-height: 1.25; }
+.visual-page #main > h2,
+.visual-page #main > h3 { text-transform: none; text-align: left; line-height: 1.4; }
+.visual-page #main > p,
+.visual-page #main > ul,
+.visual-page #main > ol,
+.visual-page #main > blockquote,
+.visual-page #main > .callout { max-width: 88ch; }
+.visual-page #main > p { margin-left: 0; line-height: 1.75; text-align: left; }
+.visual-page #main > ul > li,
+.visual-page #main > ol > li { padding-bottom: 10px; text-align: left; overflow-wrap: anywhere; }
+.visual-page #main [id] { scroll-margin-top: 24px; }
+.visual-page a:focus-visible { outline: 3px solid var(--site-accent); outline-offset: 4px; border-radius: 3px; }
+.visual-page .visual-panel { padding: 26px; border: 1px solid var(--rule); border-radius: 12px; margin: 24px 0 30px; text-align: left; }
+.visual-page .visual-panel h2 { margin: 4px 0 10px; padding: 0; text-transform: none; font-size: 21px; letter-spacing: -.3px; }
+.visual-page .visual-eyebrow { margin: 0 0 8px; color: #526373; font-size: 10px; font-weight: 700; letter-spacing: 1.7px; text-transform: uppercase; text-align: left; }
+.visual-page .visual-intro { color: #526373; margin: 0 0 20px; font-size: 13px; text-align: left; }
+.visual-page .visual-t1 { --visual-color: var(--t1); --visual-bg: var(--t1-bg); }
+.visual-page .visual-t2 { --visual-color: var(--t2); --visual-bg: var(--t2-bg); }
+.visual-page .visual-t3 { --visual-color: var(--t3); --visual-bg: var(--t3-bg); }
+.visual-page .visual-t4 { --visual-color: var(--t4); --visual-bg: var(--t4-bg); }
+.visual-page .visual-t5 { --visual-color: var(--t5); --visual-bg: var(--t5-bg); }
+
+/* Parallel research threads share a foundation, not a serial pipeline. */
+.visual-page .thread-map { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.visual-page .thread-link { display: flex; flex-direction: column; gap: 10px; padding: 16px 12px; border: 1px solid var(--rule); border-top: 3px solid var(--visual-color); border-radius: 6px; color: var(--visual-color); background: var(--visual-bg); text-decoration: none; text-align: left; min-width: 0; }
+.visual-page .thread-number { font-size: 23px; font-weight: 700; line-height: 1; }
+.visual-page .thread-link strong { font-size: 13px; line-height: 1.45; }
+.visual-page .thread-link > span:last-child { margin-top: auto; color: #526373; font-size: 11px; }
+.visual-page .thread-link:hover,
+.visual-page .era-card:hover { border-color: var(--visual-color); box-shadow: 0 2px 8px #1c273310; }
+.visual-page .method-foundation { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 17px 12px; margin-top: 14px; border-radius: 7px; border: 1px solid #d5e4f2; background: #f0f6fc; color: var(--site-accent); text-decoration: none; text-align: center; }
+.visual-page .foundation-kicker { font-size: 10px; letter-spacing: 1.4px; text-transform: uppercase; }
+.visual-page .method-foundation strong { font-size: 17px; }
+.visual-page .method-foundation > span:last-child { font-size: 12px; color: #526373; }
+.visual-page .method-foundation:hover { border-color: var(--site-accent); background: #e6f0fa; }
+
+/* Thread illustrations add a visual summary; all long-form text remains visible. */
+.visual-page .thread-visual { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 25px; align-items: center; margin: 20px 0 24px; text-align: left; }
+.visual-page .research-figure { min-width: 0; margin: 0; border: 1px solid var(--rule); border-radius: 9px; padding: 10px; background: var(--visual-bg, #f2f6fb); }
+.visual-page .research-figure img { display: block; width: 100%; height: auto; }
+.visual-page .research-figure figcaption { padding: 2px 4px 5px; text-align: center; font-size: 11px; line-height: 1.5; color: #526373; }
+.visual-page .thread-summary h3 { margin: 4px 0 11px; padding: 0; font-size: 19px; font-weight: 700; line-height: 1.4; color: var(--visual-color); }
+.visual-page .thread-summary p { margin: 0 0 12px; font-size: 13px; line-height: 1.7; }
+.visual-page .thread-summary .visual-eyebrow { font-size: 10px; }
+.visual-page .thread-summary .representative-work { color: var(--visual-color); font-size: 12px; font-weight: 600; }
+
+/* A visual entry point to the technical report, rather than a replacement. */
+.visual-page .method-overview { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 28px; align-items: center; background: linear-gradient(130deg, #f4f8fc, #fff 70%); }
+.visual-page .method-summary h2 { font-size: 26px; line-height: 1.25; color: var(--site-accent); margin-bottom: 16px; }
+.visual-page .method-summary > p:not(.visual-eyebrow) { margin: 0 0 16px; font-size: 13px; line-height: 1.75; }
+.visual-page .method-key { list-style: none; padding: 0; margin: 18px 0; }
+.visual-page .method-key li { border-left: 2px solid #b4cfe8; padding: 0 0 0 12px; margin-bottom: 13px; font-size: 12px; }
+.visual-page .method-key strong,
+.visual-page .method-key span { display: block; }
+.visual-page .method-key strong { color: var(--site-accent); font-size: 13px; }
+.visual-page .method-key span { color: #526373; }
+.visual-page .visual-text-link { font-size: 13px; text-underline-offset: 4px; }
+.visual-page .method-figure { background: #f0f6fc; }
+.visual-page .report-contents { background: #f8fafc; }
+.visual-page .report-contents ol { display: grid; grid-template-columns: 1fr 1fr; gap: 9px 30px; margin: 16px 0 16px 23px; padding: 0; }
+.visual-page .report-contents li { padding: 0 0 3px 3px; font-size: 13px; color: #526373; }
+.visual-page .report-contents a { text-decoration: none; }
+.visual-page .report-contents a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.visual-page .abstract-link,
+.visual-page .references-link { font-size: 13px; font-weight: 600; }
+.visual-page .references-link { display: inline-block; padding-top: 12px; border-top: 1px solid var(--rule); }
+.visual-page .principles-overview { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 24px 0 30px; text-align: left; }
+.visual-page .principle-card { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; padding: 18px; border: 1px solid #dce6f0; border-radius: 8px; background: #f6f9fc; color: var(--ink); text-decoration: none; }
+.visual-page .principle-number { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: #e4eef8; color: var(--site-accent); font-size: 12px; font-weight: 700; }
+.visual-page .principle-card strong { font-size: 14px; color: var(--site-accent); }
+.visual-page .principle-card > span:last-child { font-size: 12px; color: #526373; line-height: 1.65; }
+.visual-page .principle-card:hover { border-color: var(--site-accent); }
+.visual-page .era-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.visual-page .era-card { display: flex; flex-direction: column; gap: 12px; padding: 16px 12px; border: 1px solid var(--rule); border-top: 3px solid var(--visual-color); border-radius: 6px; color: var(--visual-color); text-decoration: none; background: var(--visual-bg); min-width: 0; }
+.visual-page .era-number { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+.visual-page .era-card strong { font-size: 15px; }
+.visual-page .era-card > span:not(.era-number) { font-size: 12px; color: #526373; }
+.visual-page .era-card .era-work { margin-top: auto; padding-top: 12px; border-top: 1px solid #00000012; }
+.visual-page .cross-era-note { margin: 18px 0 0; padding: 12px 15px; border-left: 3px solid var(--t4); background: var(--t4-bg); color: #655334; font-size: 12px; line-height: 1.7; }
+
+@media (max-width: 1180px) {
+  .visual-page #main { padding: 22px; }
+  .visual-page .thread-map { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .visual-page .thread-visual,
+  .visual-page .method-overview { grid-template-columns: 1fr; }
+  .visual-page .research-figure { width: 100%; max-width: 700px; }
+  .visual-page .method-figure { max-width: 640px; justify-self: center; }
+  .visual-page .era-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .visual-page .principles-overview { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+  .visual-page #main { margin: 0; padding: 22px 16px 40px; }
+  .visual-page #main > h1 { font-size: 25px; }
+  .visual-page #sidebar { margin: 0; display: block; padding: 12px; }
+  .visual-page #profile { width: 96px; height: 96px; background-size: 96px auto; }
+  .visual-page #nav { width: auto; }
+  .visual-page #nav ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .visual-page #nav ul li a { font-size: 12px; margin: 2px; padding: 7px 4px; }
+  .visual-page .visual-panel { padding: 18px 14px; }
+  .visual-page .thread-map { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .visual-page .thread-link:last-child { grid-column: 1 / -1; }
+  .visual-page .report-contents ol { grid-template-columns: 1fr; gap: 8px; }
+  .visual-page .thread-visual { gap: 16px; }
+  .visual-page .research-figure { padding: 5px; }
+  .visual-page .method-summary h2 { font-size: 24px; }
+}
+@media (max-width: 420px) {
+  .visual-page .principles-overview,
+  .visual-page .era-grid { grid-template-columns: 1fr; }
+}
+@media print {
+  .visual-page #sidebar, .visual-page #header { display: none; }
+  .visual-page #main { margin: 0; padding: 0; overflow: visible; }
+  .visual-page .thread-visual, .visual-page .research-figure { break-inside: avoid; }
+}
