@@ -106,14 +106,15 @@ data, keep its representations compressed and sparse, and co-design the algorith
 That method is Compact Computing.</p></blockquote>
 
 <h3 id="abstract">Abstract</h3>
-<p>Compact Computing is a data-first, cross-disciplinary computing paradigm whose thesis is that the
-scalability of intelligence is governed not by raw hardware but by how faithfully computation
-<i>compresses the intrinsic structure of data</i>. It operates directly on compressed, sparse, and
-elastic representations and co-designs the algorithm with the system for full-stack performance.
-This report distils the paradigm into five first principles, then grounds every claim in the
-author's published work along four eras &mdash; sequence intelligence (the genome as a search engine),
-graph intelligence (from sparse primitives to distributed learning and foundation models), user and
-trust intelligence, and retrieval-augmented reasoning, agents, and efficient LLM serving. Because
+<p>Compact Computing is a data-first, cross-disciplinary computing paradigm: it computes directly on
+structure-faithful compact representations &mdash; compressed, sparse, or elastic &mdash; and co-designs
+them with the algorithms and systems that execute them. Its thesis is that the scalability of
+intelligence is governed less by raw hardware than by how faithfully computation <i>compresses the
+intrinsic structure of data</i>. This report distils the paradigm into five first principles, then
+grounds the argument in the author's published work along four eras &mdash; sequence intelligence (the
+genome as a search engine), graph intelligence (from sparse primitives to distributed learning),
+foundation models (from graphs to users), and retrieval-augmented reasoning, agents, and efficient
+LLM serving, with user and trust intelligence running across them. Because
 the same compactness-preserving moves recur across biological sequences, financial graphs,
 materials simulation, privacy-preserving learning, and large-model serving, Compact Computing
 constitutes a unifying technical paradigm rather than a domain technique. It is the enabling
@@ -184,6 +185,40 @@ portably across the architecture spectrum. Compact Computing is therefore not a 
 <b>methodological invariant</b> &mdash; a constraint on how any data-intensive computation should be
 structured.</p>
 
+<p><b>What it is not.</b> Compact Computing is not compression for its own sake. A representation is
+admissible only when it preserves the structure the downstream task depends on; compression that
+discards that structure is lossy approximation, not compact computation. Nor does the paradigm claim
+that every problem is a compaction problem &mdash; only that when scale is the binding constraint, the
+first question is what can be left un-materialised and what structure must survive.</p>
+
+<section class="method-map visual-panel" id="method-map" aria-labelledby="method-map-title">
+  <p class="visual-eyebrow">One structure, three views</p>
+  <h3 id="method-map-title">How the components, principles, and threads line up</h3>
+  <table>
+    <thead>
+      <tr><th scope="col">Component</th><th scope="col">Guiding principle</th><th scope="col">What it decides</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row" data-label="Component">Representation</th>
+        <td data-label="Guiding principle">3.1 Data first<br>3.2 Compact representation</td>
+        <td data-label="What it decides">What is kept, and what is left un-materialised</td>
+      </tr>
+      <tr>
+        <th scope="row" data-label="Component">Architecture</th>
+        <td data-label="Guiding principle">3.3 Co-design the stack</td>
+        <td data-label="What it decides">Where the computation runs, and how it is re-compacted per hardware</td>
+      </tr>
+      <tr>
+        <th scope="row" data-label="Component">Algorithm</th>
+        <td data-label="Guiding principle">3.4 Distil primitives<br>3.5 End in understanding</td>
+        <td data-label="What it decides">What transfers across domains, and what the computation ultimately produces</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="era-thread-note"><b>Reading the two taxonomies together.</b> Era I &harr; <a href="projects.html#t1">T1 Sequence Intelligence</a>; Era II &harr; <a href="projects.html#t2">T2 Graph Intelligence</a>; Era III &harr; <a href="projects.html#t3">T3 Foundation Models</a>; Era IV &harr; <a href="projects.html#t5">T5 Retrieval-Augmented Reasoning &amp; Agents</a> (the report's Era IV also covers LLM serving); <a href="projects.html#t4">T4 User Understanding &amp; Trust</a> is cross-era.</p>
+</section>
+
 <h2 id="s3">3. First principles</h2>
 <p>Five principles, each drawn from the published record, constitute the paradigm.</p>
 
@@ -221,7 +256,7 @@ reused (Decoupled Attention Fusion, <i>EuroSys</i> 2026 poster).</p>
 record: (i) the dense string, refused by BWT and suffix arrays; (ii) the dense graph, refused by CSR
 and by materialization-free community detection (<i>SIGMOD</i> 2025); (iii) the dense attention,
 refused by KV-cache reuse and by tree speculation over hybrid-attention models (Decoupled Attention
-Fusion; Bole); (iv) the dense user, refused by <i>quantized tokenizers</i> that compress
+Fusion; <i>Twig</i>, <i>HPCA</i> 2027); (iv) the dense user, refused by <i>quantized tokenizers</i> that compress
 a user into compact, transferable tokens (FOUNDv2, <i>KDD</i> 2026). Where the data is dynamic
 &mdash; temporal graphs, streaming GNNs, evolving user populations &mdash; the representation is
 <i>elastic</i>: it grows, shrinks, and reshapes with the data rather than being rebuilt (TeGraph/TeGraph+,
@@ -253,7 +288,7 @@ at the World Internet Conference 2021, and broke the world record on the Stanfor
 proteins leaderboard in 2021. In the LLM era the co-design target is the <i>serving stack</i>:
 declarative auto-optimisation of RAG pipelines (AutoRAGTuner, <i>EuroSys</i> 2026 poster),
 compiler-driven long-context prefilling (CutAttn, <i>NeurIPS</i> 2026), and tree speculation for
-hybrid-attention models (<a href="projects.html#t5">Bole</a>).</p>
+hybrid-attention models (<a href="projects.html#t5">Twig</a>).</p>
 
 <h3 id="s34">3.4 Generality through primitive distillation (凝练)</h3>
 <p>A small set of compute primitives &mdash; sparse matrix&ndash;vector multiplication, the scan/reduction
@@ -402,29 +437,16 @@ track), <b>FOUNDv2</b>'s unified user <i>quantized tokenizers</i> for user repre
 (<i>KDD</i> 2026). FOUNDv2 is principle 3.2 (compressive representation) at the granularity of an entire
 user population: a user is compacted into quantised tokens that transfer.</p>
 
-<p>Foundation models are, in the language of Compact Computing, the <i>most compact representation
-yet</i> &mdash; a single pretrained object that compresses a whole graph or user population and is reused
-cheaply thereafter. They are also where the graph and language eras begin to fuse, since
-text-attributed graphs (GraphCLIP) and LLM-driven user anchors (Query-as-Anchor) point forward to
-Era IV.</p>
-
-<p>Read across these two eras, large models are where compressed, sparse, and elastic representations
-become unmistakable, and where the paradigm shows it did not change for the new era &mdash; the era
-caught up with it. A foundation model <i>compresses</i> a whole graph or user population into a single
-reusable object &mdash; a pretrained graph encoder in GraphCLIP, quantised user tokens in FOUNDv2
-&mdash; that <i>transfers elastically</i> across domains, scenarios, and tasks. An LLM's attention is
-<i>compressed</i> by reusing the KV cache instead of recomputing it (Decoupled Attention Fusion) and by
-quantising the tokens it keeps. It is <i>sparse</i> because genuine long-context access touches only a
-small fraction of the sequence &mdash; the cognitive transition layers CutAttn identifies &mdash; and
-because retrieval attends to a sparse set of subgraphs rather than the whole corpus (Graph RAG). It is <i>elastic</i> because the cache and the speculative tree grow, are reused, and are pruned at serving
-time as the conversation evolves (Bole). Vision&ndash;language models carry the same three modes across
-modalities. The cross-modal token stream is <i>compressed</i> by sharing the language backbone's cache
-across visual and textual tokens. It is <i>sparse</i> because a multimodal batch is reached only through a few
-salient patches or frames plus retrieved visual&ndash;graph evidence rather than the full pixel mass. It is <i>elastic</i> because the multimodal context grows with every added modality or turn &mdash; which is
-how vision-guided graph reasoning with an LLM, as in Foresight-on-Graph, keeps retrieval tractable. Across foundation models, LLMs, and VLMs, the same compressed, sparse, and elastic
-representations that served the genome and the graph now shape the transformer's context and the
-multimodal token stream &mdash; large models are the newest shape Compact Computing takes, not an
-exception to it.</p>
+<p>Foundation models are the <i>most compact representation yet</i> &mdash; a single pretrained object
+that compresses a whole graph or user population and is reused cheaply thereafter. They are also where
+the graph and language eras begin to fuse: text-attributed graphs (GraphCLIP) and LLM-driven user
+anchors (Query-as-Anchor) point forward to Era IV. Read across the two eras, the paradigm becomes
+unmistakable. A foundation model <i>compresses</i> a graph or user population into one reusable object
+(GraphCLIP; FOUNDv2) that <i>transfers elastically</i> across domains, scenarios, and tasks. An LLM's
+context is <i>compressed</i> by reusing the KV cache instead of recomputing it (Decoupled Attention
+Fusion), made <i>sparse</i> by attending only to the cognitive transition layers CutAttn identifies and
+by retrieving a sparse set of subgraphs rather than the whole corpus (Graph RAG), and made
+<i>elastic</i> by a speculative tree that grows, is reused, and is pruned at serving time (<i>Twig</i>). Large models are the newest shape Compact Computing takes, not an exception to it.</p>
 
 <h2 id="s7">7. Era IV &mdash; Retrieval-augmented reasoning, agents, and efficient LLM serving</h2>
 <p>When the data became language and knowledge, the index&rarr;retrieve&rarr;match&rarr;understand
@@ -446,7 +468,7 @@ machinery visibly crosses into the foundation-model stack: AutoRAGTuner provides
 framework for automatic optimisation of RAG pipelines (<i>EuroSys</i> 2026 poster); Decoupled Attention
 Fusion accelerates RAG with efficient <b>KV-cache reuse</b> (<i>EuroSys</i> 2026 poster); CutAttn
 discovers cognitive transition layers for efficient <b>long-context prefilling</b> (<i>NeurIPS</i>
-2026); and Bole provides efficient <b>tree speculation for hybrid-attention language models</b>. KV-cache reuse and tree speculation are principle 3.2 (compressive/elastic
+2026); and Twig provides efficient <b>tree speculation for hybrid-attention language models</b>. KV-cache reuse and tree speculation are principle 3.2 (compressive/elastic
 representation) applied to attention: the dense recomputation is refused, and the already-computed
 structure is reused &mdash; exactly the move the BWT made for strings and LightSpMV made for graphs, now
 made for transformers.</p>
@@ -507,29 +529,26 @@ holds for an attention kernel in 2026: the frontier of intelligence is set by th
 compacts it onto the system that runs it.</p>
 
 <p>In this sense Compact Computing <i>is</i> the bridge from big data to artificial intelligence: the
-invariant that makes large data tractable as models, and models tractable as services. The four eras
-are not a career trajectory; they are four instances of one invariant, which is why the work can move
-across all of them without changing its core.</p>
+invariant that makes large data tractable as models, and models tractable as services.</p>
 
 <h2 id="s10">10. Scaling Computational Intelligence: the scope of impact and application value</h2>
 <p>If Compact Computing is the method, <b>Scaling Computational Intelligence</b> names the outcome:
 intelligence whose reach grows because the computation beneath it is kept <i>compact, efficient, and
 faithful to the structure of data</i> &mdash; not merely because more hardware, data, or parameters are
-added. That intelligence is not a matter of size: in the report's own terms, it is the comprehension
-layer of &sect;3.5 &mdash; compaction is not complete until it produces understanding. Three
-observations show why that reach is broad and deep enough to deserve a single name rather than a
-list of separate projects.</p>
+added. In the report's terms, it is the comprehension layer of &sect;3.5: compaction is not complete
+until it produces understanding. The claim that this is a paradigm, not a habit, rests on three kinds
+of evidence.</p>
 
-<p><b>It spans data eras without changing its core.</b> Sequence, graph, foundation-model, and
-RAG/LLM-serving data are all handled by the same invariant; the mission moves across them without
-restructuring. Compact Computing is the <i>physics</i> that keeps the through-line intact as the data
-changes underneath it.</p>
+<p><b>It has crossed four data eras without changing its core.</b> Sequence, graph, foundation-model,
+and RAG/LLM-serving data were handled by the same invariant; the mission moved across them without
+restructuring. Portability is the first piece of evidence: the method did not need a new theory for
+each new data type.</p>
 
-<p><b>It spans disciplines.</b> The same compactness moves recur in bioinformatics, fintech and
-trust intelligence, materials simulation, privacy-preserving learning, optimization, and
-large-model systems. &ldquo;Scaling Computational Intelligence&rdquo; therefore names an impact that is not confined to
-one field &mdash; genome, graph, LLM, and cross-disciplinary work are different instantiations of the same
-compaction-driven scaling, with no implicit hierarchy among them.</p>
+<p><b>It reaches across disciplines.</b> The same compaction moves recur in bioinformatics, fintech and
+trust intelligence, materials simulation, privacy-preserving learning, optimization, and large-model
+systems. &ldquo;Scaling Computational Intelligence&rdquo; therefore names an impact that is not confined
+to one field &mdash; genome, graph, LLM, and cross-disciplinary work are different instantiations of the
+same compaction-driven scaling, with no implicit hierarchy among them.</p>
 
 <p><b>It is grounded in deployed impact, not only publications.</b> The survey &ldquo;Graph
 Retrieval-Augmented Generation&rdquo; is an ESI Highly Cited Paper; GeaLearning/TuGraph is recognised at
@@ -538,11 +557,10 @@ NeurIPS/ICLR/KDD/SIGMOD/WWW/ACL/EMNLP/EuroSys; and the algorithms and systems ru
 hundred-million-customer fintech platform. The application value is concrete: compaction that
 operates at industrial scale, not only in the lab.</p>
 
-<p>Taken together, Compact Computing's impact is large enough &mdash; across data modalities,
-disciplines, hardware eras, and the research-to-industry gap &mdash; that <b>Scaling Computational
-Intelligence</b> is the right name for the outcome, and the right ambition to build on from here:
-<i>the scalability of intelligence is a compaction problem</i>, and the work is to keep solving it
-across whatever data comes next.</p>
+<p>Taken together, this is not a career trajectory but a single invariant seen through three kinds of
+evidence. <b>Scaling Computational Intelligence</b> is therefore the right name for the outcome, and
+the right ambition to build on from here: <i>the scalability of intelligence is a compaction problem</i>,
+and the work is to keep solving it across whatever data comes next.</p>
 
 <h2 id="s11">11. Outlook and roadmap</h2>
 <p>The paradigm points to four forward directions, each already seeded in the record:</p>
@@ -555,9 +573,11 @@ compute.</li>
 (TeGraph, TEA, ATLAS, OTM) and the streaming-GNN line point toward a world where static materialisation
 is never assumed; the same default should govern LLM context and user/tokeniser representations.</li>
 <li><b>Algorithm&ndash;system co-design for the foundation-model serving stack.</b> AutoRAGTuner,
-Decoupled Attention Fusion, CutAttn, and Bole are early instances; the agenda is a unified serving
+Decoupled Attention Fusion, CutAttn, and Twig are early instances; the agenda is a unified serving
 compiler that treats cache reuse, speculative execution, and retrieval as first-class co-design
-targets, in the lineage of G-Sparse and Woodpecker-DL.</li>
+targets, in the lineage of G-Sparse and Woodpecker-DL. The same reading should extend to multimodal
+serving, where visual and textual tokens share a cache and retrieved evidence &mdash; an open direction
+rather than an established result.</li>
 <li><b>Cross-disciplinary compaction.</b> Materials (PyCAC), privacy (DiVerFed), and optimization
 (AGD) show the principles holding across subjects beyond the four eras; the agenda is to apply them deliberately to scientific and industrial
 domains where data growth has outpaced compaction effort &mdash; quantitative finance, (bio)medicine,
@@ -653,10 +673,11 @@ Scaling Computational Intelligence is the name for carrying it forward.</p>
 <li>X. Zeng, <u>Yongchao Liu</u>, Y. Luo, J. Zheng. &ldquo;AutoRAGTuner: a declarative framework for automatic optimization of RAG pipelines.&rdquo; <i>EuroSys</i> 2026 (poster).</li>
 <li>X. Wu, <u>Yongchao Liu</u>, W. Qin, C. Hong. &ldquo;Decoupled attention fusion: accelerating RAG with efficient KV cache reuse.&rdquo; <i>EuroSys</i> 2026 (poster).</li>
 <li>W. Liu, X. Wu, <u>Yongchao Liu</u>, H. Zhang, J. Zheng, R. Zhou. &ldquo;CutAttn: discovering cognitive transition layers for efficient long-context prefilling.&rdquo; <i>NeurIPS</i> 2026.</li>
+<li>L. Wang, Y. Su, X. Wu, C. You, <u>Yongchao Liu</u>, et&nbsp;al. &ldquo;Twig: parallel and memory-efficient tree speculative decoding for hybrid-attention LLMs&rdquo;. <i>HPCA</i> 2027.</li>
 </ol>
 
 <h3>Cross-disciplinary explorations</h3>
-<ol start="65">
+<ol start="66">
 <li>Y. Yue, Z. Ye, J. Jiang, <u>Yongchao Liu</u>, K. Zhang. &ldquo;AGD: an auto-switchable optimizer using stepwise gradient difference for preconditioning matrix.&rdquo; <i>NeurIPS</i> 2023.</li>
 <li>Y. Yue, J. Jiang, Z. Ye, G. Ning, <u>Yongchao Liu</u>, K. Zhang. &ldquo;Sharpness-aware minimization revisited: weighted sharpness as a regularization term.&rdquo; <i>KDD</i> 2023.</li>
 <li>P. Qiu, Y. Pu, <u>Yongchao Liu</u>, W. Liu, Y. Yue, X. Zhu, L. Li, J. Li, S. Ji. &ldquo;Integer is Enough: when vertical federated learning meets rounding.&rdquo; <i>AAAI</i> 2024.</li>
@@ -667,7 +688,7 @@ Scaling Computational Intelligence is the name for carrying it forward.</p>
 
 <hr>
 
-<p style="font-size:9.5pt;color:#6b7684">This report is a self-contained position document. The full publication list, with every entry tagged
+<p style="font-size:9.5pt;color:#6b7684">This report is a self-contained position document. The full publication list, with most entries tagged
 by research thread (T1&ndash;T5), is maintained on the <a href="publications.html">Publications</a> page;
 the per-thread narratives live on the <a href="projects.html">Research</a> page.</p>
 
