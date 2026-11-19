@@ -61,6 +61,15 @@
 .visual-page .method-key span { color: #526373; }
 .visual-page .visual-text-link { font-size: 13px; text-underline-offset: 4px; }
 .visual-page .method-figure { background: #f0f6fc; }
+/* Component → principle → thread map: one structure, three views. */
+.visual-page .method-map h3 { margin: 0 0 14px; padding: 0; font-size: 18px; line-height: 1.4; color: var(--site-accent); text-transform: none; }
+.visual-page .method-map table { font-size: 12.5px; line-height: 1.6; }
+.visual-page .method-map th,
+.visual-page .method-map td { padding: 10px 12px; border: 1px solid #dce6f0; text-align: left; vertical-align: top; }
+.visual-page .method-map thead th { background: #f0f6fc; color: var(--site-accent); font-size: 10.5px; letter-spacing: .5px; text-transform: uppercase; }
+.visual-page .method-map tbody th { color: var(--site-accent); font-weight: 700; white-space: nowrap; }
+.visual-page .method-map .era-thread-note { margin: 12px 0 0; font-size: 12px; line-height: 1.7; color: #526373; }
+.visual-page .method-map .era-thread-note a { text-underline-offset: 3px; }
 .visual-page .report-contents { background: #f8fafc; }
 .visual-page .report-contents ol { display: grid; grid-template-columns: 1fr 1fr; gap: 9px 30px; margin: 16px 0 16px 23px; padding: 0; }
 .visual-page .report-contents li { padding: 0 0 3px 3px; font-size: 13px; color: #526373; }
@@ -102,6 +111,28 @@
   .visual-page #nav ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .visual-page #nav ul li a { font-size: 12px; margin: 2px; padding: 7px 4px; }
   .visual-page .visual-panel { padding: 18px 14px; }
+  .visual-page .method-map table,
+  .visual-page .method-map tbody,
+  .visual-page .method-map tr,
+  .visual-page .method-map tbody th,
+  .visual-page .method-map td { display: block; }
+  .visual-page .method-map thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .visual-page .method-map tr { margin-bottom: 10px; border: 1px solid #dce6f0; border-radius: 6px; background: #f8fafc; }
+  .visual-page .method-map td,
+  .visual-page .method-map tbody th { border: 0; border-bottom: 1px solid #e8eef5; }
+  .visual-page .method-map td:last-child { border-bottom: 0; }
+  .visual-page .method-map td::before,
+  .visual-page .method-map tbody th::before { content: attr(data-label); display: block; margin-bottom: 3px; color: #526373; font-size: 10px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; }
   .visual-page .thread-map { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .visual-page .thread-link:last-child { grid-column: 1 / -1; }
   .visual-page .report-contents ol { grid-template-columns: 1fr; gap: 8px; }
