@@ -111,7 +111,7 @@ era through KV-cache reuse for RAG and tree speculation for hybrid-attention lan
 Compact Computing consists of three components in principle: (1) tightly-coupled architectures
 (CPUs, GPUs, Xeon Phis, clusters), (2) compressive and elastic data representation, and (3)
 efficient, scalable, service-oriented algorithms. This page reorganizes the work along five
-threads; the full publication list, with every entry tagged by its thread, is on the
+threads; the full publication list, with most entries tagged by their thread, is on the
 <a href="publications.html">Publications</a> page.</p>
 
 <h2 class="t1" id="t1">T1 &middot; Sequence Intelligence</h2>
@@ -131,12 +131,14 @@ threads; the full publication list, with every entry tagged by its thread, is on
 <p>The first act, 2009&ndash;2017: in retrospect, a <i>search engine for the genome</i>. The pipeline
 was always the same one we now use everywhere else &mdash; build a compact index (BWT, suffix array,
 k-mer tables), search against it with approximate matching (Smith&ndash;Waterman, seed&ndash;extend
-alignment), and understand the results (variant calling, metagenomic quantification). The
-CUSHAW suite, CUDASW++ and SWAPHI families of tools were accelerated across the full hardware
-spectrum of the day &mdash; CUDA GPUs, Xeon Phi coprocessors, UPC++ clusters &mdash; and three of
-them were rated by NVIDIA as popular GPU-accelerated applications; DecGPU was reported by
-GenomeWeb. This era internalized the habits that still shape the work: domain problem &rarr; compact
-data structure &rarr; parallel algorithm &rarr; open-source tool.</p>
+alignment), and understand the results (variant calling, metagenomic quantification). The same
+compact-first habits run many-to-many as well: multiple alignment compares all sequence pairs with
+pair-HMM posteriors, and motif discovery runs EM over k-mer seeds. The CUSHAW suite, CUDASW++ and
+SWAPHI families of tools were accelerated across the full hardware spectrum of the day &mdash; CUDA
+GPUs, Xeon Phi coprocessors, UPC++ clusters &mdash; and three of them were rated by NVIDIA as popular
+GPU-accelerated applications; DecGPU was reported by GenomeWeb. This era internalized the habits
+that still shape the work: domain problem &rarr; compact data structure &rarr; parallel algorithm
+&rarr; open-source tool.</p>
 
 <h4>Example work</h4>
 <ul>
@@ -154,8 +156,8 @@ data structure &rarr; parallel algorithm &rarr; open-source tool.</p>
 <li><u>Yongchao Liu</u>, Bertil Schmidt, Weiguo Liu, and Douglas L. Maskell: "<a href="http://www.sciencedirect.com/science/article/pii/S0167865509002840" style="text-decoration:none">CUDA-MEME: accelerating motif discovery in biological sequences using CUDA-enabled graphics processing units</a>". <b>Pattern Recognition Letters</b>, 2010 &mdash; the first of the CUDA-accelerated tools.</li>
 <li><u>Yongchao Liu</u>, Bertil Schmidt, and Douglas L. Maskell: "<a href="http://bioinformatics.oxfordjournals.org/content/26/16/1958.abstract" style="text-decoration:none">MSAProbs: multiple sequence alignment based on pair hidden Markov models and partition function posterior probabilities</a>". <b>Bioinformatics</b>, 2010.</li>
 </ul>
-<p>Several of this era's open-source tools (CUDASW++, CUSHAW, MSAProbs, Musket, SWAPHI, ParaBWT,
-LightPCC and more) are catalogued on the <a href="software.html">Software</a> page.</p>
+<p>Several of this era's open-source tools (CUDASW++, CUSHAW, MSAProbs, Musket, SWAPHI, ParaBWT
+and more) are catalogued on the <a href="software.html">Software</a> page.</p>
 
 <h2 class="t2" id="t2">T2 &middot; Graph Intelligence</h2>
 <div class="thread-visual visual-t2">
@@ -301,15 +303,15 @@ retrieval enhanced by graph&ndash;text alignment, vision-guided knowledge-graph 
 (Foresight-on-Graph), and multi-agent graph reasoning; and serving efficiency &mdash; declarative
 auto-optimization of RAG pipelines (AutoRAGTuner), KV-cache reuse (Decoupled Attention Fusion),
 long-context prefilling acceleration (CutAttn) and tree speculation for hybrid-attention models
-(Bole) &mdash; the <a href="compact_computing.html">Compact Computing</a> habits applied to LLMs.</p>
+(<i>Twig</i>, <b>HPCA 2027</b>) &mdash; the <a href="compact_computing.html">Compact Computing</a> habits applied to LLMs.</p>
 
 <h4>Example work</h4>
 <ul>
+<li>Li Wang, Yi Su, Xiabao Wu, Chiran You, <u>Yongchao Liu</u>, Zhan Qiu, Juelu Zhang, Jiajun Zheng, Fangxin Liu, Jie Zhang, Chen Tian, Chengying Huan: "Twig: parallel and memory-efficient tree speculative decoding for hybrid-attention LLMs". <b>HPCA 2027</b>.</li>
 <li>Wentao Liu, Xiabao Wu, <u>Yongchao Liu</u>, Haitao Zhang, Jiajun Zheng, Ruiting Zhou: "CutAttn: discovering cognitive transition layers for efficient long-context prefilling". <b>NeurIPS 2026</b>.</li>
 <li>Jun Chen, <u>Yongchao Liu</u>, Pengyu Qiu, Jiajun Zheng, Juelu Zhang, Yujie Zeng, Qin Zhang, Xiao Luo, Ziyue Qiao: "<a href="https://aclanthology.org/2026.findings-emnlp.2383" style="text-decoration:none">GTA-RAG: graph-trajectory-augmented reinforcement learning for multi-turn retrieval-augmented reasoning</a>". <b>EMNLP 2026</b>.</li>
 <li>Yuwei Hu, Runlin Lei, Zhewei Wei, <u>Yongchao Liu</u>, Chuntao Hong, Jiajun Zheng, Juelu Zhang: "<a href="https://aclanthology.org/2026.emnlp-main.2300" style="text-decoration:none">Foresight-on-Graph: vision-guided knowledge graph reasoning with large language models</a>". <b>EMNLP 2026</b>.</li>
 <li>Boci Peng, Yun Zhu, <u>Yongchao Liu</u>, Xiaohe Bo, Haizhou Shi, Chuntao Hong, Yan Zhang, Siliang Tang: "<a href="https://dl.acm.org/doi/10.1145/3777378" style="text-decoration:none">Graph retrieval-augmented generation: a survey</a>". <b>ACM TOIS</b>, 2026 (<font color="#ff0000"><b>ESI Highly Cited Paper</b></font>).</li>
-<li>Li Wang, Yi Su, Xiabao Wu, Chiran You, <u>Yongchao Liu</u>, Zhan Qiu, Juelu Zhang, Jiajun Zheng, Fangxin Liu, Jie Zhang, Chen Tian, Chengying Huan: "<a href="https://arxiv.org/abs/2608.01651" style="text-decoration:none">Bole: efficient tree speculation for hybrid-attention language models</a>". arXiv:2608.01651, 2026.</li>
 <li>Xintan Zeng, <u>Yongchao Liu</u>, Yice Luo, Jiajun Zheng: "<a href="https://arxiv.org/abs/2605.02967" style="text-decoration:none">AutoRAGTuner: a declarative framework for automatic optimization of RAG pipelines</a>". <b>EuroSys 2026</b> (poster track).</li>
 <li>Xiabao Wu, <u>Yongchao Liu</u>, Wei Qin, Chuntao Hong: "<a href="https://arxiv.org/abs/2607.21599" style="text-decoration:none">Decoupled attention fusion: accelerating RAG with efficient KV cache reuse</a>". <b>EuroSys 2026</b> (poster track).</li>
 <li>Chengying Huan, Ziheng Meng, <u>Yongchao Liu</u>, Zhengyi Yang, Yun Zhu, Yue Yun, Shipeng Li, Rong Gu, Xiabao Wu, Haitao Zhang, Chuntao Hong, Shaonan Ma, Guihai Chen, Chen Tian: "<a href="https://arxiv.org/abs/2511.01633" style="text-decoration:none">Scaling Graph Chain-of-Thought Reasoning: a multi-agent framework with efficient LLM serving</a>". arXiv:2511.01633, 2025.</li>
